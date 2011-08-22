@@ -1,0 +1,23 @@
+<div id="content-t">
+	Blog
+</div>
+<div id="content-c">
+  <% if @content_locales %>
+    <ul>
+		  <% @content_locales.each do |content_locale| %>
+        <% comments_length = content_locale.content.comments.delete_if{|comment| comment.status > 0}.length -%>
+			  <li>
+				  <p class="title"><%= content_locale.title -%></p>
+				  <div class="descr">
+					  <%= content_locale.content_text -%><br/>
+				  </div>
+				  <div class="link">
+  				<%= link_to "#{t(:comments)}(#{comments_length})", content_comments_url( :content_id => content_locale.content.id) -%>
+				  </div>
+			  </li>
+		  <% end %>
+	  </ul>
+  <% else %>
+    <span><%= t(:item_not_found) -%>.</span>
+  <% end %>
+</div>

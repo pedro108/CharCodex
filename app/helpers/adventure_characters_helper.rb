@@ -1,0 +1,2 @@
+module AdventureCharactersHelper
+end

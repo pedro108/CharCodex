@@ -1,0 +1,173 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  header_text: "Paizo's Pathfinder RPG character manager"
+  login: "Login"
+  invalid_login: "Invalid login."
+  login_required: "Login is required to access this page."
+  username: "User"
+  password: "Password"
+  email: "Email"
+  name: "Name"
+  password_confirmation: "Password confirmation"
+  user_type: "User type"
+  player: "Player"
+  master: "Game Master"
+  welcome: "Welcome"
+  logout: "Logout"
+  blog: "Blog"
+  internal_error: "Internal server error"
+  administration: "Administration"
+  moderation: "Moderation"
+  pending: "Pending"
+  approved: "Approved"
+  restricted_access: "Restricted access."
+  developed_by: "Developed by"
+  platform: "Platform"
+  contact: "Contact"
+  signup: "Sign up"
+  to_signup: "Sign up"
+  _select_: "--select--"
+  item_not_found: "No items found"
+  comments: "Comments"
+  adventure_manager: "Adventure manager"
+  character_manager: "Character manager"
+  monster_manager: "Monster manager"
+  background_manager: "Terrain manager"
+  player: "Player"
+  master: "Game master"
+  adventure: "Adventure"
+  square: "Square" 
+
+  dimension: "Dimensions"
+  sample: "Sample"
+  terrain: "Terrain"
+  monster: "Monster"
+  grid_item: "Item to set"
+  erase: "Erase"
+ 
+
+  active_scaffold:
+    search: "Search"
+    live_search: "Search"
+    create_another: "Create another"
+    create: "Create"
+    edit: "Edit"
+    delete: "Delete"
+    show: "Show"
+    cancel: "Cancel"
+    hide: "Hide"
+    create_new: "Create new"
+    create_model: "Creating..."
+    edit_model: "Updating..."
+    internal_error: "Internal server error"
+    close: "Close"
+    add_existing: "Add"
+    select: "Select"
+    true: "Yes"
+    false: "No"
+
+  # Usado no Array.to_sentence
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " and "
+      last_word_connector: " and "
+  activerecord:
+    errors:
+      template:
+        header: "Error"
+        body: "The following errors were found:"
+      messages:
+        inclusion: "not included in the list"
+        exclusion: "reserved"
+        invalid: "it's invalid"
+        confirmation: "does not match confirmation"
+        accepted: "needs to be accepted"
+        empty: "cannot be empty"
+        blank: "cannot be left blank"
+        too_long: "too long({{count}} maximum characters)"
+        too_short: "too short ({{count}} minimum characters)"
+        wrong_length: "wrong length (should have {{count}} characters)"
+        taken: "already taken"
+        not_a_number: "it's not a number"
+        greater_than: "must be greater than {{count}}"
+        greater_than_or_equal_to: "must be greater than or equal to {{count}}"
+        equal_to: "must be equal to {{count}}"
+        less_than: "must be less than {{count}}"
+        less_than_or_equal_to: "must be less than or equal to {{count}}"
+        odd: "must be odd"
+        even: "must be even"
+        record_invalid: "Failed validation: {{errors}}"
+        
+      full_messages:
+        format: "{{attribute}} {{message}}"
+
+    models: 
+      user: "Users" 
+      content: "Contents"
+      content_locale: "Content locales"
+      comment: "Comments"
+      adventure: "Adventures"
+      encounter: "Encounters"
+      character: "Characters"
+      monster: "Monsters"
+      terrain: "Terrains"
+    attributes:
+      user:
+        login: "Login"
+        name: "Name"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        email: "Email"
+        type_id: "Type"
+
+      content:
+        status: "Status"
+        user: "Author"
+        content_locales: "Content"
+
+      content_locale:
+        title: "Title"
+        locale_id: "Language"
+        content_text: "Text"
+
+      comment:
+        content: "Content"
+        status: "Status"
+        comment: "Comment"
+        user: "Author"
+
+      character:
+        name: "Name"
+        level: "Level"
+        photo: "Photo"
+        miniature: "Grid miniature"
+
+      adventure:
+        name: "Name"
+
+      encounter:
+        name: "Name"
+        map: "Map"
+        square_width: "Width"
+        square_height: "Height"
+        monsters: "Monsters"
+
+      monster:
+        name: "Name"
+        photo: "Photo"
+        miniature: "Grid miniature"
+        dimension: "Size"
+
+      terrain:
+        name: "Name"
+        miniature: "Grid miniature"
+        type_id: "Terrain type"
+        is_object: "Object?"
+        dimension_x: "Dimensions"
+        dimension_y: "Dimensions"
+
+
+

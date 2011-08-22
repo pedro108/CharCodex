@@ -1,0 +1,53 @@
+<%= form_for :battle_grid, @battle_grid, :url => { :action => 'battle_grid_create' } do |f| -%>
+  <div id="sidebar">
+    <menu>
+      <li id="dimension">
+        <%= f.label :dimension, t(:dimension) + ":" -%>
+        <%= f.text_field :dimension, :id => "dimension-input", :maxlength => "2", :size => "2" -%>
+        <input id="dimension-submit" type="button" value="OK"/>
+      </li>
+
+      <li id="terrains">
+        <%= f.label :terrain, t(:terrain) + ":" -%>
+        <%= select_tag :terrain, "<option value='0'>#{t(:erase)}</option>#{options_from_collection_for_select(@terrains, "id", "name")}", :id => "terrains-select" -%>
+      </li>
+      <li id="terrains-holder">
+        <%= f.label :sample, t(:sample) + ":" -%>
+        <%= image_tag 'empty.png', :alt => "" -%>
+      </li>
+
+      <li id="monsters">
+        <%= f.label :monster, t(:monster) + ":" -%>
+        <%= select_tag :monster, "<option value='0'>#{t(:erase)}</option>#{options_from_collection_for_select(@monsters, "id", "name")}", :id => "monsters-select" -%>
+      </li>
+      <li id="monsters-holder">
+        <%= f.label :sample, t(:sample) + ":" -%>
+        <%= image_tag 'empty.png', :alt => "" -%>
+      </li>
+
+      <li id="item">
+        <%= f.label :grid_item, t(:grid_item) + ":" -%>
+        <%= select_tag :terrain, "<option value='terrains'>#{t(:terrain)}</option><option value='monsters'>#{t(:monster)}</option>", :id => "item-select" -%>
+      </li>
+    </menu>
+  </div>
+  <div id="grid-holder">
+    <ul id="grid"></ul>
+  </div>
+  <%= f.hidden_field :grid -%>
+<% end -%>
+
+<%= javascript_tag do -%>
+  $(document).ready(function(){
+    <% @terrains.each do |terrain| -%>
+      terrains[<%=terrain.id-%>] = new BackgroundGridItem(grid, <%=terrain.id-%>, 'bg', '<%=terrain.miniature-%>', <%=terrain.type_id-%>, <%=terrain.dimension-%>, <%=terrain.dimension-%>);
+    <% end -%>
+    <% @monsters.each do |monster| -%>
+      monsters[<%=monster.id-%>] = new GridItem(grid, <%=monster.id-%>, 'mst', '<%=monster.miniature-%>', <%=monster.dimension-%>, <%=monster.dimension-%>);
+    <% end -%>
+  });
+<% end -%>
+
+
+
+

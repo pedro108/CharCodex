@@ -1,0 +1,49 @@
+menu, ul {
+	margin:0px;
+	padding:0px;
+	list-style-type:none;
+}
+
+menu li {
+	padding:5px;
+}
+
+#sidebar {
+	width: 200px;
+	border:1px solid #000000;
+	float:left;
+	margin-right:30px;
+}
+
+#terrains-holder img, #monsters-holder img {
+	border: 1px solid #000000;
+	background-color: #EEEEEE;
+	width: 50px;
+	height: 50px;
+}
+
+#grid-holder {
+  overflow:hidden;
+  position:relative;
+}
+
+#grid {
+	border:1px solid #000;
+	overflow:hidden;
+	display:none;
+}
+
+#grid .ui-selecting {
+	border:1px solid #FECA40;
+}
+
+#grid .ui-selected {
+}
+
+#grid li {
+	float:left;
+	border:1px solid #000000;
+	position:relative;
+	background-color: #EEEEEE;
+}
+

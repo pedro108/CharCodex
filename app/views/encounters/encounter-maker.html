@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<style>
+			menu, ul {
+				margin:0px;
+				padding:0px;
+				list-style-type:none;
+			}
+
+			menu li {
+				padding:5px;
+			}
+
+			#sidebar {
+				width: 200px;
+				border:1px solid #000000;
+				float:left;
+				margin-right:30px;
+			}
+
+			#backgrounds-holder img, #monsters-holder img {
+				border: 1px solid #000000;
+				background-color: #EEEEEE;
+			}
+
+			#grid {
+				border:1px solid #000000;
+				overflow:hidden;
+				display:none;
+			}
+
+			#grid .ui-selecting {
+				border:1px solid #FECA40; 
+			}
+
+			#grid .ui-selected {
+			}
+
+			#grid li {
+				float:left;
+				border:1px solid #000000;
+				position:relative;
+				background-color: #EEEEEE;
+			}
+		</style>
+
+		<script type="text/javascript" src="jquery-1.6.1.min.js"></script>
+		<script type="text/javascript" src="jquery-ui-1.8.13.custom.min.js"></script>
+		<script type="text/javascript" src="Grid.js"></script>
+		<script type="text/javascript" src="GridItem.js"></script>
+
+		<script type="text/javascript">
+			var Tilesize = 50;
+			var Layers = ['backgrounds', 'objects', 'monsters'];
+
+			function draw_holder(img_src, holder_id) {
+				var img = $('#' + holder_id).find('img');
+
+				if(img_src != null)
+					img.attr('src', img_src);
+				else
+					img.attr('src', 'empty.png');
+			}
+
+			$(document).ready(function(){
+				var grid = new Grid($('#grid'), Tilesize, Layers);
+
+				var backgrounds = new Array();
+				backgrounds.push(new BackgroundGridItem(grid, 0, 'bg', null, 2));
+
+				var monsters = new Array();
+				monsters.push(new GridItem(grid, 0, 'mst', null));
+
+				$('#dimension-submit').click(function(){
+					var new_dimension = Number($('#dimension-input').val());
+					if(new_dimension > grid.dimension || confirm('Diminuir a dimensao do grid pode acarretar em perda de informacao. Deseja continuar mesmo assim?')){
+						grid.resize(new_dimension);
+					}
+					grid.element.show();
+				});
+
+				$('#backgrounds-select').change(function(){
+					draw_holder(backgrounds[$(this).val()].image, 'backgrounds-holder');
+					$('#item-select').val('backgrounds');
+				});
+
+				$('#monsters-select').change(function(){
+					draw_holder(monsters[$(this).val()].image, 'monsters-holder');
+					$('#item-select').val('monsters');
+				});
+				
+				grid.element.bind("selectableselected", function(event, ui) {
+					var type = $('#item-select').val(); 
+					if(type == 'backgrounds') {
+						var item = backgrounds[$('#backgrounds-select').val()];
+						grid.draw_item(item, $(ui.selected));
+					}
+				});
+
+				grid.element.bind("click", function(){
+					var type = $('#item-select').val(); 
+					if(type != 'backgrounds') {	
+						var index = $('#' + type + '-select').val();
+						var item = eval(type + '[' + index + ']');
+						grid.draw_item(item, $(this));
+					}
+				});
+			});
+
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

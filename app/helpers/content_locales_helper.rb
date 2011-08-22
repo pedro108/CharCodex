@@ -1,0 +1,2 @@
+module ContentLocalesHelper
+end
