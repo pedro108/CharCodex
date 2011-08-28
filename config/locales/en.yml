@@ -17,6 +17,8 @@ en:
   welcome: "Welcome"
   logout: "Logout"
   blog: "Blog"
+  nao: "No"
+  sim: "Yes"
   internal_error: "Internal server error"
   administration: "Administration"
   moderation: "Moderation"
@@ -46,7 +48,15 @@ en:
   monster: "Monster"
   grid_item: "Item to set"
   erase: "Erase"
- 
+
+  small: "Small"
+  medium: "Medium"
+  large: "Large"
+  huge: "Huge"
+
+  normal: "Normal"
+  difficult: "Difficult"
+  impassable: "Impassable"
 
   active_scaffold:
     search: "Search"
@@ -166,8 +176,6 @@ en:
         miniature: "Grid miniature"
         type_id: "Terrain type"
         is_object: "Object?"
-        dimension_x: "Dimensions"
-        dimension_y: "Dimensions"
-
-
+        dimension_x: "Width"
+        dimension_y: "Height"
 

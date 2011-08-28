@@ -2,6 +2,7 @@ var Tilesize = 50;
 var Layers = ['bg', 'obj', 'mst'];
 var monsters = new Array();
 var terrains = new Array();
+var objects = new Array();
 var grid;
 
 function draw_holder(img_src, holder_id) {
@@ -24,6 +25,7 @@ function grid_selectable_bind(event, ui) {
 $(document).ready(function() {
 	grid = new Grid($('#grid'), Tilesize, Layers);
 	terrains.push(new BackgroundGridItem(grid, 0, 'bg', null, 2));
+	objects.push(new BackgroundGridItem(grid, 0, 'obj', null, 2));
 	monsters.push(new GridItem(grid, 0, 'mst', null));
 
 	$('#dimension-submit').click(function(){
@@ -45,6 +47,13 @@ $(document).ready(function() {
     var img_src = ($(this).val() == "0") ? null : monsters[$(this).val()].image;
 		draw_holder(img_src, 'monsters-holder');
 		$('#item-select').val('monsters');
+    $('#item-select').change();
+	});
+
+  $('#objects-select').change(function(){
+    var img_src = ($(this).val() == "0") ? null : objects[$(this).val()].image;
+		draw_holder(img_src, 'objects-holder');
+		$('#item-select').val('objects');
     $('#item-select').change();
 	});
 

@@ -94,12 +94,12 @@ Grid.prototype.draw_item = function(item, holder){
       var img = new Image();
       img.src = item.image;
       $(img).load(function(){
-        context.drawImage(this, (2 + (2+grid.tilesize)*(holder.data('column')-1) + (grid.tilesize*item.columns - this.width)/2), (2 + (2+grid.tilesize)*(holder.data('line')-1) + (grid.tilesize*item.lines - this.height)/2));
+        context.drawImage(this, (2 + (2+grid.tilesize)*(holder.data('column')-1)), (2 + (2+grid.tilesize)*(holder.data('line')-1)));
       });
 
       for(var i = 0; i < item.lines; i++) {
         for(var j = 0; j < item.columns; j++) {
-          var current_holder = $('#tile-' + String(Number(holder.data('line')) + i) + '-' + String(Number(holder.data('column')) + j));
+          var current_holder = $('#tile-' + String(Number(holder.data('column')) + j) + '-' + String(Number(holder.data('line')) + i));
           current_holder.data(item.type, item.id);
           if(item.type != 'bg')
             current_holder.attr(item.type + "_instance", grid.current_instance);
@@ -145,14 +145,13 @@ Grid.prototype.clear_instance = function(type, holder) {
   var context = $('#canvas-' + type)[0].getContext('2d');
   var holders = grid.list.find('li[' + type + '_instance="' + instance + '"]');
 
-  console.log(instance == '');
   // refatorar os arrays de itens do grid, fazer 1 so, propriedade de grid:
   if(instance != '') {
     context.clearRect((2 + (2+grid.tilesize)*($(holders[0]).data('column')-1)),
                       (2 + (2+grid.tilesize)*($(holders[0]).data('line')-1)),
                       grid.tilesize*monsters[$(holders[0]).data(type)].columns, grid.tilesize*monsters[$(holders[0]).data(type)].lines);
 
-    holders.each(function(index){
+    holders.each(function(index) {
       $(this).data(type, null);
       $(this).attr(type + '_instance', '')
     });
@@ -164,7 +163,7 @@ Grid.prototype.space_taken = function(item, holder) {
   var current_holder;
   for(var i = 0; i < item.lines; i++) {
     for(var j = 0; j < item.columns; j++) {
-      current_holder = $('#tile-' + String(Number(holder.data('line')) + i) + '-' + String(Number(holder.data('column')) + j));
+      current_holder = $('#tile-' + String(Number(holder.data('column')) + j) + '-' + String(Number(holder.data('line')) + i));
       if(current_holder.data(item.type) != null) {
         if(current_holder.data(item.type) != item.id)
           alert('Ja existe um ' + ((item.type == 'mst') ? 'monstro' : 'objeto') + ' nessa posicao');
@@ -180,7 +179,7 @@ Grid.prototype.have_background = function(item, holder) {
   var current_holder;
   for(var i = 0; i < item.lines; i++) {
     for(var j = 0; j < item.columns; j++) {
-      current_holder = $('#tile-' + String(Number(holder.data('line')) + i) + '-' + String(Number(holder.data('column')) + j));
+      current_holder = $('#tile-' + String(Number(holder.data('column')) + j) + '-' + String(Number(holder.data('line')) + i));
       if(current_holder.data('bg') == null)
         return false;
     }
@@ -193,7 +192,7 @@ Grid.prototype.passable_terrain = function(item, holder) {
   var current_holder;
   for(var i = 0; i < item.lines; i++) {
     for(var j = 0; j < item.columns; j++) {
-      current_holder = $('#tile-' + String(Number(holder.data('line')) + i) + '-' + String(Number(holder.data('column')) + j));
+      current_holder = $('#tile-' + String(Number(holder.data('column')) + j) + '-' + String(Number(holder.data('line')) + i));
       if(current_holder.data('t_type') >= 2)
         return false;
     }

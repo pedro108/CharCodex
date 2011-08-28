@@ -14,6 +14,8 @@ pt:
   welcome: "Bem-vindo"
   logout: "Logout"
   blog: "Blog"
+  nao: "Nao"
+  sim: "Sim"
   internal_error: "Erro interno no servidor"
   administration: "Administração"
   moderation: "Moderação"
@@ -37,12 +39,22 @@ pt:
   adventure: "Aventura"
   square: "Quadrado"
 
+  small: "Pequeno"
+  medium: "Medio"
+  large: "Grande"
+  huge: "Enorme"
+
   dimension: "Dimensões"
   sample: "Exemplo"
   terrain: "Terreno"
   monster: "Monstro"
+  object: "Objeto"
   grid_item: "Tipo de item selecionado"
   erase: "Apagar"
+
+  normal: "Normal"
+  difficult: "Dificil"
+  impassable: "Intransponivel"
 
   active_scaffold:
     search: "Buscar"
@@ -290,7 +302,6 @@ pt:
         miniature: "Miniatura do grid"
         type_id: "Tipo de terreno"
         is_object: "Objeto?"
-        dimension_x: "Dimensões"
-
-
+        dimension_x: "Largura"
+        dimension_y: "Altura"
 

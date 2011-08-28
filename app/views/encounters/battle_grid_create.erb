@@ -1,6 +1,11 @@
 <%= form_for :battle_grid, @battle_grid, :url => { :action => 'battle_grid_create' } do |f| -%>
   <div id="sidebar">
     <menu>
+      <li id="name">
+        <%= f.label :name, t(:name) + ":" -%>
+        <%= f.text_field :name -%>
+      </li>
+
       <li id="dimension">
         <%= f.label :dimension, t(:dimension) + ":" -%>
         <%= f.text_field :dimension, :id => "dimension-input", :maxlength => "2", :size => "2" -%>
@@ -9,16 +14,32 @@
 
       <li id="terrains">
         <%= f.label :terrain, t(:terrain) + ":" -%>
-        <%= select_tag :terrain, "<option value='0'>#{t(:erase)}</option>#{options_from_collection_for_select(@terrains, "id", "name")}", :id => "terrains-select" -%>
+        <%= select_tag :terrain, 
+                       options_for_select((@terrains.collect{|t| [t.name,t.id]}).unshift(["#{t(:erase)}", "0"])),
+                       :id => "terrains-select" -%>
       </li>
       <li id="terrains-holder">
         <%= f.label :sample, t(:sample) + ":" -%>
         <%= image_tag 'empty.png', :alt => "" -%>
       </li>
 
+      <li id="objects">
+        <%= f.label :object, t(:object) + ":" -%>
+        <%= select_tag :object, 
+                       options_for_select((@objects.collect{|t| [t.name,t.id]}).unshift(["#{t(:erase)}", "0"])),
+                       :id => "objects-select" -%>
+      </li>
+      <li id="objects-holder">
+        <%= f.label :sample, t(:sample) + ":" -%>
+        <%= image_tag 'empty.png', :alt => "" -%>
+      </li>
+
+
       <li id="monsters">
         <%= f.label :monster, t(:monster) + ":" -%>
-        <%= select_tag :monster, "<option value='0'>#{t(:erase)}</option>#{options_from_collection_for_select(@monsters, "id", "name")}", :id => "monsters-select" -%>
+        <%= select_tag :monster, 
+                       options_for_select((@monsters.collect{|t| [t.name,t.id]}).unshift(["#{t(:erase)}", "0"])),
+                       :id => "monsters-select" -%>
       </li>
       <li id="monsters-holder">
         <%= f.label :sample, t(:sample) + ":" -%>
@@ -27,7 +48,12 @@
 
       <li id="item">
         <%= f.label :grid_item, t(:grid_item) + ":" -%>
-        <%= select_tag :terrain, "<option value='terrains'>#{t(:terrain)}</option><option value='monsters'>#{t(:monster)}</option>", :id => "item-select" -%>
+        <%= select_tag :item,
+                       options_for_select([["#{t(:terrain)}", "terrains"],["#{t(:monster)}", "monsters"],["#{t(:object)}", "objects"]]),
+                       :id => "item-select" -%>
+      </li>
+      <li>
+        <input type="button" value="Gravar" id="submit-grid"/>
       </li>
     </menu>
   </div>
@@ -38,16 +64,39 @@
 <% end -%>
 
 <%= javascript_tag do -%>
-  $(document).ready(function(){
+  $(function(){
     <% @terrains.each do |terrain| -%>
-      terrains[<%=terrain.id-%>] = new BackgroundGridItem(grid, <%=terrain.id-%>, 'bg', '<%=terrain.miniature-%>', <%=terrain.type_id-%>, <%=terrain.dimension-%>, <%=terrain.dimension-%>);
+      terrains[<%=terrain.id-%>] = new BackgroundGridItem(grid, <%=terrain.id-%>, 'bg', '<%=terrain.miniature-%>', <%=terrain.type_id-%>, <%=terrain.dimension_x-%>, <%=terrain.dimension_y-%>);
+    <% end -%>
+    <% @objects.each do |object| -%>
+      objects[<%=object.id-%>] = new BackgroundGridItem(grid, <%=object.id-%>, 'obj', '<%=object.miniature-%>', <%=object.type_id-%>, <%=object.dimension_x-%>, <%=object.dimension_y-%>);
     <% end -%>
     <% @monsters.each do |monster| -%>
       monsters[<%=monster.id-%>] = new GridItem(grid, <%=monster.id-%>, 'mst', '<%=monster.miniature-%>', <%=monster.dimension-%>, <%=monster.dimension-%>);
     <% end -%>
+
+    $('form').submit(function(event){
+      event.preventDefault();
+    });
+
+    $('#submit-grid').click(function(){
+      var dados_grid = new Object();
+      $('#grid li').each(function(index){
+        dados_grid[index] = new Object();
+        dados_grid[index].bg = $(this).data('bg');
+        dados_grid[index].mst = $(this).data('mst');
+        dados_grid[index].obj = $(this).data('obj');
+        dados_grid[index].obj_instance = $(this).attr('obj_instance');
+        dados_grid[index].mst_instance = $(this).attr('mst_instance');
+        dados_grid[index].line = $(this).data('line');
+        dados_grid[index].column = $(this).data('column');
+      });
+
+      $('#battle_grid_grid').val(JSON.stringify(dados_grid));
+
+      submit();
+    });
   });
 <% end -%>
-
-
 
 

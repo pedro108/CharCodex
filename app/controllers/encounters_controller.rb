@@ -13,6 +13,7 @@ class EncountersController < ApplicationController
 
 	def battle_grid_create
     @terrains = Terrain.where(:is_object => false)
+    @objects = Terrain.where(:is_object => true)
     @monsters = Monster.all
 		render :layout => "battle_grid"
 	end

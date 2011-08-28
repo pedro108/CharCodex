@@ -14,7 +14,6 @@ class MonstersController < ApplicationController
     config.columns[:miniature].form_ui = :paperclip
 
     config.columns[:dimension].form_ui = :select
-    config.columns[:dimension].options = { :options => [["Pequeno", "0"], ["Medio", "1"], ["Grande", "2"], ["Enorme", "3"]] }
   end
 
   def before_create_save(record)

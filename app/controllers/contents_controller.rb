@@ -7,14 +7,15 @@ class ContentsController < ApplicationController
   uses_tiny_mce
 
   active_scaffold :content do |config|
-    config.list.columns = [:content_locales, :status, :user]
-    config.create.columns = [:content_locales, :status]
-    config.update.columns = [:content_locales, :status]
+     config.list.columns = [:content_locales, :status, :user]
+     config.create.columns = [:content_locales, :status]
+     config.update.columns = [:content_locales, :status]
     
-    config.columns[:status].form_ui = :select
-    config.columns[:content_locales].associated_limit = 1
-    config.columns[:content_locales].clear_link
-    config.columns[:user].clear_link
+     config.columns[:status].form_ui = :select
+
+     config.columns[:content_locales].associated_limit = 1
+     config.columns[:content_locales].clear_link
+     config.columns[:user].clear_link
   end
 
   def blog
