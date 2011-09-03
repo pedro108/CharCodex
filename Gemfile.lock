@@ -39,6 +39,7 @@ GEM
     builder (2.1.2)
     cocaine (0.2.0)
     daemons (1.1.0)
+    dynamic_form (1.1.4)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
@@ -102,6 +103,7 @@ PLATFORMS
 DEPENDENCIES
   active_scaffold_vho
   authlogic
+  dynamic_form
   mysql2 (~> 0.2.6)
   paperclip
   racc

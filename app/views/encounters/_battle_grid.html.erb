@@ -1,0 +1,95 @@
+<% if params[:response] -%>
+<%= javascript_tag do -%>
+  window.opener.location.reload();
+  window.close();
+<% end -%>
+<% end -%>
+
+
+<%= form_for :encounter, @encounter, :url => { :action => params[:action] } do |f| -%>
+  <div id="sidebar">
+    <%= f.error_messages %>
+    <menu>
+      <li id="name">
+        <%= f.label :name, t(:name) + ":" -%>
+        <%= f.text_field :name -%>
+      </li>
+
+      <li id="dimension">
+        <%= label_tag :dimension, t(:dimension) + ":" -%>
+        <%= text_field_tag :dimension, "", :id => "dimension-input", :maxlength => "2", :size => "2" -%>
+        <input id="dimension-submit" type="button" value="OK"/>
+      </li>
+
+      <li id="terrains">
+        <%= label_tag :terrain, t(:terrain) + ":" -%>
+        <%= select_tag :terrain, 
+                       options_for_select((@terrains.collect{|t| [t.name,t.id]}).unshift(["#{t(:erase)}", "0"])),
+                       :id => "terrains-select" -%>
+      </li>
+      <li id="terrains-holder">
+        <%= label_tag :sample, t(:sample) + ":" -%>
+        <%= image_tag 'empty.png', :alt => "" -%>
+      </li>
+
+      <li id="objects">
+        <%= label_tag :object, t(:object) + ":" -%>
+        <%= select_tag :object, 
+                       options_for_select((@objects.collect{|t| [t.name,t.id]}).unshift(["#{t(:erase)}", "0"])),
+                       :id => "objects-select" -%>
+      </li>
+      <li id="objects-holder">
+        <%= label_tag :sample, t(:sample) + ":" -%>
+        <%= image_tag 'empty.png', :alt => "" -%>
+      </li>
+
+
+      <li id="monsters">
+        <%= label_tag :monster, t(:monster) + ":" -%>
+        <%= select_tag :monster, 
+                       options_for_select((@monsters.collect{|t| [t.name,t.id]}).unshift(["#{t(:erase)}", "0"])),
+                       :id => "monsters-select" -%>
+      </li>
+      <li id="monsters-holder">
+        <%= label_tag :sample, t(:sample) + ":" -%>
+        <%= image_tag 'empty.png', :alt => "" -%>
+      </li>
+
+      <li id="item">
+        <%= f.label :grid_item, t(:grid_item) + ":" -%>
+        <%= select_tag :item,
+                       options_for_select([["#{t(:terrain)}", "terrains"],["#{t(:monster)}", "monsters"],["#{t(:object)}", "objects"]]),
+                       :id => "item-select" -%>
+      </li>
+      <li>
+        <%= submit_tag "Gravar", :id => "submit-grid" -%>
+      </li>
+    </menu>
+  </div>
+  <%= f.hidden_field :grid -%>
+  <%= f.hidden_field :adventure_id, :value => (params[:adventure_id].nil?) ? params[:encounter][:adventure_id] : params[:adventure_id] -%>
+<% end -%>
+<div id="grid-holder">
+  <ul id="grid"></ul>
+</div>
+
+<%= javascript_tag do -%>
+  $(function(){
+    <% @terrains.each do |terrain| -%>
+      grid.terrains[<%=terrain.id-%>] = new BackgroundGridItem(grid, <%=terrain.id-%>, 'bg', '<%=terrain.miniature-%>', <%=terrain.type_id-%>, <%=terrain.dimension_y-%>, <%=terrain.dimension_x-%>);
+    <% end -%>
+    <% @objects.each do |object| -%>
+      grid.objects[<%=object.id-%>] = new BackgroundGridItem(grid, <%=object.id-%>, 'obj', '<%=object.miniature-%>', <%=object.type_id-%>, <%=object.dimension_y-%>, <%=object.dimension_x-%>);
+    <% end -%>
+    <% @monsters.each do |monster| -%>
+      grid.monsters[<%=monster.id-%>] = new GridItem(grid, <%=monster.id-%>, 'mst', '<%=monster.miniature-%>', <%=monster.dimension-%>, <%=monster.dimension-%>);
+    <% end -%>
+
+    if($.trim($('#encounter_grid').val()) != ''){
+      var grid_obj = JSON.parse($('#encounter_grid').val());
+      grid.create(grid_obj);
+    }
+  });
+<% end -%>
+
+

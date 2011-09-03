@@ -4,25 +4,57 @@ class EncountersController < ApplicationController
   end
 
 	active_scaffold :encounter do |config|
-		config.action_links.add :battle_grid_create, :label => 'Cadastrar' , :page => true, :type => :collection,
-                            :html_options => { :onclick => "event.preventDefault();window.open(this.href,'','width=1024,height=768,status=no,menubar=no,location=no,toolbar=no')"}
+    battle_grid_html_options = { :onclick => "event.preventDefault();window.open(this.href,'','width=1024,height=768,status=no,menubar=no,location=no,toolbar=no')"}
 
-    config.actions.exclude :show, :create
+		config.action_links.add :battle_grid_create,
+                            :label => 'Cadastrar',
+                            :page => true,
+                            :type => :collection,
+                            :html_options => battle_grid_html_options
+
+    config.action_links.add :battle_grid_update,
+                            :label => 'Editar',
+                            :page => true,
+                            :type => :member,
+                            :html_options => battle_grid_html_options
+
+    config.actions.exclude :show, :create, :update
     config.list.columns = [:name]
+    config.columns[:name].set_link(config.action_links[:battle_grid_update])
   end
 
 	def battle_grid_create
-    @terrains = Terrain.where(:is_object => false)
-    @objects = Terrain.where(:is_object => true)
-    @monsters = Monster.all
-		render :layout => "battle_grid"
+    battle_grid
+    if params[:response]
+      @encounter = Encounter.new({:adventure_id => params[:encounter][:adventure_id],
+                                  :name => params[:encounter][:name],
+                                  :grid => params[:encounter][:grid]})
+      params[:response] = @encounter.save
+    end
+    render :layout => "battle_grid"
 	end
 
-  def conditions_for_collection
-    ['encounters.adventure_id = ?', params[:id]]
+  def battle_grid_update
+    battle_grid
+    @encounter = Encounter.find(params[:id])
+    if params[:response]
+      @encounter.name = params[:encounter][:name]
+      @encounter.grid = params[:encounter][:grid]
+      params[:response] = @encounter.save
+    end
+    render :layout => "battle_grid"
   end
 
-  def before_create_save(record)
-    record.adventure_id = params[:id]
-  end
+  protected
+
+    def battle_grid
+      @terrains = Terrain.where(:is_object => false)
+      @objects = Terrain.where(:is_object => true)
+      @monsters = Monster.all
+      params[:response] = params.has_key? :encounter
+    end
+
+    def conditions_for_collection
+      ['encounters.adventure_id = ?', params[:adventure_id]]
+    end
 end

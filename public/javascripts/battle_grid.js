@@ -1,8 +1,5 @@
 var Tilesize = 50;
 var Layers = ['bg', 'obj', 'mst'];
-var monsters = new Array();
-var terrains = new Array();
-var objects = new Array();
 var grid;
 
 function draw_holder(img_src, holder_id) {
@@ -17,16 +14,13 @@ function draw_holder(img_src, holder_id) {
 function grid_selectable_bind(event, ui) {
   var type = $('#item-select').val();
   var index = $('#' + type + '-select').val();
-  var item = eval(type + '[' + index + ']');
+  var item = eval('grid.' + type + '[' + index + ']');
   grid.draw_item(item, $(ui.selected));
 }
 
 
-$(document).ready(function() {
+$(function() {
 	grid = new Grid($('#grid'), Tilesize, Layers);
-	terrains.push(new BackgroundGridItem(grid, 0, 'bg', null, 2));
-	objects.push(new BackgroundGridItem(grid, 0, 'obj', null, 2));
-	monsters.push(new GridItem(grid, 0, 'mst', null));
 
 	$('#dimension-submit').click(function(){
 		var new_dimension = Number($('#dimension-input').val());
@@ -37,26 +31,55 @@ $(document).ready(function() {
 	});
 
 	$('#terrains-select').change(function(){
-    var img_src = ($(this).val() == "0") ? null : terrains[$(this).val()].image;
+    var img_src = ($(this).val() == "0") ? null : grid.terrains[$(this).val()].image;
 		draw_holder(img_src, 'terrains-holder');
 		$('#item-select').val('terrains');
     $('#item-select').change();
 	});
 
 	$('#monsters-select').change(function(){
-    var img_src = ($(this).val() == "0") ? null : monsters[$(this).val()].image;
+    var img_src = ($(this).val() == "0") ? null : grid.monsters[$(this).val()].image;
 		draw_holder(img_src, 'monsters-holder');
 		$('#item-select').val('monsters');
     $('#item-select').change();
 	});
 
   $('#objects-select').change(function(){
-    var img_src = ($(this).val() == "0") ? null : objects[$(this).val()].image;
+    var img_src = ($(this).val() == "0") ? null : grid.objects[$(this).val()].image;
 		draw_holder(img_src, 'objects-holder');
 		$('#item-select').val('objects');
     $('#item-select').change();
 	});
 
   grid.list.bind("selectableselected", grid_selectable_bind);
+
+  $('form').keypress(function(event){
+    if(event.which == 13)
+      event.preventDefault();
+  });
+
+  $('#dimension-input, #dimension-submit').keypress(function(event){
+    if(event.which == 13)
+      $('#dimension-submit').click();
+  });
+
+  $('#submit-grid').click(function(){
+    if($('#grid li').length > 0) {
+      var dados_grid = new Object();
+      $('#grid li').each(function(index){
+        dados_grid[index] = new Object();
+        dados_grid[index] = { bg : $(this).data('bg'),
+                              mst : $(this).data('mst'),
+                              obj : $(this).data('obj'),
+                              obj_instance : $(this).attr('obj_instance'),
+                              mst_instance : $(this).attr('mst_instance'),
+                              line : $(this).data('line'),
+                              column : $(this).data('column'),
+                              t_type : $(this).data('t_type') };
+      });
+
+      $('#encounter_grid').val(JSON.stringify(dados_grid));
+    }
+  });
 });
 

@@ -16,7 +16,7 @@ class AdventuresController < ApplicationController
   end
 
   def adventure_encounters
-    redirect_to encounters_path(:locale => params[:locale], :id => params[:id])
+    redirect_to encounters_path(:locale => params[:locale], :adventure_id => params[:id])
   end
 
   def conditions_for_collection

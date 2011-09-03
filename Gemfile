@@ -22,6 +22,9 @@ gem 'verification'
 # Use thin as the web server
 gem 'thin'
 
+# For the error messages form helper
+gem 'dynamic_form'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
