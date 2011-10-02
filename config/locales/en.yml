@@ -124,6 +124,7 @@ en:
       character: "Characters"
       monster: "Monsters"
       terrain: "Terrains"
+      alignment: "Alignments"
     attributes:
       user:
         login: "Login"
@@ -178,4 +179,8 @@ en:
         is_object: "Object?"
         dimension_x: "Width"
         dimension_y: "Height"
+
+      alignment:
+        name: "Name"
+        type_id: "Type"
 

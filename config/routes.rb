@@ -1,6 +1,6 @@
 CharCodex::Application.routes.draw do
 	resources :comments, :adventures, :characters, :users, :backgrounds, 
-						:encounters, :monsters, :terrains
+						:encounters, :monsters, :terrains, :alignments
 
 	resources :contents do
 		resources :comments

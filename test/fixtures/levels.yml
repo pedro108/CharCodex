@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  level: 1
+  fastXP: 1
+  mediumXP: 1
+  slowXP: 1
+
+two:
+  level: 1
+  fastXP: 1
+  mediumXP: 1
+  slowXP: 1
