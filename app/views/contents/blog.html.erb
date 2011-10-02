@@ -9,7 +9,7 @@
 			  <li>
 				  <p class="title"><%= content_locale.title -%></p>
 				  <div class="descr">
-					  <%= content_locale.content_text -%><br/>
+					  <%= raw content_locale.content_text -%>
 				  </div>
 				  <div class="link">
   				<%= link_to "#{t(:comments)}(#{comments_length})", content_comments_url( :content_id => content_locale.content.id) -%>

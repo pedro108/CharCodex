@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828231304) do
+ActiveRecord::Schema.define(:version => 20111002014136) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20110828231304) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "type_id",                :null => false
+    t.integer  "terrain_type",           :null => false
     t.boolean  "is_object",              :null => false
     t.integer  "user_id"
     t.string   "miniature_file_name"
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(:version => 20110828231304) do
   create_table "users", :force => true do |t|
     t.string   "login",                              :null => false
     t.string   "name",                               :null => false
-    t.integer  "type_id",                            :null => false
+    t.integer  "user_type",                          :null => false
     t.string   "email",                              :null => false
     t.string   "crypted_password",                   :null => false
     t.string   "password_salt",                      :null => false

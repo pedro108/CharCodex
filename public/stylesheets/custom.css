@@ -62,6 +62,11 @@ input.login {
   height: 15px;
 }
 
+.active-scaffold .active-scaffold-header div.actions {
+  top:0px !important;
+  right:0px !important;
+}
+
 .active-scaffold .active-scaffold-header div.actions a,
 .active-scaffold .active-scaffold-header div.actions a:visited,
 .active-scaffold h2 {
@@ -84,6 +89,14 @@ input.login {
 
 .active-scaffold .view h4 {
   display: none;
+}
+
+.active-scaffold li.form-element, .active-scaffold li.form-element dl {
+  overflow: hidden;
+}
+
+.active-scaffold li.form-element dl {
+  margin:3px 0px !important;
 }
 
 .active-scaffold .input_number input {
@@ -222,7 +235,6 @@ div#body div#content div#content-c div.descr {
 
 div#body div#content div#content-c div.link {
 	position:relative;
-	bottom:15px;
 }
 
 div#body div#content div#content-c a {

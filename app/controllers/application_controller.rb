@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   end
 
   def access?(level)
-    return true if current_user && current_user.type_id <= level
+    return true if current_user && current_user.user_type <= level
     false
   end 
 

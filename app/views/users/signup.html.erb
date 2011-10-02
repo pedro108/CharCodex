@@ -26,8 +26,8 @@
 			  <%= f.password_field :password_confirmation -%>
 		  </li>
       <li>
-        <%= f.label :type_id, t(:user_type) + ":" -%>
-        <%= f.select :type_id, [['Admin', '0'], [t(:player), '3'], [t(:master), '2']], {:include_blank => t(:_select_)} -%>
+        <%= f.label :user_type, t(:user_type) + ":" -%>
+        <%= f.select :user_type, [[t(:player), '3'], [t(:master), '2']], {:include_blank => t(:_select_)} -%>
       </li>
       <li>
         <%= submit_tag t(:to_signup) -%>

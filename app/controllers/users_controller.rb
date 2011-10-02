@@ -4,14 +4,13 @@ class UsersController < ApplicationController
   end
 
   active_scaffold :user do |config|
-    config.columns = [:login, :password, :password_confirmation, :name, :email, :type_id]
+    config.columns = [:login, :password, :password_confirmation, :name, :email, :user_type]
     config.columns[:password].form_ui = :password
     config.columns[:password_confirmation].form_ui = :password
-    config.columns[:type_id].form_ui = :select
-    config.columns[:type_id].options = {:options => [['Administrador', 0], ['Moderador', 1], 
-                                                     ['Mestre', 2], ['Jogador', 3] ]}
+    config.columns[:user_type].form_ui = :select
+
     config.list.sorting = {:name => :asc }
-    config.list.columns.exclude :password, :password_confirmation, :type_id
+    config.list.columns.exclude :password, :password_confirmation
     config.show.columns.exclude :password, :password_confirmation
   end
 

@@ -58,6 +58,11 @@ en:
   difficult: "Difficult"
   impassable: "Impassable"
 
+  admin: "Administrator"
+  moderator: "Moderator"
+  master: "Game master"
+  player: "Player"
+
   active_scaffold:
     search: "Search"
     live_search: "Search"
@@ -131,7 +136,7 @@ en:
         password: "Password"
         password_confirmation: "Password confirmation"
         email: "Email"
-        type_id: "Type"
+        user_type: "Type"
 
       content:
         status: "Status"
@@ -174,7 +179,7 @@ en:
       terrain:
         name: "Name"
         miniature: "Grid miniature"
-        type_id: "Terrain type"
+        terrain_type: "Terrain type"
         is_object: "Object?"
         dimension_x: "Width"
         dimension_y: "Height"

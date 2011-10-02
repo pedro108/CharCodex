@@ -10,6 +10,7 @@ $(function(){
 
 		$(this).find('ul').slideDown(500);
 	});
+
 });
 
 function toggle_terrain_dimension() {
