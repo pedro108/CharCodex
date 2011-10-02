@@ -56,6 +56,11 @@ pt:
   difficult: "Dificil"
   impassable: "Intransponivel"
 
+  admin: "Administrador"
+  moderator: "Moderador"
+  master: "Mestre de jogo"
+  player: "Jogador"
+
   active_scaffold:
     search: "Buscar"
     live_search: "Buscar"
@@ -256,7 +261,7 @@ pt:
         password: "Senha"
         password_confirmation: "Confirmação da senha"
         email: "Email"
-        type_id: "Tipo"
+        user_type: "Tipo"
 
       content:
         status: "Status"
@@ -301,7 +306,7 @@ pt:
       terrain:
         name: "Nome"
         miniature: "Miniatura do grid"
-        type_id: "Tipo de terreno"
+        terrain_type: "Tipo de terreno"
         is_object: "Objeto?"
         dimension_x: "Largura"
         dimension_y: "Altura"

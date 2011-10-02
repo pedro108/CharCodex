@@ -76,10 +76,10 @@
 <%= javascript_tag do -%>
   $(function(){
     <% @terrains.each do |terrain| -%>
-      grid.terrains[<%=terrain.id-%>] = new BackgroundGridItem(grid, <%=terrain.id-%>, 'bg', '<%=terrain.miniature-%>', <%=terrain.type_id-%>, <%=terrain.dimension_y-%>, <%=terrain.dimension_x-%>);
+      grid.terrains[<%=terrain.id-%>] = new BackgroundGridItem(grid, <%=terrain.id-%>, 'bg', '<%=terrain.miniature-%>', <%=terrain.terrain_type-%>, <%=terrain.dimension_y-%>, <%=terrain.dimension_x-%>);
     <% end -%>
     <% @objects.each do |object| -%>
-      grid.objects[<%=object.id-%>] = new BackgroundGridItem(grid, <%=object.id-%>, 'obj', '<%=object.miniature-%>', <%=object.type_id-%>, <%=object.dimension_y-%>, <%=object.dimension_x-%>);
+      grid.objects[<%=object.id-%>] = new BackgroundGridItem(grid, <%=object.id-%>, 'obj', '<%=object.miniature-%>', <%=object.terrain_type-%>, <%=object.dimension_y-%>, <%=object.dimension_x-%>);
     <% end -%>
     <% @monsters.each do |monster| -%>
       grid.monsters[<%=monster.id-%>] = new GridItem(grid, <%=monster.id-%>, 'mst', '<%=monster.miniature-%>', <%=monster.dimension-%>, <%=monster.dimension-%>);
