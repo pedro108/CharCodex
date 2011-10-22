@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ability_score: 1
+  spell_level: 1
+  bonus: 1
+
+two:
+  ability_score: 1
+  spell_level: 1
+  bonus: 1

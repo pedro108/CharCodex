@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  casting_time: MyString
+  duration: MyString
+  range: MyString
+  effect: MyText
+  target: MyText
+  area: MyString
+  component: MyString
+  saving_throw: MyString
+  spell_resistance: false
+
+two:
+  name: MyString
+  description: MyText
+  casting_time: MyString
+  duration: MyString
+  range: MyString
+  effect: MyText
+  target: MyText
+  area: MyString
+  component: MyString
+  saving_throw: MyString
+  spell_resistance: false

@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  damage: MyString
+  group: 1
+  subgroup: 1
+  critical_threat: 1
+  critical_power: 1
+  range: 1
+  weight: 
+  price: 
+  obs: MyText
+
+two:
+  name: MyString
+  description: MyText
+  damage: MyString
+  group: 1
+  subgroup: 1
+  critical_threat: 1
+  critical_power: 1
+  range: 1
+  weight: 
+  price: 
+  obs: MyText

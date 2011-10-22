@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  equipment_slot: 
+  construction: MyText
+  price: 
+  bonus: MyText
+
+two:
+  name: MyString
+  description: MyText
+  equipment_slot: 
+  construction: MyText
+  price: 
+  bonus: MyText
