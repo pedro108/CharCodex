@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  helper 'users'
+
   before_filter :except => :signup do |controller|
     controller.restrict_access(0)
   end

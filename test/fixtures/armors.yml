@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  price: 
+  armor_bonus: 1
+  max_dex_bonus: 1
+  check_penalty: 1
+  spell_failure: 
+  weight: 
+  type: 1
+
+two:
+  name: MyString
+  description: MyText
+  price: 
+  armor_bonus: 1
+  max_dex_bonus: 1
+  check_penalty: 1
+  spell_failure: 
+  weight: 
+  type: 1

@@ -87,8 +87,9 @@
 						<li class="submenu-title" id="submenu-admin">
 							<a href="#"><%= t(:administration) -%></a>
 							<ul class="submenu">
-                <li><%= link_to t('activerecord.models.content'), contents_path -%></li>
+								<li><%= link_to t('activerecord.models.content'), contents_path -%></li>
 								<li><%= link_to t('activerecord.models.user'), users_path -%></li>
+								<li><%= link_to t('activerecord.models.alignment'), alignments_path -%></li>
 							</ul>
 						</li>
             <% end %>

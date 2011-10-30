@@ -253,6 +253,7 @@ pt:
       monster: "Monstros"
       character: "Personagens"
       terrain: "Terrenos"
+      alignment: "Tendências"
     attributes:
       user:
         login: "Login"
@@ -309,4 +310,8 @@ pt:
         is_object: "Objeto?"
         dimension_x: "Largura"
         dimension_y: "Altura"
+
+      alignment:
+        name: "Nome"
+        type_id: "Tipo"
 
