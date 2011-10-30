@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_filter :set_locale
-  helper :all
   protect_from_forgery
   helper_method :current_user_session, :current_user, :access?
 
