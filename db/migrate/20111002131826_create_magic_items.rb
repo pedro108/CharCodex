@@ -5,9 +5,9 @@ class CreateMagicItems < ActiveRecord::Migration
       t.text :description, :null => true
       t.references :equipment_slot, :null => true
       t.text :construction, :null => false
-      t.double :price, :null => false
+      t.float :price, :null => false
       t.text :bonus, :null => true
-      t.double :weight, :null => false
+      t.float :weight, :null => false
     end
   end
 

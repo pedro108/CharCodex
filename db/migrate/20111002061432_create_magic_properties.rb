@@ -5,7 +5,7 @@ class CreateMagicProperties < ActiveRecord::Migration
       t.text :description, :null => true
       t.text :bonus, :null => true
       t.integer :level_cost, :null => true
-      t.double :price, :null => true
+      t.float :price, :null => true
     end
   end
 

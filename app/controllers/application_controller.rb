@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user, :access?
 
   def restrict_access(level)
+
     restricted unless access?(level)
   end
 
@@ -15,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
-    return { :locale => I18n.locale }
+    { :locale => I18n.locale }
   end
 
   def current_user_session

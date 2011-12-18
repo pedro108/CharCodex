@@ -1,3 +1,4 @@
 class Gear < ActiveRecord::Base
-  validates_presence_of :name, :price, :weight
+  belongs_to :gear_category
+  validates_presence_of :name, :price, :weight, :gear_category
 end
