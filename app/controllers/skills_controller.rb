@@ -4,7 +4,7 @@ class SkillsController < ApplicationController
   end
 
   active_scaffold :skill do |config|
-    config.actions.exclude :create
+    config.actions.exclude :create, :delete
     config.columns = [:name, :attribute, :description]
     config.list.columns = [:name, :attribute]
 

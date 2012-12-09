@@ -13,6 +13,14 @@ class Character < ActiveRecord::Base
   has_many :magic_weapons, :through => :character_magic_weapons
   has_many :magic_items, :through => :character_magic_items
 
+  has_many :character_skills
+  has_many :character_character_classes
+  has_many :character_armors
+  has_many :character_magic_armors
+  has_many :character_weapons
+  has_many :character_magic_weapons
+  has_many :character_magic_items
+
   has_and_belongs_to_many :feats
   has_and_belongs_to_many :languages
   has_and_belongs_to_many :gears

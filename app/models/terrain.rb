@@ -4,7 +4,7 @@ class Terrain < ActiveRecord::Base
 
 	has_attached_file :miniature, :styles => { :thumb => "50x50>" }
 
-  validates_presence_of :name, :type_id
+  validates_presence_of :name, :terrain_type
   validates_numericality_of :dimension_x, :dimension_y
 
   def default_values

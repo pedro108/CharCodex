@@ -5,7 +5,9 @@ class ArmorsController < ApplicationController
 
   active_scaffold :armor do |config|
     config.columns.exclude :equipment_type
-    config.list.columns = [:name, :armor_type, :armor_bonus, :max_dex_bonus]
+    config.columns = [:name, :armor_type, :equipment_slot, :armor_bonus, :check_penalty, :max_dex_bonus,
+                      :spell_failure, :description, :price, :weight]
+    config.list.columns = [:name, :armor_type, :armor_bonus, :check_penalty, :max_dex_bonus]
 
     config.columns[:equipment_slot].form_ui = :select
     config.columns[:equipment_type].form_ui = :select

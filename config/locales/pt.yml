@@ -62,13 +62,19 @@ pt:
   player: "Jogador"
 
   select: "Selecione"
+  none: "Nenhum"
+  restriction: "Restrição"
 
   active_scaffold:
+    _select_: "Selecione"
+    "true": "Sim"
+    "false": "Não"
     search: "Buscar"
     live_search: "Buscar"
     create: "Criar"
     edit: "Editar"
     delete: "Remover"
+    remove: "Remover relação"
     show: "Exibir"
     cancel: "Cancelar"
     hide: "Esconder"
@@ -80,9 +86,10 @@ pt:
     close: "Fechar"
     found: "Encontrado(s)"
     no_entries: "Sem entradas"
-    add_existing: "Adicionar"
+    add_existing: "Adicionar existente"
     previous: "Anterior"
     next: "Proximo"
+    select: "Selecione"
 
   date:
     formats:
@@ -93,7 +100,7 @@ pt:
     abbr_day_names: [Dom, Seg, Ter, Qua, Qui, Sex, Sáb]
     month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
     abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez]
-    order: [:day, :month, :year]
+    order: ["day", "month", "year"]
   
   time:
     formats:
@@ -222,6 +229,11 @@ pt:
       two_words_connector: " e "
       last_word_connector: " e "
 
+  errors:
+    template:
+      header: "Erro"
+      body: "Os seguintes erros foram identificados:"
+
   activerecord:
     errors:
       template:
@@ -261,8 +273,19 @@ pt:
       alignment: "Tendências"
       skill: "Perícias"
       armor: "Armaduras"
+      weapon: "Armas"
       deity: "Divindades"
       domain: "Domínios"
+      domain_power: "Poderes de domínio"
+      gear: "Equipamentos gerais"
+      language: "Linguagens"
+      feat: "Talentos"
+      race: "Raças"
+      spell: "Magias"
+      spell_school: "Escolas de magia"
+      character_class: "Classes de Personagem"
+      character_class_feature: "Hablidades de classe"
+      character_class_spell: "Magias de classe"
     attributes:
       user:
         login: "Login"
@@ -350,9 +373,107 @@ pt:
 
       domain:
         name: "Nome"
+        description: "Descrição"
         domain: "Domínio Pai"
-        powers: "Poderes"
-        granted_powers: "Poderes conferidos"
-        spells: "Magias"
+        domain_powers: "Poderes conferidos"
+        first_level_spell: "Primeiro nível"
+        second_level_spell: "Segundo nível"
+        third_level_spell: "Terceiro nível"
+        fourth_level_spell: "Quarto nível"
+        fifth_level_spell: "Quinto nível"
+        sixth_level_spell: "Sexto nível"
+        seventh_level_spell: "Sétimo nível"
+        eighth_level_spell: "Oitavo nível"
+        ninth_level_spell: "Nono nível"
+        domain_spells: "Magias de domínio"
+
+      domain_power:
+        name: "Nome"
+        description: "Descrição"
+        bonus: "Bônus"
+        required_level: "Nível"
+
+      gear:
+        name: "Nome"
+        price: "Preço"
+        weight: "Peso"
+        description: "Descrição"
+        gear_category: "Categoria"
+
+      language:
+        name: "Nome"
+        description: "Descrição"
+
+      feat:
+        name: "Nome"
+        description: "Descrição"
+        bonus: "Bônus (ruby)"
+        feat_type: "Tipo"
+        prerequisites: "Pré-requisitos (ruby)"
+        benefits: "Benefícios"
+
+      race:
+        name: "Nome"
+        description: "Descrição"
+        arbitrary_attributes: "Atributos arbitrários"
+        size: "Tamanho"
+        languages: "Linguagens iniciais"
+        race_attributes: "Modificadores de Atributos"
+        feats: "Traços raciais"
+
+      race_attribute:
+        value: "Bônus (ou decréscimo)"
+        attribute: "Atributo"
+
+      spell_school:
+        name: "Nome"
+        description: "Descrição"
+        spell_school: "Escola de magia pai"
+
+      spell:
+        name: "Nome"
+        description: "Descrição"
+        casting_time: "Tempo de conjuração"
+        component: "Componentes"
+        duration: "Duração"
+        range: "Alcance"
+        area: "Área"
+        effect: "Efeito"
+        level: "Nível"
+        saving_throw: "Teste de resistência"
+        target: "Alvo(s)"
+        spell_school: "Escola de magia"
+        sub_spell_school: "Sub-escola de magia"
+        spell_descriptors: "Descritores de magia"
+        spell_resistance: "Resistência a magia"
+        character_class_spells: "Classes de personagem"
+
+      character_class:
+        name: "Nome"
+        description: "Descrição"
+        base_multiplier: "Multiplicador do B.B.A"
+        hit_dice: "Dado de vida"
+        will: "Tipo de bônus de vontade"
+        reflex: "Tipo de bônus de reflexo"
+        fortitude: "Tipo de bônus de fortitude"
+        skills: "Perícias de classe"
+        spellcaster: "Conjurador?"
+        skill_ranks: "Ranks de perícia por nível"
+        character_class_features: "Habilidades de classe"
+
+      character_class_feature:
+        name: "Nome"
+        description: "Descrição"
+        bonus: "Bônus"
+        required_level: "Nível"
+
+      character_class_spell:
+        character_class: "Classe de personagem"
+        spell_level: "Nível da magia"
 
   percentage_validation: "é uma porcentagem, e portanto não pode ser maior que 100"
+  arbitrary_attributes_show_description: "%{name} ganham +2 de bônus racial em %{number} atributo(s) de sua escolha."
+  good: "Bom"
+  bad: "Ruim"
+  int_modifier: "modificador de Int."
+  pounds: "lb."

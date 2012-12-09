@@ -62,6 +62,8 @@ input.login {
   height: 15px;
 }
 
+/* Custom Active Scaffold begin */
+
 .active-scaffold .active-scaffold-header div.actions {
   top:0px !important;
   right:0px !important;
@@ -91,12 +93,31 @@ input.login {
   display: none;
 }
 
+.active-scaffold .form-element .checkbox-list li {
+    display: inline-block;
+    width: 250px;
+}
+
 .active-scaffold li.form-element, .active-scaffold li.form-element dl {
   overflow: hidden;
 }
 
 .active-scaffold li.form-element dl {
   margin:3px 0px !important;
+}
+
+.active-scaffold li.form-element textarea {
+    height: 120px;
+    width: 400px;
+}
+
+.active-scaffold li.form-element input[type="text"] {
+    width: 400px;
+}
+
+.active-scaffold li.form-element input[type="text"].domain-spell-restriction-input {
+    margin-left: 20px;
+    width: 300px;
 }
 
 .active-scaffold .input_number input {
@@ -106,6 +127,45 @@ input.login {
 .active-scaffold input[type="file"] {
   border:0px !important;
 }
+
+.active-scaffold li.form-element input.price-input {
+    width: 340px;
+}
+
+.active-scaffold .errorExplanation h2 {
+  color: #333333 !important;
+}
+
+.active-scaffold .errorExplanation p,
+.active-scaffold .errorExplanation li,
+.active-scaffold .show-view dd *,
+.active-scaffold .inline-adapter .active-scaffold-found,
+.active-scaffold .inline-adapter .active-scaffold-found span {
+  color: black !important;
+}
+
+.active-scaffold .show-view dt {
+    white-space: nowrap;
+}
+
+.active-scaffold .show-view .description-view,
+.active-scaffold .show-view .skills-view,
+.active-scaffold .show-view.races-view .feats-view {
+  font-weight: normal !important;
+}
+
+.active-scaffold .show-view .description-view p {
+    margin:12px 0 !important;
+}
+
+.active-scaffold .columns-header {
+    font-size: 16px;
+    line-height: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Custom Active Scaffold end */
 
 div#container {
 	width:1024px;

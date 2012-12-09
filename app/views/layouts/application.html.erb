@@ -2,19 +2,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 		<title>AdventureCodex: Gerenciador de Aventuras de Pathfinder</title>
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <%= csrf_meta_tag %>
+
+    <!-- Application Includes -->
 		<%= stylesheet_link_tag 'custom' %>
 		<%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/ui-lightness/jquery-ui.css' %>
 		<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js' %>
-		<%= javascript_include_tag 'rails_jquery.js' %>
+		<%= javascript_include_tag 'rails_jquery' %>
 		<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js' %>
-		<%= javascript_include_tag 'jquery-ui-timepicker-addon.js' %>
-        <%= javascript_include_tag 'tiny_mce/tiny_mce' %>
-		<%= javascript_include_tag 'application.js' %>
+		<%= javascript_include_tag 'jquery-ui-timepicker-addon' %>
+		<%= javascript_include_tag 'application' %>
+
+    <!-- Active Scaffold Includes -->
 		<%= active_scaffold_includes %>
-    <%= include_tiny_mce_if_needed %>
-		<%= csrf_meta_tag %>
+
+    <%= javascript_include_tag "tiny_mce/tiny_mce" %>
 	</head>
 	<body>
 		<div id="container">
@@ -90,10 +95,18 @@
 							<ul class="submenu">
 								<li><%= link_to t('activerecord.models.content'), contents_path -%></li>
 								<li><%= link_to t('activerecord.models.user'), users_path -%></li>
-                                <li><%= link_to t('activerecord.models.skill'), skills_path -%></li>
-                                <li><%= link_to t('activerecord.models.armor'), armors_path -%></li>
-                                <li><%= link_to t('activerecord.models.deity'), deities_path -%></li>
-                                <li><%= link_to t('activerecord.models.domain'), domains_path -%></li>
+                <li><%= link_to t('activerecord.models.skill'), skills_path -%></li>
+                <li><%= link_to t('activerecord.models.language'), languages_path -%></li>
+                <li><%= link_to t('activerecord.models.feat'), feats_path -%></li>
+                <li><%= link_to t('activerecord.models.race'), races_path -%></li>
+                <li><%= link_to t('activerecord.models.character_class'), character_classes_path -%></li>
+                <li><%= link_to t('activerecord.models.deity'), deities_path -%></li>
+                <li><%= link_to t('activerecord.models.domain'), domains_path -%></li>
+                <li><%= link_to t('activerecord.models.spell_school'), spell_schools_path -%></li>
+                <li><%= link_to t('activerecord.models.spell'), spells_path -%></li>
+                <li><%= link_to t('activerecord.models.armor'), armors_path -%></li>
+                <li><%= link_to t('activerecord.models.weapon'), weapons_path -%></li>
+                <li><%= link_to t('activerecord.models.gear'), gears_path -%></li>
 							</ul>
 						</li>
             <% end %>

@@ -1,10 +1,7 @@
 class DomainPower < ActiveRecord::Base
   belongs_to :domain
-  belongs_to :feat
 
-  validates_presence_of :required_level
+  validates_presence_of :required_level, :name
 
-  def power
-    self.feat
-  end
+  validates_numericality_of :required_level, :less_than_or_equal_to => 20, :allow_nil => true
 end

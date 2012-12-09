@@ -1,0 +1,12 @@
+<% scope ||= nil %>
+<h2 class="domain-spells-header columns-header"><%= t 'activerecord.attributes.domain.domain_spells' %>:</h2>
+<dl>
+  <dt>
+    <label for="<%= "record_#{column.name}" %>">
+      <%= column.label %>
+    </label>
+  </dt>
+  <dd>
+    <%= form_column column, scope %>,
+  </dd>
+</dl>

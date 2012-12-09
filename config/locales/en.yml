@@ -64,6 +64,8 @@ en:
   player: "Player"
 
   select: "Select"
+  none: "None"
+  restriction: "Restriction"
 
   active_scaffold:
     search: "Search"
@@ -81,11 +83,11 @@ en:
     internal_error: "Internal server error"
     close: "Close"
     add_existing: "Add"
-    select: "Select"
     true: "Yes"
     false: "No"
+    select: "Select"
+    _select_: "Select"# Usado no Array.to_sentence
 
-  # Usado no Array.to_sentence
   support:
     array:
       words_connector: ", "
@@ -136,6 +138,15 @@ en:
       armor: "Armors"
       deity: "Deities"
       domain: "Domains"
+      gear: "Gears"
+      language: "Languages"
+      feat: "Feats"
+      race: "Races"
+      spell: "Spells"
+      spell_school: "Spell schools"
+      character_class: "Character classes"
+      character_class_feature: "Class features"
+      character_class_spell: "Class spells"
     attributes:
       user:
         login: "Login"
@@ -201,7 +212,6 @@ en:
         description: "Description"
         have_subskill: "Have subgroup"
 
-
       armor:
         name: "Name"
         armor_type: "Type"
@@ -222,10 +232,98 @@ en:
 
       domain:
         name: "Name"
+        description: "Descrição"
         domain: "Parent Domain"
         powers: "Powers"
-        granted_powers: "Granted powers"
-        spells: "Spells"
+        domain_powers: "Granted powers"
+        first_level_spell: "1st level"
+        second_level_spell: "2nd level"
+        third_level_spell: "3rd level"
+        fourth_level_spell: "4th level"
+        fifth_level_spell: "5th level"
+        sixth_level_spell: "6th level"
+        seventh_level_spell: "7th level"
+        eighth_level_spell: "8th level"
+        ninth_level_spell: "9th level"
+        domain_spells: "Domain Spells"
+
+      domain_power:
+        name: "Name"
+        description: "Description"
+        bonus: "Bonus"
+        required_level: "Level"
+
+      feat:
+        name: "Name"
+        description: "Description"
+        bonus: "Bonus (ruby)"
+        feat_type: "Type"
+        prerequisites: "Prerequisites (ruby)"
+        benefits: "Benefits"
+
+      race:
+        name: "Name"
+        description: "Description"
+        arbitrary_attributes: "Arbitrary attributes"
+        size: "Size"
+        languages: "Initial languages"
+        race_attributes: "Attribute modifiers"
+        feats: "Racial traits"
+
+      race_attribute:
+        value: "Increase (or decrease)"
+        attribute: "Attribute"
+
+      spell_school:
+        name: "Name"
+        description: "Description"
+        spell_school: "Parent spell school"
+
+      spell:
+        name: "Name"
+        description: "Description"
+        casting_time: "Casting time"
+        component: "Components"
+        duration: "Duration"
+        range: "Range"
+        area: "Area"
+        effect: "Effect"
+        level: "Level"
+        saving_throw: "Saving throw"
+        target: "Target(s)"
+        spell_school: "Spell school"
+        sub_spell_school: "Spell subschool"
+        spell_descriptors: "Spell descriptors"
+        spell_resistance: "Spell resistance"
+        character_class_spells: "Character classes"
+
+      character_class:
+        name: "Name"
+        description: "Description"
+        base_multiplier: "B.A.B multiplier"
+        hit_dice: "Hit dice"
+        will: "Will bonus type"
+        reflex: "Reflex bonus type"
+        fortitude: "Fortitude bonus type"
+        skills: "Class skills"
+        spellcaster: "Spellcaster?"
+        skill_ranks: "Skill ranks per level"
+        character_class_features: "Class features"
+
+      character_class_feature:
+        name: "Name"
+        description: "Description"
+        bonus: "Bonus"
+        required_level: "Level"
+
+      character_class_spell:
+        character_class: "Character class"
+        spell_level: "Spell level"
 
   percentage_validation: "is a percentage value, so it can't be greater than 100"
 
+  arbitrary_attributes_show_description: "%{name} gain a +2 racial bonus to %{number} attributes(s) of your choice."
+  good: "Good"
+  bad: "Ruim"
+  int_modifier: "Int. modifier"
+  pounds: "lb."

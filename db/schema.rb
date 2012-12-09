@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120206002538) do
+ActiveRecord::Schema.define(:version => 20120902130430) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
     t.integer "armor_type_id"
     t.integer "equipment_slot_id"
     t.integer "equipment_type_id"
+    t.integer "price_type_id"
   end
 
   create_table "attributes", :force => true do |t|
@@ -62,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
     t.integer "bonus",         :null => false
   end
 
-  create_table "character_armors", :id => false, :force => true do |t|
+  create_table "character_armors", :force => true do |t|
     t.integer "character_id"
     t.integer "armor_id"
     t.boolean "equipped"
@@ -75,40 +76,37 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
     t.integer "attribute_id", :null => false
   end
 
-  create_table "character_character_class_spells", :id => false, :force => true do |t|
-    t.integer "character_id",             :null => false
-    t.integer "character_class_spell_id", :null => false
-  end
-
-  create_table "character_character_classes", :id => false, :force => true do |t|
+  create_table "character_character_classes", :force => true do |t|
     t.integer "character_id",       :null => false
     t.integer "character_class_id", :null => false
     t.integer "level",              :null => false
     t.integer "hp_gained",          :null => false
   end
 
-  create_table "character_class_features", :id => false, :force => true do |t|
+  create_table "character_class_features", :force => true do |t|
     t.integer "character_class_id"
-    t.integer "feat_id"
     t.integer "required_level"
+    t.string  "name"
+    t.text    "description"
+    t.text    "bonus"
   end
 
-  create_table "character_class_spells", :id => false, :force => true do |t|
+  create_table "character_class_spells", :force => true do |t|
     t.integer "character_class_id", :null => false
     t.integer "spell_id",           :null => false
-    t.integer "spell_level",        :null => false
+    t.integer "spell_level"
   end
 
   create_table "character_classes", :force => true do |t|
-    t.string   "name",            :null => false
-    t.text     "description"
-    t.string   "hit_dice",        :null => false
-    t.float    "base_multiplier", :null => false
-    t.boolean  "fortitude",       :null => false
-    t.boolean  "reflex",          :null => false
-    t.boolean  "will",            :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "name",            :null => false
+    t.text    "description"
+    t.integer "dice_id",         :null => false
+    t.float   "base_multiplier", :null => false
+    t.boolean "fortitude",       :null => false
+    t.boolean "reflex",          :null => false
+    t.boolean "will",            :null => false
+    t.boolean "spellcaster"
+    t.integer "skill_ranks"
   end
 
   create_table "character_classes_skills", :id => false, :force => true do |t|
@@ -116,41 +114,21 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
     t.integer "skill_id",           :null => false
   end
 
-  create_table "character_domains", :id => false, :force => true do |t|
-    t.integer "character_id", :null => false
-    t.integer "domain_id",    :null => false
-  end
-
-  create_table "character_feats", :id => false, :force => true do |t|
-    t.integer "character_id", :null => false
-    t.integer "feat_id",      :null => false
-  end
-
-  create_table "character_gears", :id => false, :force => true do |t|
-    t.integer "character_id", :null => false
-    t.integer "gear_id",      :null => false
-  end
-
-  create_table "character_languages", :id => false, :force => true do |t|
-    t.integer "character_id", :null => false
-    t.integer "language_id",  :null => false
-  end
-
-  create_table "character_magic_armors", :id => false, :force => true do |t|
+  create_table "character_magic_armors", :force => true do |t|
     t.integer "character_id"
     t.integer "magic_armor_id"
     t.boolean "equipped"
     t.integer "quantity",       :null => false
   end
 
-  create_table "character_magic_items", :id => false, :force => true do |t|
+  create_table "character_magic_items", :force => true do |t|
     t.integer "character_id",  :null => false
     t.integer "magic_item_id", :null => false
     t.boolean "equipped",      :null => false
     t.integer "quantity",      :null => false
   end
 
-  create_table "character_magic_weapons", :id => false, :force => true do |t|
+  create_table "character_magic_weapons", :force => true do |t|
     t.integer "character_id",    :null => false
     t.integer "magic_weapon_id", :null => false
     t.integer "quantity",        :null => false
@@ -159,7 +137,7 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
     t.boolean "dual_wield",      :null => false
   end
 
-  create_table "character_skills", :id => false, :force => true do |t|
+  create_table "character_skills", :force => true do |t|
     t.integer  "character_id"
     t.integer  "skill_id"
     t.integer  "rank"
@@ -168,7 +146,7 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
     t.string   "subskill"
   end
 
-  create_table "character_weapons", :id => false, :force => true do |t|
+  create_table "character_weapons", :force => true do |t|
     t.integer "character_id", :null => false
     t.integer "weapon_id",    :null => false
     t.boolean "equipped",     :null => false
@@ -221,6 +199,32 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
     t.integer  "age",                                   :null => false
     t.float    "money",                                 :null => false
     t.float    "weight_capacity",                       :null => false
+    t.integer  "armor_class_dodge"
+  end
+
+  create_table "characters_character_class_spells", :id => false, :force => true do |t|
+    t.integer "character_id",             :null => false
+    t.integer "character_class_spell_id", :null => false
+  end
+
+  create_table "characters_domains", :id => false, :force => true do |t|
+    t.integer "character_id", :null => false
+    t.integer "domain_id",    :null => false
+  end
+
+  create_table "characters_feats", :id => false, :force => true do |t|
+    t.integer "character_id", :null => false
+    t.integer "feat_id",      :null => false
+  end
+
+  create_table "characters_gears", :id => false, :force => true do |t|
+    t.integer "character_id", :null => false
+    t.integer "gear_id",      :null => false
+  end
+
+  create_table "characters_languages", :id => false, :force => true do |t|
+    t.integer "character_id", :null => false
+    t.integer "language_id",  :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -249,9 +253,9 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
   end
 
   create_table "daily_spells", :force => true do |t|
-    t.integer "spell_level", :null => false
-    t.integer "class_id",    :null => false
-    t.integer "quantity",    :null => false
+    t.integer "spell_level",        :null => false
+    t.integer "character_class_id", :null => false
+    t.integer "quantity",           :null => false
   end
 
   create_table "deities", :force => true do |t|
@@ -265,23 +269,41 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
     t.integer "domain_id", :null => false
   end
 
-  create_table "domain_powers", :id => false, :force => true do |t|
-    t.integer "domain_id"
-    t.integer "feat_id"
-    t.integer "required_level"
+  create_table "dices", :force => true do |t|
+    t.integer "value"
+    t.string  "name"
   end
 
-  create_table "domain_spells", :id => false, :force => true do |t|
-    t.integer "domain_id",   :null => false
-    t.integer "spell_id",    :null => false
-    t.integer "spell_level", :null => false
+  create_table "domain_powers", :force => true do |t|
+    t.integer "domain_id"
+    t.integer "required_level"
+    t.string  "name"
+    t.text    "description"
+    t.text    "bonus"
   end
 
   create_table "domains", :force => true do |t|
     t.string  "name"
-    t.string  "granted_powers"
+    t.string  "description"
     t.integer "domain_id"
-    t.text    "bonus"
+    t.integer "first_level_spell_id"
+    t.integer "second_level_spell_id"
+    t.integer "third_level_spell_id"
+    t.integer "fourth_level_spell_id"
+    t.integer "fifth_level_spell_id"
+    t.integer "sixth_level_spell_id"
+    t.integer "seventh_level_spell_id"
+    t.integer "eighth_level_spell_id"
+    t.integer "ninth_level_spell_id"
+    t.string  "first_level_spell_restriction"
+    t.string  "second_level_spell_restriction"
+    t.string  "third_level_spell_restriction"
+    t.string  "fourth_level_spell_restriction"
+    t.string  "fifth_level_spell_restriction"
+    t.string  "sixth_level_spell_restriction"
+    t.string  "seventh_level_spell_restriction"
+    t.string  "eighth_level_spell_restriction"
+    t.string  "ninth_level_spell_restriction"
   end
 
   create_table "encounters", :force => true do |t|
@@ -300,12 +322,17 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
     t.string "name"
   end
 
+  create_table "feat_types", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "feats", :force => true do |t|
     t.string  "name",          :null => false
     t.text    "description",   :null => false
     t.integer "feat_type_id",  :null => false
     t.text    "bonus",         :null => false
     t.text    "prerequisites", :null => false
+    t.string  "benefits"
   end
 
   add_index "feats", ["feat_type_id"], :name => "index_feats_on_feat_type_id"
@@ -317,13 +344,20 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
   create_table "gears", :force => true do |t|
     t.string  "name",             :null => false
     t.text    "description"
-    t.float   "price",            :null => false
-    t.float   "weight",           :null => false
+    t.integer "price"
+    t.float   "weight"
     t.integer "gear_category_id", :null => false
+    t.integer "price_type_id"
   end
 
   create_table "languages", :force => true do |t|
-    t.string "name", :null => false
+    t.string "name",        :null => false
+    t.text   "description"
+  end
+
+  create_table "languages_races", :id => false, :force => true do |t|
+    t.integer "race_id",     :null => false
+    t.integer "language_id", :null => false
   end
 
   create_table "levels", :force => true do |t|
@@ -400,7 +434,13 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
     t.integer  "dimension",              :null => false
   end
 
-  create_table "race_attributes", :id => false, :force => true do |t|
+  create_table "price_types", :force => true do |t|
+    t.string  "name"
+    t.string  "description"
+    t.integer "priority"
+  end
+
+  create_table "race_attributes", :force => true do |t|
     t.integer "race_id",      :null => false
     t.integer "attribute_id", :null => false
     t.integer "value",        :null => false
@@ -426,7 +466,8 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
   end
 
   create_table "sizes", :force => true do |t|
-    t.string "name", :null => false
+    t.string  "name",                 :null => false
+    t.integer "armor_class_modifier"
   end
 
   create_table "skills", :force => true do |t|
@@ -436,30 +477,42 @@ ActiveRecord::Schema.define(:version => 20120206002538) do
     t.boolean "have_subskill", :default => false, :null => false
   end
 
+  create_table "spell_descriptors", :force => true do |t|
+    t.string "name"
+    t.text   "description"
+  end
+
+  create_table "spell_descriptors_spells", :id => false, :force => true do |t|
+    t.integer "spell_id"
+    t.integer "spell_descriptor_id"
+  end
+
   create_table "spell_schools", :force => true do |t|
     t.string  "name",            :null => false
     t.text    "description"
     t.integer "spell_school_id"
-    t.boolean "is_descriptor",   :null => false
   end
 
   create_table "spell_schools_spells", :id => false, :force => true do |t|
-    t.integer "spell_id",        :null => false
-    t.integer "spell_school_id", :null => false
+    t.integer "spell_id"
+    t.integer "spell_school_id"
   end
 
   create_table "spells", :force => true do |t|
-    t.string  "name",             :null => false
+    t.string  "name",                :null => false
     t.text    "description"
-    t.string  "casting_time",     :null => false
-    t.string  "duration",         :null => false
-    t.string  "range",            :null => false
+    t.string  "casting_time",        :null => false
+    t.string  "duration",            :null => false
+    t.string  "range",               :null => false
     t.string  "effect"
     t.string  "target"
     t.string  "area"
-    t.string  "component",        :null => false
+    t.string  "component",           :null => false
     t.string  "saving_throw"
-    t.boolean "spell_resistance", :null => false
+    t.boolean "spell_resistance",    :null => false
+    t.integer "level"
+    t.integer "spell_school_id"
+    t.integer "sub_spell_school_id"
   end
 
   create_table "terrains", :force => true do |t|
