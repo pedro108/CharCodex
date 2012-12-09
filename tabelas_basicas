@@ -1,0 +1,15 @@
+Ideias: 
+
+ - Forjaria de item magico
+
+OBS: Os bonus dos feats sao bastante variados. Ideia: adicionar em um campo
+um arquivo semi-estruturado para indicar os bonus numericos relevantes (XML ou JSON)
+(Fazer o mesmo para os pré-requisitos)
+
+Tabelas Básicas do CharCodex (CharBuilder):
+
+  - Class:
+	(Bonus bom: 1.0 / Bonus medio: 0.75 / Bonus ruim : 0.5)
+
+  - Character:
+    Languages: Tabela NxN com a tabela de languages.

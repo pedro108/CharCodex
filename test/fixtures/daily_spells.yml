@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  spell_level: 1
+  class_id: 1
+  quantity: 1
+
+two:
+  spell_level: 1
+  class_id: 1
+  quantity: 1

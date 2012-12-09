@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  hit_dice: MyString
+  skill_ranks: 1
+  base_multiplier: 
+  fortitude: false
+  reflex: false
+  will: false
+
+two:
+  name: MyString
+  description: MyText
+  hit_dice: MyString
+  skill_ranks: 1
+  base_multiplier: 
+  fortitude: false
+  reflex: false
+  will: false

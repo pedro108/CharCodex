@@ -260,6 +260,10 @@ background: #333 url(../../../images/active_scaffold/default/indicator-small.gif
 margin-left: 5px;
 }
 
+.active-scaffold th.hidden, .active-scaffold td.hidden {
+display: none;
+}
+
 /* Table :: Record Rows
    ============================= */
 
@@ -779,6 +783,7 @@ padding: 6px 0;
 float: left;
 }
 
+.active-scaffold li.form-element dd p,
 .active-scaffold li.form-element dd input[type="checkbox"] {
 margin-top: 6px;
 }
@@ -995,6 +1000,18 @@ font-size: 100%;
 .active-scaffold-found {
   float:left;
 }
+
+
+.active-scaffold-component > .active-scaffold-header h2 {
+border: none;
+}
+.active-scaffold-component > .active-scaffold-header h2 a,
+.active-scaffold-component > .active-scaffold-header h2 a:active,
+.active-scaffold-component > .active-scaffold-header h2 a:visited {
+text-decoration: none;
+color: inherit;
+}
+
 
 .as_touch a.inline-adapter-close {
 width: 25px;

@@ -1,0 +1,2 @@
+module DomainPowersHelper
+end

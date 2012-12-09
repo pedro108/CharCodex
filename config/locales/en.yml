@@ -63,6 +63,8 @@ en:
   master: "Game master"
   player: "Player"
 
+  select: "Select"
+
   active_scaffold:
     search: "Search"
     live_search: "Search"
@@ -130,6 +132,10 @@ en:
       monster: "Monsters"
       terrain: "Terrains"
       alignment: "Alignments"
+      skill: "Skills"
+      armor: "Armors"
+      deity: "Deities"
+      domain: "Domains"
     attributes:
       user:
         login: "Login"
@@ -188,4 +194,38 @@ en:
       alignment:
         name: "Name"
         type_id: "Type"
+
+      skill:
+        name: "Name"
+        attribute: "Attribute"
+        description: "Description"
+        have_subskill: "Have subgroup"
+
+
+      armor:
+        name: "Name"
+        armor_type: "Type"
+        armor_bonus: "Armor bonus"
+        max_dex_bonus: "Max. dexterity bonus"
+        price:  "Price"
+        check_penalty: "Skill check penalty"
+        spell_failure: "Spell failure %"
+        weight: "Weight"
+        description: "Description"
+        equipment_slot: "Equipment slot"
+
+      deity:
+        name: "Name"
+        description: "Description"
+        alignment: "Alignment"
+        domains: "Domains"
+
+      domain:
+        name: "Name"
+        domain: "Parent Domain"
+        powers: "Powers"
+        granted_powers: "Granted powers"
+        spells: "Spells"
+
+  percentage_validation: "is a percentage value, so it can't be greater than 100"
 

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  granted_powers: MyString
+  domain_id: 1
+  bonus: MyText
+
+two:
+  name: MyString
+  granted_powers: MyString
+  domain_id: 1
+  bonus: MyText

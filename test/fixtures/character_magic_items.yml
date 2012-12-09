@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  character_id: 1
+  magic_item: 1
+  equipeed: false
+
+two:
+  character_id: 1
+  magic_item: 1
+  equipeed: false

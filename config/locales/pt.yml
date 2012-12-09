@@ -61,6 +61,8 @@ pt:
   master: "Mestre de jogo"
   player: "Jogador"
 
+  select: "Selecione"
+
   active_scaffold:
     search: "Buscar"
     live_search: "Buscar"
@@ -79,6 +81,8 @@ pt:
     found: "Encontrado(s)"
     no_entries: "Sem entradas"
     add_existing: "Adicionar"
+    previous: "Anterior"
+    next: "Proximo"
 
   date:
     formats:
@@ -217,6 +221,7 @@ pt:
       words_connector: ", "
       two_words_connector: " e "
       last_word_connector: " e "
+
   activerecord:
     errors:
       template:
@@ -254,6 +259,10 @@ pt:
       character: "Personagens"
       terrain: "Terrenos"
       alignment: "Tendências"
+      skill: "Perícias"
+      armor: "Armaduras"
+      deity: "Divindades"
+      domain: "Domínios"
     attributes:
       user:
         login: "Login"
@@ -315,3 +324,35 @@ pt:
         name: "Nome"
         type_id: "Tipo"
 
+      skill:
+        name: "Nome"
+        attribute: "Atributo"
+        description: "Descrição"
+        have_subskill: "Possui subgrupo"
+
+      armor:
+        name: "Nome"
+        armor_type: "Tipo"
+        armor_bonus: "Bônus de armadura"
+        max_dex_bonus: "Bônus maximo de destreza"
+        price:  "Preço"
+        check_penalty: "Penalidade nos testes de pericia"
+        spell_failure: "Porcentagem de falha de magia"
+        weight: "Peso"
+        description: "Descrição"
+        equipment_slot: "Slot de equipamento"
+
+      deity:
+        name: "Nome"
+        description: "Descrição"
+        alignment: "Tendência"
+        domains: "Domínios"
+
+      domain:
+        name: "Nome"
+        domain: "Domínio Pai"
+        powers: "Poderes"
+        granted_powers: "Poderes conferidos"
+        spells: "Magias"
+
+  percentage_validation: "é uma porcentagem, e portanto não pode ser maior que 100"

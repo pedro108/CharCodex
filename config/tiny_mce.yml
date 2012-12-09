@@ -7,7 +7,9 @@
 
 theme: advanced
 theme_advanced_resizing: true
-theme_advanced_resize_horizontal: false
+theme_advanced_resize_horizontal: true
+width: 640
 
 plugins:
   - table
+  - fullscreen

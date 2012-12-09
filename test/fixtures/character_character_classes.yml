@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  character_id: 1
+  character_class_id: 1
+  level: 1
+  hp_gained: 1
+
+two:
+  character_id: 1
+  character_class_id: 1
+  level: 1
+  hp_gained: 1

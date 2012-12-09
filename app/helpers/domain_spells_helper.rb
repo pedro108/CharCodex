@@ -1,0 +1,2 @@
+module DomainSpellsHelper
+end

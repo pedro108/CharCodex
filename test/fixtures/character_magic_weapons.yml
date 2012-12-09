@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  character_id: 1
+  magic_weapon_id: 1
+  quantity: 1
+  equipped: false
+  offhand: false
+  dual_wield: false
+
+two:
+  character_id: 1
+  magic_weapon_id: 1
+  quantity: 1
+  equipped: false
+  offhand: false
+  dual_wield: false

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  character: 
+  skill: 
+  rank: 1
+
+two:
+  character: 
+  skill: 
+  rank: 1

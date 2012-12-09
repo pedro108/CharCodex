@@ -10,7 +10,7 @@ gem 'racc'
 gem 'mysql2', '~> 0.2.6'
 
 gem 'authlogic'
-gem 'active_scaffold_vho'
+gem 'active_scaffold', :git => 'git://github.com/activescaffold/active_scaffold.git', :branch => 'rails-3.0'
 gem 'paperclip'
 gem 'tiny_mce'
 
