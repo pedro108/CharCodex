@@ -3,8 +3,6 @@ class ContentsController < ApplicationController
   before_filter :except => :blog do |controller|
     controller.restrict_access(1)
   end
-  
-  uses_tiny_mce
 
   active_scaffold :content do |config|
      config.list.columns = [:content_locales, :status, :user]

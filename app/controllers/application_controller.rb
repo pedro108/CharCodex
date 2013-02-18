@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user_session, :current_user, :access?
 
-  uses_tiny_mce
-
   def restrict_access(level)
     restricted unless access?(level)
   end

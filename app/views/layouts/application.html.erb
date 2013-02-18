@@ -2,24 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-		<title>AdventureCodex: Gerenciador de Aventuras de Pathfinder</title>
-
+		<title><%= t(:site_title) %></title>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <%= csrf_meta_tag %>
 
     <!-- Application Includes -->
-		<%= stylesheet_link_tag 'custom' %>
-		<%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/ui-lightness/jquery-ui.css' %>
-		<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js' %>
-		<%= javascript_include_tag 'rails_jquery' %>
-		<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js' %>
-		<%= javascript_include_tag 'jquery-ui-timepicker-addon' %>
-		<%= javascript_include_tag 'application' %>
-
-    <!-- Active Scaffold Includes -->
-		<%= active_scaffold_includes %>
-
-    <%= javascript_include_tag "tiny_mce/tiny_mce" %>
+		<%= stylesheet_link_tag 'application' %>
 	</head>
 	<body>
 		<div id="container">
@@ -127,6 +115,7 @@
         </span>
 			</div>
 		</div>
-		<%= javascript_tag "alert('#{flash[:error]}')" unless(flash[:error].nil?)  %>		
+		<%= javascript_tag "alert('#{flash[:error]}')" unless(flash[:error].nil?)  %>
+    <%= javascript_include_tag 'application' %>
 	</body>
 </html>

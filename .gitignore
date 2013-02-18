@@ -5,3 +5,5 @@
 /README.rails
 /public/system/*
 /.idea
+/.rvmrc
+/.sass-cache

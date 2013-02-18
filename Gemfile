@@ -1,29 +1,35 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.10'
-
-gem 'racc'
+gem 'rails', '= 3.2.8'
+gem 'rack', '1.4.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '~> 0.2.6'
+gem 'mysql2'
 
 gem 'authlogic'
-gem 'active_scaffold', :git => 'git://github.com/activescaffold/active_scaffold.git', :branch => 'rails-3.0'
+gem 'active_scaffold'
 gem 'paperclip'
-gem 'tiny_mce'
-
-# ActiveScaffold dependencies
-
-gem 'render_component'
-gem 'verification'
+gem 'tinymce-rails'
 
 # Use thin as the web server
 gem 'thin'
 
 # For the error messages form helper
 gem 'dynamic_form'
+
+# Needed for the new asset pipeline
+gem 'sass-rails',   '~> 3.2.3'
+group :assets do
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier',     ">= 1.0.3"
+  gem 'therubyracer'
+end
+
+# jQuery is the default JavaScript library in Rails 3.1
+gem 'jquery-rails', '2.1.4'
+gem 'jquery-ui-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'

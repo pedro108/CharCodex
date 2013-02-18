@@ -106,6 +106,7 @@ pt:
     formats:
       default: "%d/%m/%Y, %H:%Mh, %A"
       short: "%d/%m, %H:%Mh"
+      picker: "%d/%m/%Y, %H:%Mh, %A"
       long: "%A, %d de %B de %Y, %H:%Mh"
     am: ""
     pm: ""
@@ -495,3 +496,4 @@ pt:
   bad: "Ruim"
   int_modifier: "modificador de Int."
   pounds: "lb."
+  site_title: "AdventureCodex: Gerenciador de Aventuras de Pathfinder"

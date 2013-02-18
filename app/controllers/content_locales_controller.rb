@@ -1,5 +1,4 @@
 class ContentLocalesController < ApplicationController
-  uses_tiny_mce
 
   active_scaffold :content_locale do |config|
     config.columns = [:locale, :title, :content_text]

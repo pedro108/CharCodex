@@ -31,13 +31,19 @@ module CharCodex
     # config.i18n.default_locale = :de
 	  config.i18n.default_locale = :pt
 
-    # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
-
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password, :password_confirmation]
+
+    config.assets.enabled = true
+    config.assets.version = '1.0'
+    config.assets.paths << "#{Rails.root}/lib/assets/javascripts"
+
+    # I18N
+    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
+    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
+    config.time_zone = 'Brasilia'
   end
 end
