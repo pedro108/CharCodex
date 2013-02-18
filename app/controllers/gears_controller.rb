@@ -13,5 +13,7 @@ class GearsController < ApplicationController
 
     config.columns[:gear_category].form_ui = :select
     config.columns[:gear_category].clear_link
+
+    config.columns[:price_type].css_class = 'hidden'
   end
 end

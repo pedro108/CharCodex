@@ -58,8 +58,12 @@ input[type="text"], input[type="password"] {
 }
 
 input.login {
-	width:100px;
+  width:100px;
   height: 15px;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Custom Active Scaffold begin */

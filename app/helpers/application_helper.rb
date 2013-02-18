@@ -13,15 +13,6 @@ module ApplicationHelper
     select :record, :spell_level, levels, options.merge(:selected => record.spell_level)
   end
 
-  def price_type_form_column(record, options)
-    options[:selected] = record.price_type_id.nil? ? PriceType.default_type.id : record.price_type_id
-    select :record, :price_type, PriceType.all(:order => :priority).map{|pt| [pt.name, pt.id]}, options
-  end
-
-  def price_column(record)
-    h("#{record.price} #{record.price_type.name}") unless record.price.nil?
-  end
-
   def weight_column(record)
     h("#{record.weight} #{t(:pounds)}")
   end
@@ -30,6 +21,22 @@ module ApplicationHelper
     value ? t('active_scaffold.true') : t('active_scaffold.false')
   end
 
+  # Price input override
+  def price_form_column(record, options)
+    options[:class] += ' text-input'
+    options[:selected] = record.price_type_id.nil? ? PriceType.default_type.id : record.price_type_id
+
+    concat text_field :record, :price, options
+    select :record, :price_type, PriceType.all(:order => :priority).map{|pt| [pt.name, pt.id]}, options
+  end
+
+  def price_type_form_column(record, options)
+  end
+
+  # Price column display override
+  def price_column(record)
+    h("#{record.price} #{record.price_type.name}") unless record.price.nil? or record.price_type.nil?
+  end
 
   # ActiveScaffold override
   def options_for_association_conditions(association)
