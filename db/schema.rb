@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120902130430) do
+ActiveRecord::Schema.define(:version => 20130218000226) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20120902130430) do
     t.float   "weight",            :null => false
     t.integer "armor_type_id"
     t.integer "equipment_slot_id"
-    t.integer "equipment_type_id"
     t.integer "price_type_id"
   end
 
@@ -318,10 +317,6 @@ ActiveRecord::Schema.define(:version => 20120902130430) do
     t.string "name", :null => false
   end
 
-  create_table "equipment_types", :force => true do |t|
-    t.string "name"
-  end
-
   create_table "feat_types", :force => true do |t|
     t.string "name"
   end
@@ -556,6 +551,11 @@ ActiveRecord::Schema.define(:version => 20120902130430) do
     t.text   "description"
   end
 
+  create_table "weapon_features_weapons", :id => false, :force => true do |t|
+    t.integer "weapon_id",         :null => false
+    t.integer "weapon_feature_id", :null => false
+  end
+
   create_table "weapon_groups", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -570,12 +570,7 @@ ActiveRecord::Schema.define(:version => 20120902130430) do
     t.string "name", :null => false
   end
 
-  create_table "weapon_weapon_features", :force => true do |t|
-    t.integer "weapon_id",         :null => false
-    t.integer "weapon_feature_id", :null => false
-  end
-
-  create_table "weapon_weapon_types", :force => true do |t|
+  create_table "weapon_types_weapons", :id => false, :force => true do |t|
     t.integer "weapon_id",      :null => false
     t.integer "weapon_type_id", :null => false
   end
@@ -592,7 +587,8 @@ ActiveRecord::Schema.define(:version => 20120902130430) do
     t.float   "weight",                      :null => false
     t.float   "price",                       :null => false
     t.text    "obs",                         :null => false
-    t.integer "equipment_type_id"
+    t.integer "equipment_slot_id"
+    t.integer "price_type_id"
   end
 
 end

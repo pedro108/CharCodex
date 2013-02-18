@@ -46,3 +46,9 @@ puts "Populando a tabela -Equipment slot-"
 puts "Populando a tabela -Gear category-"
 load File.expand_path('../equipment.seeds.rb', __FILE__)
 
+puts "Populando a tabela -Weapon proficiency level-"
+puts "Populando a tabela -Weapon group-"
+puts "Populando a tabela -Weapon type-"
+puts "Populando a tabela -Weapon feature-"
+load File.expand_path('../weapon.seeds.rb', __FILE__)
+

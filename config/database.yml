@@ -11,7 +11,7 @@ development:
   reconnect: false
   database: CharCodex_development
   username: root
-  password:
+  password: wkm#2010
   pool: 5
   timeout: 5000
 
@@ -24,7 +24,7 @@ test:
   reconnect: false
   database: CharCodex_test
   username: root
-  password:
+  password: wkm#2010
   pool: 5
   timeout: 5000
 
@@ -34,7 +34,7 @@ production:
   reconnect: false
   database: CharCodex_production
   username: root
-  password:
+  password: wkm#2010
   pool: 5
   timeout: 5000
 

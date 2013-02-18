@@ -361,9 +361,27 @@ pt:
         price:  "Preço"
         check_penalty: "Penalidade nos testes de pericia"
         spell_failure: "Porcentagem de falha de magia"
-        weight: "Peso"
+        weight: "Peso (libras)"
         description: "Descrição"
         equipment_slot: "Slot de equipamento"
+
+      weapon:
+        name: Nome
+        description: Descrição
+        equipment_slot: Slot de equipamento
+        equipment_slot_id: Slot de equipamento
+        weapon_proficiency_level: Nível de proficiência
+        weapon_proficiency_level_id: Nível de proficiência
+        weapon_group: Grupo
+        weapon_group_id: Grupo
+        damage: Dano
+        price: Preço
+        weight: Peso (libras)
+        critical_threat: Margem de crítico
+        critical_power: Multiplicador do dano crítico
+        range: Alcance
+        weapon_types: Tipos da arma
+        weapon_features: Características da arma
 
       deity:
         name: "Nome"

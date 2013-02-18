@@ -76,6 +76,10 @@ EquipmentSlot.create!([{
                        }])
 
 EquipmentSlot.create!([{
+                           :name => "Two Hands"
+                       }])
+
+EquipmentSlot.create!([{
                            :name => "Head"
                        }])
 
