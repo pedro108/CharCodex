@@ -1,21 +1,17 @@
-Para 19/02:
-
 EncounterBuilder:
  > Adicionar funcionalidades para desfazer ultima alteracao e voltar ao estado inicial.
  > Adicionar campo de ordenação. Adicionar action links para mudar a ordem dos encontros na lista.
 
 CharBuilder:
- > Ajustar a adm de personagens
- > Layout e modal da ficha do personagem
-
-Para 20/02:
+ > Formulario de inf. basicas
+ > Formulario de atributos (sistema de distribuicao de pontos)
+ > Gravar informacoes de movimento, CA, saves, iniciativa entre outros em hooks do active_record
 
 Models:
  > Adicionar tabela para class features
  > Adicionar tabela separada para racial traits
  > Adicionar tabelas para poderes especificos de classe (Rogue Talents, etc.)
-
-
+ > Adicionar campos de movimento para o modelo de personagem
 
 Botao para avancar de nivel
 Marcador de xp?
