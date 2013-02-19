@@ -2,8 +2,7 @@
 	<%= t(:signup) %>
 </div>
 <div id="signup">
-  <%= error_messages_for 'user' -%>
-	<%= form_for :user, @user, :url => { :action => 'signup' } do |f| -%>
+	<%= form_for :user, :url => { :action => 'signup' } do |f| -%>
     <ul>
 		  <li>
 			  <%= f.label :login, t(:login) + ":"-%>

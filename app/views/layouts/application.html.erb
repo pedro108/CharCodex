@@ -11,109 +11,17 @@
 	</head>
 	<body>
 		<div id="container">
-			<div id="header">
-				<div id="logo">
-					<%= link_to "AdventureCodex", root_path(:locale => params[:locale]) -%>
-				</div>
-				<div id="login">
-				<% if current_user %>
-					<div id="logout">
-						<span><%= t(:welcome) -%>, <b><%= current_user.name -%></b>! </span>
-						<%= link_to t(:logout), logout_path %>
-					</div>
-				<% else %>
-					<%= form_for :user_session, @user_session, :url => { :controller => "user_sessions", :action => "create" } do |f| -%>
-						<%= f.label :login, t(:login), :class => "text" -%>
-						<%= f.text_field :login, :class => "login" -%>
-						<%= f.label :password, t(:password), :class => "text" -%>
-						<%= f.password_field :password, :class => "login" -%>
-						<%= submit_tag t(:login) -%>
-					<% end -%>
-					<%= link_to t(:signup), signup_path, :class => "link" -%>
-				<% end %>
-				</div>
-				<div id="desc">
-					<span><%= t(:header_text) -%></span>
-				</div>
-        <div id="locale">
-          <% link_to root_path(:locale => :pt) do -%>
-            <%= image_tag 'br-flag.gif', :border => 0 -%>
-          <% end -%>
-          <% link_to root_path(:locale => :en) do -%>
-            <%= image_tag 'en-flag.gif', :border => 0 -%>
-          <% end -%>
-        </div>
-			</div>
+      <%= render :partial => 'layouts/partials/header' %>
 			<div id="body">
 				<div id="menu">
-					<ul class="menu">
-						<li>
-							<%= link_to t(:blog), blog_path -%>
-						</li>
-						<% if access? 3 -%>
-						<li class="submenu-title" id="submenu-jogador">
-							<a href="#"><%= t(:player) -%></a>
-							<ul class="submenu">
-								<li><%= link_to t('activerecord.models.character'), characters_path -%></li>
-							</ul>
-						</li>
-						<% end %>
-						<% if access? 2 -%>
-						<li class="submenu-title" id="submenu-mestre">
-							<a href="#"><%= t(:master) -%></a>
-							<ul class="submenu">
-								<li><%= link_to t('activerecord.models.adventure'), adventures_path -%></li>
-								<li><%= link_to t('activerecord.models.monster'), monsters_path -%></li>
-                <li><%= link_to t('activerecord.models.terrain'), terrains_path -%></li>
-							</ul>
-						</li>
-						<% end %>
-            <% if access? 1 -%>
-						<li class="submenu-title" id="submenu-moderacao">
-							<a href="#"><%= t(:moderation) -%></a>
-							<ul class="submenu">
-								<li><%= link_to t('activerecord.models.content'), contents_path(:mod => true) -%></li>
-								<li><%= link_to t('activerecord.models.comment'), comments_path  -%></li>
-							</ul>
-						</li>
-            <% end %>
-            <% if access? 0 -%>
-						<li class="submenu-title" id="submenu-admin">
-							<a href="#"><%= t(:administration) -%></a>
-							<ul class="submenu">
-								<li><%= link_to t('activerecord.models.content'), contents_path -%></li>
-								<li><%= link_to t('activerecord.models.user'), users_path -%></li>
-                <li><%= link_to t('activerecord.models.skill'), skills_path -%></li>
-                <li><%= link_to t('activerecord.models.language'), languages_path -%></li>
-                <li><%= link_to t('activerecord.models.feat'), feats_path -%></li>
-                <li><%= link_to t('activerecord.models.race'), races_path -%></li>
-                <li><%= link_to t('activerecord.models.character_class'), character_classes_path -%></li>
-                <li><%= link_to t('activerecord.models.deity'), deities_path -%></li>
-                <li><%= link_to t('activerecord.models.domain'), domains_path -%></li>
-                <li><%= link_to t('activerecord.models.spell_school'), spell_schools_path -%></li>
-                <li><%= link_to t('activerecord.models.spell'), spells_path -%></li>
-                <li><%= link_to t('activerecord.models.armor'), armors_path -%></li>
-                <li><%= link_to t('activerecord.models.weapon'), weapons_path -%></li>
-                <li><%= link_to t('activerecord.models.gear'), gears_path -%></li>
-							</ul>
-						</li>
-            <% end %>
-					</ul>
+          <%= render_navigation :expand_all => true %>
 				</div>
+
 				<div id="content">
 					<%= yield  %>
 				</div>
 			</div>
-			<div id="footer">
-				<span class="esquerda">
-          <b><%= t(:contact) -%>:</b> <%= link_to "pedro.henrique.108@gmail.com", "mailto:pedro.henrique.108@gmail.com" -%>
-        </span>
-				<span class="direita">
-          <% link_to 'http://www.paizo.com', :target => '_blank' do -%>
-            <%= image_tag 'paizo-logo.gif', :border => 0 -%>
-          <% end -%>
-        </span>
-			</div>
+			<%= render :partial => 'layouts/partials/footer' %>
 		</div>
 		<%= javascript_tag "alert('#{flash[:error]}')" unless(flash[:error].nil?)  %>
     <%= javascript_include_tag 'application' %>

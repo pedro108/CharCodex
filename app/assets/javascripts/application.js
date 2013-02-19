@@ -19,17 +19,16 @@
 //= require_tree .
 
 $(function(){
-    $('.submenu').hide();
+    $('.submenu-title').click(function() {
+        var $this = $(this);
+        if($this.hasClass('selected'))
+            return;
 
-    $('.submenu-title').click(function(){
-        var atual = $(this);
-        $('.submenu-title ul').each(function(){
-            if($(this).parent().attr('id') != atual.attr('id'))
-                $(this).slideUp(500);
+        $('.submenu-title.selected').find('.submenu').slideUp(200, function(){
+            $this.find('.submenu').slideDown(300);
+            $this.addClass('selected');
         });
-
-        $(this).find('ul').slideDown(500);
+        $('.submenu-title.selected').removeClass('selected');
     });
 
 });
-
