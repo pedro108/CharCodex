@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.ui.datepicker-pt-BR
+//= require lightview
 //= require tinymce-jquery
 //= require active_scaffold
 //= require_tree .

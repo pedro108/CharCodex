@@ -3,17 +3,27 @@ class CharactersController < ApplicationController
     controller.restrict_access(3)
   end
 
-	active_scaffold :character do |config|
-    config.actions.exclude :show
+  def new
+    @character = Character.new
 
-    config.create.columns = [:name, :level, :photo, :miniature]
-    config.update.columns = [:name, :level, :photo, :miniature]
-    config.list.columns = [:photo, :name, :adventure]
+    respond_to do |format|
+      format.html { render 'sheet', :layout => 'blank' }
+    end
+  end
+
+	active_scaffold :character do |config|
+    config.actions.exclude :show, :create, :update
+    config.list.columns = [:photo, :name, :level, :adventure]
+    config.search.columns = [:name]
 
     config.columns[:adventure].clear_link
-    config.columns[:photo].form_ui = :paperclip
-    config.columns[:miniature].form_ui = :paperclip
+
+    config.action_links.add :new, :label => I18n.t('active_scaffold.create_new'), :page => true, :type => :collection,
+                            :html_options => { class: 'lightview', :'data-lightview-type' => 'ajax',
+                                               :'data-lightview-options' => "skin: 'mac'" }
   end
+
+  protected
 
   def conditions_for_collection
     ['characters.user_id = ?', current_user.id]

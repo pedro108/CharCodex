@@ -1,0 +1,14 @@
+/* Lightview overrides */
+.lv_skin > canvas {
+  display:none;
+}
+
+#character-sheet-inner {
+  width:1000px;
+  height:600px;
+
+  h3 {
+    color: black;
+  }
+}
+
