@@ -1,3 +1,40 @@
-<div id='character-sheet-inner'>
-  <h3>Ficha de personagem</h3>
+<div id='character-sheet-inner' class='tabbable'>
+  <%= hidden_field_tag :sheet_changed, false %>
+
+  <div class="sheet-header">
+    <div class="sheet-saving-indicator">
+      <%= t('character_sheet.saving') %>
+    </div>
+    <%= image_tag 'pathfinder_logo.jpg' %>
+    <ul class="nav nav-tabs">
+      <li>
+        <%= link_to t('character_sheet.tabs.spells'), '#spells', data: { toggle: 'tab' } %>
+      </li>
+      <li>
+        <%= link_to t('character_sheet.tabs.gear'), '#gear', data: { toggle: 'tab' } %>
+      </li>
+      <li>
+        <%= link_to t('character_sheet.tabs.feats_and_skills'), '#feats_skills', data: { toggle: 'tab' } %>
+      </li>
+      <li class="active">
+        <%= link_to t('character_sheet.tabs.basic_info'), '#basic-info', data: { toggle: 'tab' } %>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sheet-body tab-content">
+    <div class="tab-pane active" id="basic-info">
+      <%= render :partial => 'basic_info' %>
+    </div>
+    <div class="tab-pane" id="feats_and_skills">
+      feats and skills
+    </div>
+    <div class="tab-pane" id="gear">
+      gear
+    </div>
+    <div class="tab-pane" id="spells">
+spells
+    </div>
+  </div>
+
 </div>

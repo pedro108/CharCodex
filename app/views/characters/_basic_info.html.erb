@@ -1,0 +1,14 @@
+<div class="character-basic-info">
+  <%= form_for @character, :url => update_characters_path, :remote => true do |f| %>
+    <div class="basic-info-input">
+      <%= f.text_field :name %>
+      <%= f.label :name %>
+    </div>
+    <div class="basic-info-input">
+      <span class="readonly-field">
+        <%= current_user.name %>
+      </span>
+      <%= label :character, '', t('activerecord.attributes.character.player_name') %>
+    </div>
+  <% end  %>
+</div>

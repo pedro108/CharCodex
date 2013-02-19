@@ -3,6 +3,8 @@ class CharactersController < ApplicationController
     controller.restrict_access(3)
   end
 
+  before_filter :create_if_new, :only => [:update]
+
   def new
     @character = Character.new
 
@@ -11,16 +13,34 @@ class CharactersController < ApplicationController
     end
   end
 
+  def edit
+    @character = Character.find(params[:id])
+
+    respond_to do |format|
+      format.html { render 'sheet', :layout => 'blank' }
+    end
+  end
+
+  def update
+    params[:success] = @character.update_attributes(params[:character])
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 	active_scaffold :character do |config|
     config.actions.exclude :show, :create, :update
-    config.list.columns = [:photo, :name, :level, :adventure]
+    config.list.columns = [:name, :level, :adventure]
     config.search.columns = [:name]
 
     config.columns[:adventure].clear_link
 
     config.action_links.add :new, :label => I18n.t('active_scaffold.create_new'), :page => true, :type => :collection,
-                            :html_options => { class: 'lightview', :'data-lightview-type' => 'ajax',
-                                               :'data-lightview-options' => "skin: 'mac'" }
+                            :html_options => CharactersHelper::lightview_options
+
+    config.action_links.add :edit, :label => I18n.t('active_scaffold.edit'), :page => true, :type => :member,
+                            :html_options => CharactersHelper::lightview_options
   end
 
   protected
@@ -29,7 +49,15 @@ class CharactersController < ApplicationController
     ['characters.user_id = ?', current_user.id]
   end
 
-  def before_create_save(record)
-    record.user = current_user
+  private
+
+  def create_if_new
+    if params[:id].nil?
+      @character = Character.new
+      @character.user_id = current_user.id
+      @character.save!
+    else
+      @character = Character.find(params[:id])
+    end
   end
 end

@@ -1,5 +1,5 @@
 CharCodex::Application.routes.draw do
-	resources :comments, :adventures, :characters, :users, :backgrounds, 
+	resources :comments, :adventures, :users, :backgrounds,
 						:encounters, :monsters, :terrains, :skills, :armors, :deities,
             :domains, :domain_powers, :spells, :feats, :gears, :weapons,
             :languages, :feats, :races, :spell_schools, :character_classes
@@ -14,6 +14,12 @@ CharCodex::Application.routes.draw do
     end
     collection do
       post '/battle_grid_create' => :battle_grid_create
+    end
+  end
+
+  resources :characters, :except => [:update] do
+    collection do
+      post '/update' => :update
     end
   end
 

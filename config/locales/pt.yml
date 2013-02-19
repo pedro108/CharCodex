@@ -78,7 +78,7 @@ pt:
     show: "Exibir"
     cancel: "Cancelar"
     hide: "Esconder"
-    create_new: "Cadastrar"
+    create_new: "Criar"
     create_model: "Criando..."
     edit_model: "Editando..."
     create_another: "Criar outro"
@@ -313,12 +313,13 @@ pt:
         user: "Autor"
 
       character:
-        name: "Nome"
+        name: "Nome do personagem"
         level: "Nível"
         photo: "Foto"
         miniature: "Miniatura do grid"
         adventure: "Aventura"
 
+        player_name: "Nome do jogador"
       adventure:
         name: "Nome"
         characters: "Personagens"
@@ -497,3 +498,12 @@ pt:
   int_modifier: "modificador de Int."
   pounds: "lb."
   site_title: "AdventureCodex: Gerenciador de Aventuras de Pathfinder"
+  character_sheet:
+    tabs:
+      basic_info: "Informações básicas"
+      spells: "Magias"
+      gear: "Equipamento"
+      feats_and_skills: "Talentos e perícias"
+    forms:
+      basic_info: "Informações básicas"
+    saving: "Salvando..."

@@ -173,11 +173,11 @@ en:
         user: "Author"
 
       character:
-        name: "Name"
+        name: "Character's name"
         level: "Level"
         photo: "Photo"
         miniature: "Grid miniature"
-
+        player_name: "Player's name"
       adventure:
         name: "Name"
 
@@ -328,3 +328,8 @@ en:
   int_modifier: "Int. modifier"
   pounds: "lb."
   site_title: "AdventureCodex: Adventure manager for Pathfinder RPG"
+  character_sheet:
+    tabs:
+      basic_info: "Basic information"
+      feats_and_skills: "Feats & Skills"
+    saving: "Saving..."

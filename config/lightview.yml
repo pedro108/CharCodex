@@ -1,0 +1,6 @@
+skin: \'mac\'
+spacing:
+  relative:
+    horizontal: 60
+    vertical: 20
+onHide: sheet_hide_callback

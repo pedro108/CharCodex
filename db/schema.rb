@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219025608) do
+ActiveRecord::Schema.define(:version => 20130219230351) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -96,6 +96,11 @@ ActiveRecord::Schema.define(:version => 20130219025608) do
     t.integer "spell_level"
   end
 
+  create_table "character_class_spells_characters", :id => false, :force => true do |t|
+    t.integer "character_id",             :null => false
+    t.integer "character_class_spell_id", :null => false
+  end
+
   create_table "character_classes", :force => true do |t|
     t.string  "name",            :null => false
     t.text    "description"
@@ -156,9 +161,9 @@ ActiveRecord::Schema.define(:version => 20130219025608) do
 
   create_table "characters", :force => true do |t|
     t.string   "name"
-    t.integer  "user_id",                               :null => false
+    t.integer  "user_id",                                 :null => false
     t.integer  "adventure_id"
-    t.integer  "level",                  :default => 1, :null => false
+    t.integer  "level",                  :default => 1,   :null => false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -169,41 +174,36 @@ ActiveRecord::Schema.define(:version => 20130219025608) do
     t.datetime "miniature_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "deity_id",                              :null => false
-    t.integer  "race_id",                               :null => false
-    t.integer  "alignment_id",                          :null => false
-    t.integer  "experience_points",                     :null => false
-    t.integer  "progression_type",                      :null => false
-    t.integer  "hit_points",                            :null => false
-    t.integer  "fortitude",                             :null => false
-    t.integer  "reflex",                                :null => false
-    t.integer  "will",                                  :null => false
-    t.integer  "armor_class_armor",                     :null => false
-    t.integer  "armor_class_shield",                    :null => false
-    t.integer  "armor_class_dex",                       :null => false
-    t.integer  "armor_class_size",                      :null => false
-    t.integer  "armor_class_natural",                   :null => false
-    t.integer  "armor_class_deflection",                :null => false
-    t.integer  "armor_class_misc",                      :null => false
-    t.integer  "base_attack_bonus",                     :null => false
-    t.integer  "initiative",                            :null => false
-    t.integer  "cmb",                                   :null => false
-    t.integer  "cmd",                                   :null => false
+    t.integer  "deity_id"
+    t.integer  "race_id"
+    t.integer  "alignment_id"
+    t.integer  "experience_points",      :default => 0,   :null => false
+    t.integer  "progression_type"
+    t.integer  "hit_points"
+    t.integer  "fortitude"
+    t.integer  "reflex"
+    t.integer  "will"
+    t.integer  "armor_class_armor",      :default => 0,   :null => false
+    t.integer  "armor_class_shield",     :default => 0,   :null => false
+    t.integer  "armor_class_dex",        :default => 0,   :null => false
+    t.integer  "armor_class_size",       :default => 0,   :null => false
+    t.integer  "armor_class_natural",    :default => 0,   :null => false
+    t.integer  "armor_class_deflection", :default => 0,   :null => false
+    t.integer  "armor_class_misc",       :default => 0,   :null => false
+    t.integer  "base_attack_bonus",      :default => 0,   :null => false
+    t.integer  "initiative",             :default => 0,   :null => false
+    t.integer  "cmb",                    :default => 0,   :null => false
+    t.integer  "cmd",                    :default => 0,   :null => false
     t.integer  "damage_reduction"
     t.integer  "spell_resistance"
     t.string   "gender"
     t.string   "height"
     t.string   "weight"
     t.string   "eyes"
-    t.integer  "age",                                   :null => false
-    t.float    "money",                                 :null => false
-    t.float    "weight_capacity",                       :null => false
-    t.integer  "armor_class_dodge"
-  end
-
-  create_table "characters_character_class_spells", :id => false, :force => true do |t|
-    t.integer "character_id",             :null => false
-    t.integer "character_class_spell_id", :null => false
+    t.integer  "age"
+    t.float    "money",                  :default => 0.0, :null => false
+    t.float    "weight_capacity",        :default => 0.0, :null => false
+    t.integer  "armor_class_dodge",      :default => 0
   end
 
   create_table "characters_domains", :id => false, :force => true do |t|
