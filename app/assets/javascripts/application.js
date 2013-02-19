@@ -21,14 +21,18 @@
 $(function(){
     $('.submenu-title').click(function() {
         var $this = $(this);
+        var $selected = $('.submenu-title.selected');
+
         if($this.hasClass('selected'))
             return;
 
-        $('.submenu-title.selected').find('.submenu').slideUp(200, function(){
-            $this.find('.submenu').slideDown(300);
-            $this.addClass('selected');
-        });
-        $('.submenu-title.selected').removeClass('selected');
+        if($selected.length > 0) {
+            $selected.find('.submenu').slideUp(400);
+            $selected.removeClass('selected');
+        }
+
+        $this.find('.submenu').slideDown(400);
+        $this.addClass('selected');
     });
 
 });

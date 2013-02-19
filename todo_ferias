@@ -1,0 +1,5 @@
+Para 19/02:
+
+EncounterBuilder:
+ > Adicionar funcionalidades para desfazer ultima alteracao e voltar ao estado inicial.
+ > Adicionar campo de ordenação. Adicionar action links para mudar a ordem dos encontros na lista.

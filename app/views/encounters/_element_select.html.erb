@@ -1,0 +1,8 @@
+<li id="<%= element.pluralize %>">
+  <%= label_tag element.to_sym, t(element) + ":" -%>
+  <%= select_tag element.to_sym, send("encounter_#{element}_options"), :id => "#{element.pluralize}-select" -%>
+</li>
+<li id="<%= element.pluralize %>-holder">
+  <%= label_tag :sample, t(:sample) + ":" -%>
+  <%= image_tag 'empty.png', :alt => "" -%>
+</li>

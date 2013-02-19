@@ -1,5 +1,6 @@
 class Encounter < ActiveRecord::Base
 	belongs_to :adventure
 	
-	validates_presence_of :name, :grid
+	validates :name, :grid, :presence => true
+  validates :dimension, :numericality => { :greater_than => 0 }
 end

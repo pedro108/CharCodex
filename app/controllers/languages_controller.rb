@@ -3,10 +3,6 @@ class LanguagesController < ApplicationController
     controller.restrict_access(0)
   end
 
-  def custom_finder_options
-    {:order => "name"}
-  end
-
   active_scaffold :language do |config|
     config.actions.exclude :create, :delete
 

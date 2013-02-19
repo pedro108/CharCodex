@@ -1,0 +1,82 @@
+<%= form_for @encounter, :url => params[:action], :remote => true do |f| %>
+  <div id="sidebar">
+    <ul>
+      <li id="name">
+        <%= f.label :name, t(:name) + ":" -%>
+        <%= f.text_field :name %>
+      </li>
+
+      <li id="dimension">
+        <%= label_tag :dimension, t(:dimension) + ":" -%>
+        <%= f.text_field :dimension, :id => "dimension-input", :maxlength => "2" %>
+        <input id="dimension-submit" type="button" value="OK"/>
+      </li>
+
+      <%= render :partial => 'element_select', :locals => { :element => 'terrain' } %>
+      <%= render :partial => 'element_select', :locals => { :element => 'object' } %>
+      <%= render :partial => 'element_select', :locals => { :element => 'monster' } %>
+
+      <li id="item">
+        <%= f.label :grid_item, t(:grid_item) + ":" -%>
+        <%= select_tag :item,
+                       options_for_select([["#{t(:terrain)}", "terrains"],["#{t(:monster)}", "monsters"],["#{t(:object)}", "objects"]]),
+                       :id => "item-select" -%>
+      </li>
+      <li>
+        <%= submit_tag "Gravar", :id => "submit-grid" %>
+      </li>
+    </ul>
+  </div>
+  <%= f.hidden_field :grid %>
+  <%= f.hidden_field :adventure_id, :value => (params[:adventure_id].nil?) ? params[:encounter][:adventure_id] : params[:adventure_id] %>
+<% end -%>
+
+<div id="grid-holder">
+  <ul id="grid"></ul>
+</div>
+
+<%= javascript_tag do -%>
+  $(function(){
+    <% encounter_terrains.each do |terrain| %>
+      grid.terrains[<%= terrain.id %>] = {
+        grid: grid,
+        id: <%= terrain.id %>,
+        type: 'bg',
+        image: '<%=h terrain.miniature %>',
+        t_type: <%= terrain.terrain_type %>,
+        lines: <%= terrain.dimension_y %>,
+        columns: <%= terrain.dimension_x %>
+      };
+    <% end %>
+
+    <% encounter_objects.each do |object| %>
+      grid.objects[<%= object.id %>] = {
+        grid: grid,
+        id: <%= object.id %>,
+        type: 'obj',
+        image: '<%=h object.miniature %>',
+        t_type: <%= object.terrain_type %>,
+        lines: <%= object.dimension_y %>,
+        columns: <%= object.dimension_x %>
+      };
+    <% end %>
+
+    <% encounter_monsters.each do |monster| %>
+      grid.monsters[<%= monster.id %>] = {
+        grid: grid,
+        id: <%= monster.id %>,
+        type: 'mst',
+        image: '<%=h monster.miniature %>',
+        lines: <%= monster.dimension %>,
+        columns: <%= monster.dimension %>
+      }
+    <% end %>
+
+    if($.trim($('#encounter_grid').val()) != ''){
+      var grid_obj = JSON.parse($('#encounter_grid').val());
+      grid.create(grid_obj);
+    }
+  });
+<% end %>
+
+

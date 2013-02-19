@@ -4,11 +4,10 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 		<title>AdventureCodex: Gerenciador de Aventuras de Pathfinder</title>
-    <%= stylesheet_link_tag 'battle_grid' %>
+    <%= stylesheet_link_tag 'battle_grid_styles' %>
+    <%= javascript_include_tag 'battle_grid' %>
 	</head>
 	<body>
 		<%= yield  %>
-
-    <%= javascript_include_tag 'battle_grid' %>
 	</body>
 </html>

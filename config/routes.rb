@@ -6,7 +6,16 @@ CharCodex::Application.routes.draw do
 
 	resources :contents do
 		resources :comments
-	end
+  end
+
+  resources :encounters do
+    member do
+      put '/battle_grid_update' => :battle_grid_update
+    end
+    collection do
+      post '/battle_grid_create' => :battle_grid_create
+    end
+  end
 
   match "logout" => "user_sessions#destroy"
 	match "signup" => "users#signup"
