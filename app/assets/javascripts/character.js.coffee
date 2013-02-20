@@ -8,6 +8,6 @@ submit_sheet_subform = ($input) ->
   $form.submit()
 
 $ ->
-  $("body").on 'blur', "input[type=text], textarea", (event) =>
+  $("body").on 'blur', "#character-sheet-inner input[type=text], textarea", (event) =>
     $this = $(event.currentTarget)
     submit_sheet_subform($this)

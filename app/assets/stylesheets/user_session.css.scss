@@ -1,0 +1,53 @@
+div#login {
+  position:absolute;
+  bottom:5px;
+  right:8px;
+  width: 500px;
+  height: 30px;
+
+  form {
+    float:left;
+    padding-right:3px;
+    margin:0px;
+
+    label {
+      display:inline-block;
+      margin-right:5px;
+    }
+
+    input {
+      margin-right:10px;
+    }
+
+    input[type=submit] {
+      position:relative;
+      bottom:4px;
+    }
+  }
+
+  a {
+    position:relative;
+    top: 1px;
+  }
+}
+
+div#logout {
+  position:absolute;
+  bottom:5px;
+  right:10px;
+  white-space:nowrap;
+
+  span {
+    font-size: 12px;
+    position: relative;
+    top: 7px;
+    right: 5px
+  }
+
+  b {
+    font-size:12px;
+  }
+}
+
+
+

@@ -1,4 +1,4 @@
 <div id="logout">
   <span><%= t(:welcome) -%>, <b><%= current_user.name -%></b>! </span>
-  <%= link_to t(:logout), logout_path %>
+  <%= link_to t(:logout), logout_path, :class => 'btn btn-mini' %>
 </div>

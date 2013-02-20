@@ -1,8 +1,8 @@
-<%= form_for :user_session, :url => { :controller => "user_sessions", :action => "create" } do |f| -%>
-  <%= f.label :login, t(:login), :class => "text" -%>
-  <%= f.text_field :login, :class => "login" -%>
-  <%= f.label :password, t(:password), :class => "text" -%>
-  <%= f.password_field :password, :class => "login" -%>
-  <%= submit_tag t(:login) -%>
-<% end -%>
-<%= link_to t(:signup), signup_path, :class => "link" -%>
+<%= form_for :user_session, :url => { :controller => "user_sessions", :action => "create" } do |f| %>
+  <%= f.label :login, "#{t(:login)}:", :class => "text" %>
+  <%= f.text_field :login, :class => "login" %>
+  <%= f.label :password, "#{t(:password)}:", :class => "text" %>
+  <%= f.password_field :password, :class => "login" %>
+  <%= submit_tag t(:login), :class => 'btn btn-small btn-primary' %>
+<% end %>
+<%= link_to t(:signup), signup_path, :class => "btn btn-small" %>
