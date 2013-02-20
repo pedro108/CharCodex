@@ -1,0 +1,114 @@
+$blue: #007080;
+
+.active-scaffold {
+
+  h2 {
+    color: $blue !important;
+  }
+
+  .active-scaffold-header {
+    div.actions {
+      top:0px !important;
+      right:0px !important;
+
+      a, a:visited {
+        color: $blue !important;
+      }
+
+      a:hover {
+        background-color: transparent;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .view {
+    background-color: #D8D8D8;
+    border: #333;
+
+    h4 {
+      display: none;
+    }
+  }
+
+  .fieldWithErrors {
+    display: inline;
+  }
+
+  .errorExplanation {
+    h2 {
+      color: #333333 !important;
+    }
+
+    p, li {
+      color: black !important;
+    }
+  }
+
+  .form-element {
+    overflow: hidden;
+
+    dl {
+      overflow: hidden;
+      margin:3px 0px !important;
+    }
+
+    .checkbox-list li {
+      display: inline-block;
+      width: 250px;
+    }
+
+    textarea {
+      height: 120px;
+      width: 400px;
+    }
+
+    input[type="text"] {
+      width: 400px;
+
+      &.domain-spell-restriction-input {
+        margin-left: 20px;
+        width: 300px;
+      }
+    }
+
+    input.price-input {
+      width: 340px;
+    }
+  }
+
+  .input_number input {
+    width: 50px;
+  }
+
+  input[type="file"] {
+    border:0px !important;
+  }
+
+  .inline-adapter .active-scaffold-found,
+  .inline-adapter .active-scaffold-found span {
+    color:  black !important;
+  }
+
+  .show-view {
+    dd * {
+      color:  black !important;
+    }
+
+    .description-view, .skills-view, &.races-view .feats-view {
+      font-weight: normal !important;
+    }
+
+    .description-view p {
+      margin:12px 0 !important;
+    }
+  }
+
+  .columns-header {
+    font-size: 16px;
+    line-height: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+}
