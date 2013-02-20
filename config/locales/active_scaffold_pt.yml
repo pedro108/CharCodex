@@ -1,0 +1,129 @@
+pt:
+  active_scaffold:
+    _select_: "Selecione"
+    "true": "Sim"
+    "false": "Não"
+    search: "Buscar"
+    live_search: "Buscar"
+    create: "Criar"
+    edit: "Editar"
+    delete: "Remover"
+    remove: "Remover relação"
+    show: "Exibir"
+    cancel: "Cancelar"
+    hide: "Esconder"
+    create_new: "Criar"
+    create_model: "Criando..."
+    edit_model: "Editando..."
+    create_another: "Criar outro"
+    internal_error: "Erro interno do servidor"
+    close: "Fechar"
+    found: "Encontrado(s)"
+    no_entries: "Sem entradas"
+    add_existing: "Adicionar existente"
+    previous: "Anterior"
+    next: "Proximo"
+    select: "Selecione"
+    add: 'Adicionar'
+    add_existing_model: 'Adicionar %{model} existente'
+    apply: 'Apply'
+    are_you_sure_to_delete: 'Tem certeza que deseja remover %{label}?'
+    click_to_edit: 'Clique para editar'
+    click_to_reset: 'Clique para resetar'
+    config_list: 'Configurar'
+    config_list_model: 'Configurar colunas para %{model}'
+    create_another: 'Criar outro %{model}'
+    created_model: '%{model} criado'
+    customize: 'Customizar'
+    deleted_model: '%{model} removido'
+    delimiter: 'Delimitador'
+    download: 'Download'
+    export: 'Exportar'
+    nested_for_model: '%{nested_model} para %{parent_model}'
+    nested_of_model: '%{nested_model} de %{parent_model}'
+    filtered: '(Filtrado)'
+    inplace_edit_handle: '--'
+    loading: 'Carregando…'
+    mark_all_records: "Marcar todos"
+    no_entries: 'Nenhum registro encontrado'
+    no_options: 'Nenhuma opção encontrada'
+    omit_header: 'Omitir cabeçalho'
+    options: 'Opções'
+    pdf: 'PDF'
+    print: 'Imprimir'
+    records_marked:
+      one: "1 %{model} marcado"
+      other: "%{count} %{model} marcados"
+    refresh: 'Recarregar'
+    remove_file: 'Remover or substituir arquivo'
+    replace_with_new: 'Substituir com novo'
+    revisions_for_model: 'Revisões para %{model}'
+    reset: 'Resetar'
+    saving: 'Salvando…'
+    search_terms: 'Procurar termos'
+    show_model: 'Exibir %{model}'
+    _to_ : ' até '
+    update: 'Atualizar'
+    update_model: 'Atualizar %{model}'
+    updated_model: '%{model} atualizado'
+    '=': '='
+    '>=': '>='
+    '<=': '<='
+    '>': '>'
+    '<': '<'
+    '!=': '!='
+    between: 'Entre'
+    contains: 'Contém'
+    begins_with: 'Começa com'
+    ends_with: 'Termina com'
+    today: 'Hoje'
+    yesterday: 'Ontem'
+    tomorrow: 'Amanhã'
+    this_week: 'Essa semana'
+    prev_week: 'Última semana'
+    next_week: 'Próxima semana'
+    this_month: 'Esse mês'
+    prev_month: 'Última mês'
+    next_month: 'Próximo mês'
+    this_year: 'Esse ano'
+    prev_year: 'Último ano'
+    next_year: 'Próximo ano'
+    past: 'Passado'
+    future: 'Futuro'
+    range: 'Intervalo'
+    seconds: 'Segundos'
+    minutes: 'Minutos'
+    hours: 'Horas'
+    days: 'Dias'
+    weeks: 'Semanas'
+    months: 'Meses'
+    years: 'Anos'
+    optional_attributes: 'Outras opções'
+    :null: 'Nulo'
+    not_null: 'Não nulo'
+    date_picker_options:
+      weekHeader: 'Wk'
+      firstDay: 0
+      isRTL: false
+      showMonthAfterYear: false
+
+    datetime_picker_options:
+
+    human_conditions:
+      boolean: "%{column} = %{value}"
+      association: "%{column} = %{value}"
+
+    errors:
+      template:
+        header:
+          one:    "1 erro impediu que esse %{model} seja salvo com sucesso."
+          other:  "%{count} erros impediram que esse %{model} seja salvo com sucesso."
+
+        body: "Existem erros nos seguintes campos:"
+
+    # error_messages
+    cant_destroy_record: "%{record} não pode ser removido"
+    internal_error: 'Requisição falhou (código 500, Erro interno)'
+    version_inconsistency: 'Inconsistência de versão - esse registro foi modificado desde que você começou a edita-lo.'
+    record_not_saved: 'Falha na gravação do registro devido a um erro de causa desconhecida'
+    no_authorization_for_action: "Você não possui autorização para a ação %{action}"
