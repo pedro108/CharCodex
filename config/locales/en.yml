@@ -261,6 +261,13 @@ en:
         prerequisites: "Prerequisites (ruby)"
         benefits: "Benefits"
 
+      race_traits:
+        name: "Name"
+        description: "Description"
+        bonus: "Bonus (ruby)"
+        prerequisites: "Prerequisites (ruby)"
+        benefits: "Benefits"
+
       race:
         name: "Name"
         description: "Description"
@@ -268,7 +275,7 @@ en:
         size: "Size"
         languages: "Initial languages"
         race_attributes: "Attribute modifiers"
-        feats: "Racial traits"
+        race_traits: "Racial traits"
 
       race_attribute:
         value: "Increase (or decrease)"
@@ -313,7 +320,7 @@ en:
       character_class_feature:
         name: "Name"
         description: "Description"
-        bonus: "Bonus"
+        bonus: "Bonus (ruby)"
         required_level: "Level"
 
       character_class_spell:

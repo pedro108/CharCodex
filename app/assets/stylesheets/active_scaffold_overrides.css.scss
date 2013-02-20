@@ -53,9 +53,18 @@ $blue: #007080;
       margin:3px 0px !important;
     }
 
-    .checkbox-list li {
-      display: inline-block;
-      width: 250px;
+    .checkbox-list {
+      li {
+        display: inline-block;
+        width: 250px;
+      }
+
+      label {
+        display: inline-block;
+        position:relative;
+        top:4px;
+        left:3px;
+      }
     }
 
     textarea {

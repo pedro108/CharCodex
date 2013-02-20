@@ -7,10 +7,10 @@ class RacesController < ApplicationController
     config.list.columns = [:name, :size]
     config.create.columns = [:name, :description, :race_attributes, :arbitrary_attributes, :size, :languages]
     config.update.columns = [:name, :description, :race_attributes, :arbitrary_attributes, :size, :languages]
-    config.show.columns = [:name, :description, :race_attributes, :arbitrary_attributes,  :feats, :size, :languages,]
+    config.show.columns = [:name, :description, :race_attributes, :arbitrary_attributes, :race_traits, :size, :languages]
 
-    config.nested.add_link :feats, :label => config.columns[:feats].label
-    config.columns[:feats].association.reverse = :races
+    config.nested.add_link :race_traits, :label => config.columns[:race_traits].label
+    config.columns[:race_traits].association.reverse = :race
 
     config.columns[:languages].form_ui = :select
     config.columns[:arbitrary_attributes].form_ui = :number

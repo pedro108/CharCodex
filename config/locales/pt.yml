@@ -255,7 +255,9 @@ pt:
       gear: "Equipamentos gerais"
       language: "Linguagens"
       feat: "Talentos"
+      race_trait: "Traços Raciais"
       race: "Raças"
+      race_attribute: "modificador de atributo"
       spell: "Magias"
       spell_school: "Escolas de magia"
       character_class: "Classes de Personagem"
@@ -292,7 +294,6 @@ pt:
         photo: "Foto"
         miniature: "Miniatura do grid"
         adventure: "Aventura"
-
         player_name: "Nome do jogador"
       adventure:
         name: "Nome"
@@ -406,6 +407,13 @@ pt:
         prerequisites: "Pré-requisitos (ruby)"
         benefits: "Benefícios"
 
+      race_traits:
+        name: "Nome"
+        description: "Descrição"
+        bonus: "Bônus (ruby)"
+        prerequisites: "Pré-requisitos (ruby)"
+        benefits: "Benefícios"
+
       race:
         name: "Nome"
         description: "Descrição"
@@ -413,7 +421,7 @@ pt:
         size: "Tamanho"
         languages: "Linguagens iniciais"
         race_attributes: "Modificadores de Atributos"
-        feats: "Traços raciais"
+        race_traits: "Traços raciais"
 
       race_attribute:
         value: "Bônus (ou decréscimo)"
@@ -458,7 +466,7 @@ pt:
       character_class_feature:
         name: "Nome"
         description: "Descrição"
-        bonus: "Bônus"
+        bonus: "Bônus (ruby)"
         required_level: "Nível"
 
       character_class_spell:
