@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220161520) do
+ActiveRecord::Schema.define(:version => 20130220170336) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -463,6 +463,13 @@ ActiveRecord::Schema.define(:version => 20130220161520) do
     t.text    "description"
     t.integer "size_id"
     t.integer "arbitrary_attributes"
+  end
+
+  create_table "rogue_talents", :force => true do |t|
+    t.string  "name"
+    t.text    "benefit"
+    t.text    "bonus"
+    t.boolean "advanced", :default => false
   end
 
   create_table "sizes", :force => true do |t|
