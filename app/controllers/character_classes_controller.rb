@@ -33,6 +33,7 @@ class CharacterClassesController < ApplicationController
         spells_per_day_params = params[:record].delete(:"spell_list_#{class_level}")
         begin
           spells_per_day = SpellPerDay.new(spells_per_day_params)
+          spells_per_day.character_class_id = record.id
           spells_per_day.save!
         rescue
           record.errors[:spells_per_day] << I18n.t('spell_level.error', :class_level => class_level)

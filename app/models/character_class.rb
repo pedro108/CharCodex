@@ -11,6 +11,8 @@ class CharacterClass < ActiveRecord::Base
 
   has_attached_file :photo, :styles => { :medium => "640x480>", :thumb => "100x100>" }
 
+  validates :dice_id, :presence => true
+
   def spellcaster_type
     I18n.t('spellcaster_type')[spellcaster_type_id]
   end
