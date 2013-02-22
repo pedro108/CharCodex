@@ -21,7 +21,7 @@ module RacesHelper
   def race_race_traits_show_column(record)
     content_tag :ul do
       record.race_traits.each do |race_trait|
-        concat content_tag :li, "<b>#{h(race_trait.name)}:</b> #{h(race_trait.benefits)}".html_safe
+        concat content_tag :li, "<strong>#{h(race_trait.name)}:</strong> #{h(race_trait.benefits)}".html_safe
       end
     end
   end

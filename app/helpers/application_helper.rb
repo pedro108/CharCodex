@@ -38,13 +38,21 @@ module ApplicationHelper
     h("#{record.price} #{record.price_type.name}") unless record.price.nil? or record.price_type.nil?
   end
 
-  # ActiveScaffold override
-  def options_for_association_conditions(association)
-    if association.active_record.eql? Race and association.class_name.eql? "Feat"
-      "feat_type_id = #{FeatType.racial_trait.id}"
+  def photo_column(record)
+    if record.photo.exists?
+      link_to record.photo.url, :target => "blank" do
+        image_tag(h(record.photo.url(:thumb)), :border => 0)
+      end
     else
-      # Call default method for unspecified associations
-      Class.new.extend(ActiveScaffold::Helpers::AssociationHelpers).options_for_association_conditions(association)
+      '-'
+    end
+  end
+
+  def photo_show_column(record)
+    if record.photo.exists?
+      image_tag h(record.photo.url(:medium))
+    else
+      '-'
     end
   end
 

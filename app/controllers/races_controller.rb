@@ -4,10 +4,10 @@ class RacesController < ApplicationController
   end
 
   active_scaffold :race do |config|
-    config.list.columns = [:name, :size]
-    config.create.columns = [:name, :description, :race_attributes, :arbitrary_attributes, :size, :languages]
-    config.update.columns = [:name, :description, :race_attributes, :arbitrary_attributes, :size, :languages]
-    config.show.columns = [:name, :description, :race_attributes, :arbitrary_attributes, :race_traits, :size, :languages]
+    config.list.columns = [:photo, :name, :size]
+    config.create.columns = [:name, :photo, :description, :race_attributes, :arbitrary_attributes, :size, :languages]
+    config.update.columns = [:name, :photo, :description, :race_attributes, :arbitrary_attributes, :size, :languages]
+    config.show.columns = [:name, :photo, :description, :race_attributes, :arbitrary_attributes, :race_traits, :size, :languages]
 
     config.nested.add_link :race_traits, :label => config.columns[:race_traits].label
     config.columns[:race_traits].association.reverse = :race
