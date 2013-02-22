@@ -8,3 +8,9 @@
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
 # end
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular 'spell_per_day', 'spells_per_day'
+  inflect.irregular 'spellperday', 'spellsperday'
+end
+

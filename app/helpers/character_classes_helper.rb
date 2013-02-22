@@ -59,4 +59,13 @@ module CharacterClassesHelper
 
     skills.join(", ").html_safe
   end
+
+  def character_class_spellcaster_type_id_form_column(record, options)
+    collection = I18n.t('spellcaster_type').map do |id, type|
+      [type, id]
+    end
+
+    options[:include_blank] = ''
+    select :record, :spellcaster_type_id, collection, options
+  end
 end

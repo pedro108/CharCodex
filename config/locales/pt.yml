@@ -260,6 +260,7 @@ pt:
       race_attribute: "modificador de atributo"
       spell: "Magias"
       spell_school: "Escolas de magia"
+      spell_per_day: "Magias por dia"
       character_class: "Classes de Personagem"
       character_class_feature: "Hablidades de classe"
       character_class_spell: "Magias de classe"
@@ -415,6 +416,7 @@ pt:
         benefits: "Benefícios"
 
       race:
+        photo: Imagem
         name: "Nome"
         description: "Descrição"
         arbitrary_attributes: "Atributos arbitrários"
@@ -451,6 +453,7 @@ pt:
         character_class_spells: "Classes de personagem"
 
       character_class:
+        photo: Imagem
         name: "Nome"
         description: "Descrição"
         base_multiplier: "Multiplicador do B.B.A"
@@ -459,7 +462,9 @@ pt:
         reflex: "Tipo de bônus de reflexo"
         fortitude: "Tipo de bônus de fortitude"
         skills: "Perícias de classe"
-        spellcaster: "Conjurador?"
+        spellcaster_type_id: "Tipo de conjurador"
+        spellcaster_type: "Tipo de conjurador"
+        spontaneous_spellcaster: "Conjurador espontâneo?"
         skill_ranks: "Ranks de perícia por nível"
         character_class_features: "Habilidades de classe"
 
@@ -489,3 +494,21 @@ pt:
     forms:
       basic_info: "Informações básicas"
     saving: "Salvando..."
+
+  spellcaster_type:
+    1: Completo
+    2: Híbrido
+  spell_level:
+    abbr:
+      level: Nível
+      0: "0"
+      1: "1º"
+      2: "2º"
+      3: "3º"
+      4: "4º"
+      5: "5º"
+      6: "6º"
+      7: "7º"
+      8: "8º"
+      9: "9º"
+    error: "Magias por dia do nível %{class_level} está com registro inválido\n"

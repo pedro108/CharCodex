@@ -269,6 +269,7 @@ en:
         benefits: "Benefits"
 
       race:
+        photo: Image
         name: "Name"
         description: "Description"
         arbitrary_attributes: "Arbitrary attributes"
@@ -305,6 +306,7 @@ en:
         character_class_spells: "Character classes"
 
       character_class:
+        photo: Image
         name: "Name"
         description: "Description"
         base_multiplier: "B.A.B multiplier"
@@ -313,7 +315,9 @@ en:
         reflex: "Reflex bonus type"
         fortitude: "Fortitude bonus type"
         skills: "Class skills"
-        spellcaster: "Spellcaster?"
+        spellcaster_type_id: "Spellcaster type"
+        spellcaster_type: "Spellcaster type"
+        spontaneous_spellcaster: "Spontaeneous spellcaster?"
         skill_ranks: "Skill ranks per level"
         character_class_features: "Class features"
 
@@ -340,3 +344,21 @@ en:
       basic_info: "Basic information"
       feats_and_skills: "Feats & Skills"
     saving: "Saving..."
+
+  spellcaster_type:
+    1: Complete
+    2: Hybrid
+  spell_level:
+    abbr:
+      level: Level
+      0: "0th"
+      1: "1st"
+      2: "2nd"
+      3: "3rd"
+      4: "4th"
+      5: "5th"
+      6: "6th"
+      7: "7th"
+      8: "8th"
+      9: "9th"
+    error: "Spell per day for level %{class_level} is invalid.\n"

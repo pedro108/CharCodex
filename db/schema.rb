@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220170336) do
+ActiveRecord::Schema.define(:version => 20130221154910) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -102,15 +102,20 @@ ActiveRecord::Schema.define(:version => 20130220170336) do
   end
 
   create_table "character_classes", :force => true do |t|
-    t.string  "name",            :null => false
-    t.text    "description"
-    t.integer "dice_id",         :null => false
-    t.float   "base_multiplier", :null => false
-    t.boolean "fortitude",       :null => false
-    t.boolean "reflex",          :null => false
-    t.boolean "will",            :null => false
-    t.boolean "spellcaster"
-    t.integer "skill_ranks"
+    t.string   "name",                    :null => false
+    t.text     "description"
+    t.integer  "dice_id",                 :null => false
+    t.float    "base_multiplier",         :null => false
+    t.boolean  "fortitude",               :null => false
+    t.boolean  "reflex",                  :null => false
+    t.boolean  "will",                    :null => false
+    t.boolean  "spontaneous_spellcaster"
+    t.integer  "skill_ranks"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "spellcaster_type_id"
   end
 
   create_table "character_classes_skills", :id => false, :force => true do |t|
@@ -459,10 +464,14 @@ ActiveRecord::Schema.define(:version => 20130220170336) do
   add_index "race_traits", ["race_id"], :name => "index_race_traits_on_race_id"
 
   create_table "races", :force => true do |t|
-    t.string  "name",                 :null => false
-    t.text    "description"
-    t.integer "size_id"
-    t.integer "arbitrary_attributes"
+    t.string   "name",                 :null => false
+    t.text     "description"
+    t.integer  "size_id"
+    t.integer  "arbitrary_attributes"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "rogue_talents", :force => true do |t|
@@ -521,6 +530,23 @@ ActiveRecord::Schema.define(:version => 20130220170336) do
     t.integer "spell_school_id"
     t.integer "sub_spell_school_id"
   end
+
+  create_table "spells_per_day", :force => true do |t|
+    t.integer "character_class_id"
+    t.integer "class_level"
+    t.integer "zero_spell_level"
+    t.integer "first_spell_level"
+    t.integer "second_spell_level"
+    t.integer "third_spell_level"
+    t.integer "fourth_spell_level"
+    t.integer "fifth_spell_level"
+    t.integer "sixth_spell_level"
+    t.integer "seventh_spell_level"
+    t.integer "eighth_spell_level"
+    t.integer "ninth_spell_level"
+  end
+
+  add_index "spells_per_day", ["character_class_id"], :name => "index_spells_per_day_on_character_class_id"
 
   create_table "terrains", :force => true do |t|
     t.string   "name"
