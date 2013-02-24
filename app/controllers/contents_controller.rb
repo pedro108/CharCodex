@@ -17,12 +17,9 @@ class ContentsController < ApplicationController
   end
 
   def blog
-    contents = Content.where(:status => 1)
-    @content_locales = nil
-    params[:locale] = I18n.default_locale unless params[:locale] 
-    if contents
-      @content_locales = ContentLocale.where("locale = ? AND content_id IN (?)", params[:locale], contents.collect{|content| content.id})
-    end
+    params[:locale] = I18n.default_locale unless params[:locale]
+
+    @content_locales = ContentLocale.where(:locale => params[:locale]).joins(:content).where('contents.status = 1')
   end
 
   protected
