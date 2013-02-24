@@ -12,6 +12,7 @@ gem 'authlogic'
 gem 'active_scaffold'
 gem 'paperclip'
 gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
 gem 'simple-navigation'
 
 # Use thin as the web server

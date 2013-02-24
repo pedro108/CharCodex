@@ -116,8 +116,8 @@ pt:
     errors:
       template:
         header:
-          one:    "1 erro impediu que esse %{model} seja salvo com sucesso."
-          other:  "%{count} erros impediram que esse %{model} seja salvo com sucesso."
+          one:    "1 erro impediu que este modelo seja salvo com sucesso."
+          other:  "%{count} erros impediram que este modelo seja salvo com sucesso."
 
         body: "Existem erros nos seguintes campos:"
 

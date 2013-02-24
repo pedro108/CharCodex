@@ -36,8 +36,12 @@ $blue: #007080;
   }
 
   .errorExplanation {
+    width: 740px;
+    margin-bottom: 10px;
+
     h2 {
       color: #333333 !important;
+      line-height: 16px;
     }
 
     p, li {
@@ -84,6 +88,11 @@ $blue: #007080;
     input.price-input {
       width: 340px;
     }
+
+    select#record_price_type {
+      width: 55px;
+      margin-left: 5px;
+    }
   }
 
   .input_number input {
@@ -120,4 +129,9 @@ $blue: #007080;
     margin-bottom: 10px;
   }
 
+  .mceEditor {
+    .mceLayout {
+      margin-bottom:15px;
+    }
+  }
 }

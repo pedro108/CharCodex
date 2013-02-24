@@ -56,4 +56,14 @@ module ApplicationHelper
     end
   end
 
+  # text_edit activescaffold override
+  def active_scaffold_input_text_editor(column, options)
+    options[:class] = "#{options[:class]} tinymce #{column.options[:class]}".strip
+
+    html = []
+    html << send(override_input(:textarea), column, options)
+    html << tinymce
+    html.join "\n"
+  end
+
 end

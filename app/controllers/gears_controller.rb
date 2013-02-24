@@ -8,7 +8,6 @@ class GearsController < ApplicationController
     config.show.columns.exclude :price_type
     config.list.columns = [:name, :price, :weight, :gear_category]
 
-    config.columns[:description].css_class = "mceEditor"
     config.columns[:description].form_ui = :text_editor
 
     config.columns[:gear_category].form_ui = :select
