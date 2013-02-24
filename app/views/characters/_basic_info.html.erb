@@ -1,5 +1,6 @@
 <div class="character-basic-info">
-  <%= form_for @character, :url => update_characters_path, :remote => true do |f| %>
+  <%= form_for @character, :url => update_characters_path, :method => :put, :remote => true do |f| %>
+    <%= f.hidden_field :id %>
     <div class="basic-info-input">
       <%= f.text_field :name %>
       <%= f.label :name %>

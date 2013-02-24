@@ -52,12 +52,12 @@ class CharactersController < ApplicationController
   private
 
   def create_if_new
-    if params[:id].nil?
+    if params[:character][:id].empty?
       @character = Character.new
       @character.user_id = current_user.id
       @character.save!
     else
-      @character = Character.find(params[:id])
+      @character = Character.find(params[:character][:id])
     end
   end
 end
