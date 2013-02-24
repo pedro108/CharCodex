@@ -2,7 +2,8 @@ CharCodex::Application.routes.draw do
 	resources :comments, :adventures, :users, :backgrounds,
 						:encounters, :monsters, :terrains, :skills, :armors, :deities,
             :domains, :domain_powers, :spells, :feats, :gears, :weapons,
-            :languages, :feats, :races, :spell_schools, :character_classes
+            :languages, :feats, :races, :spell_schools, :character_classes,
+            :rogue_talents
 
 	resources :contents do
 		resources :comments
@@ -17,9 +18,9 @@ CharCodex::Application.routes.draw do
     end
   end
 
-  resources :characters, :except => [:update] do
+  resources :characters, :except => [:update, :show] do
     collection do
-      post '/update' => :update
+      put '/update' => :update
     end
   end
 

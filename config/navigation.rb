@@ -78,6 +78,7 @@ SimpleNavigation::Configuration.run do |navigation|
       adm.item :feats, t('activerecord.models.feat'), feats_path
       adm.item :races, t('activerecord.models.race'), races_path
       adm.item :character_class, t('activerecord.models.character_class'), character_classes_path
+      adm.item :rogue_talent, t('activerecord.models.rogue_talent'), rogue_talents_path
       adm.item :deities, t('activerecord.models.deity'), deities_path
       adm.item :domains, t('activerecord.models.domain'), domains_path
       adm.item :spell_school, t('activerecord.models.spell_school'), spell_schools_path

@@ -264,6 +264,7 @@ pt:
       character_class: "Classes de Personagem"
       character_class_feature: "Hablidades de classe"
       character_class_spell: "Magias de classe"
+      rogue_talent: "Proezas ladinas"
     attributes:
       user:
         login: "Login"
@@ -477,6 +478,12 @@ pt:
       character_class_spell:
         character_class: "Classe de personagem"
         spell_level: "Nível da magia"
+
+      rogue_talent:
+        name: Nome
+        benefit: Benefício
+        advanced: Avançado?
+        bonus: Bônus (ruby)
 
   percentage_validation: "é uma porcentagem, e portanto não pode ser maior que 100"
   arbitrary_attributes_show_description: "%{name} ganham +2 de bônus racial em %{number} atributo(s) de sua escolha."

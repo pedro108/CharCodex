@@ -4,8 +4,7 @@ class FeatsController < ApplicationController
   end
 
   active_scaffold :feat do |config|
-    config.create.columns = [:name, :benefits, :description, :feat_type, :bonus, :prerequisites]
-    config.update.columns = [:name, :benefits, :description, :feat_type, :bonus, :prerequisites]
+    config.columns = [:name, :benefits, :description, :feat_type, :bonus, :prerequisites]
     config.list.columns = [:name, :feat_type, :benefits]
     config.show.columns = [:name, :feat_type, :benefits, :description]
 
