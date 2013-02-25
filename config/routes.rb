@@ -2,7 +2,7 @@ CharCodex::Application.routes.draw do
 	resources :comments, :adventures, :users, :backgrounds, :alignments,
 						:encounters, :monsters, :terrains, :skills, :armors, :deities,
             :domains, :domain_powers, :spells, :feats, :gears, :weapons,
-            :languages, :feats, :races, :spell_schools, :character_classes,
+            :languages, :feats, :spell_schools, :character_classes,
             :rogue_talents
 
 	resources :contents do
@@ -18,9 +18,18 @@ CharCodex::Application.routes.draw do
     end
   end
 
+  resources :races do
+    member do
+      get '/sheet_details' => :sheet_details
+    end
+  end
+
   resources :characters, :except => [:update, :show] do
     collection do
       put '/update' => :update
+    end
+    member do
+      get '/select_character_class' => :select_character_class
     end
   end
 

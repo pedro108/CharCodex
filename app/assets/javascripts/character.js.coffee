@@ -8,6 +8,15 @@ submit_sheet_subform = ($input) ->
   $form.submit()
 
 $ ->
-  $("body").on 'blur', "#character-sheet-inner input[type=text]", (event) =>
+  $(document).on 'change', '#character_race_id', (event) =>
+    $this = $(event.currentTarget)
+    $.get "/races/#{$this.val()}/sheet_details", (response) =>
+      $("#race-select-container .race-select-body").html(response)
+
+  $(document).on 'click', '#race-select-container button.submit', (event) =>
+    $form = $("#race-select-container form")
+    $form.submit()
+
+  $(document).on 'blur', "#character-sheet-inner input[type=text]", (event) =>
     $this = $(event.currentTarget)
     submit_sheet_subform($this)

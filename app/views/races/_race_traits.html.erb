@@ -1,0 +1,6 @@
+<% race.race_traits.each do |race_trait| %>
+  <p>
+    <strong><%= "#{race_trait.name}: " %></strong>
+    <%= race_trait.benefits %>
+  </p>
+<% end %>

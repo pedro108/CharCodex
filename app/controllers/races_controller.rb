@@ -18,4 +18,12 @@ class RacesController < ApplicationController
 
     config.columns[:size].form_ui = :select
   end
+
+  def sheet_details
+    @race = Race.find(params[:id])
+
+    respond_to do |format|
+      format.html { render :layout => 'blank' }
+    end
+  end
 end 

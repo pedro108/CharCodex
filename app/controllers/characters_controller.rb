@@ -3,25 +3,36 @@ class CharactersController < ApplicationController
     controller.restrict_access(3)
   end
 
-  before_filter :create_if_new, :only => [:update]
-
   def new
     @character = Character.new
 
     respond_to do |format|
-      format.html { render 'sheet', :layout => 'blank' }
+      format.html { render 'race_select', :layout => 'blank' }
     end
   end
 
   def edit
     @character = Character.find(params[:id])
+    view = @character.character_character_classes.empty? ? 'sheet' : 'class_select'
 
     respond_to do |format|
-      format.html { render 'sheet', :layout => 'blank' }
+      format.html { render view, :layout => 'blank' }
+    end
+  end
+
+  # Creates a character after the race has been selected.
+  def create
+    @character = Character.new(params[:character])
+    @character.user_id = current_user.id
+    params[:success] = @character.save
+
+    respond_to do |format|
+      format.js
     end
   end
 
   def update
+    @character = Character.find(params[:character][:id])
     params[:success] = @character.update_attributes(params[:character])
 
     respond_to do |format|
@@ -31,10 +42,11 @@ class CharactersController < ApplicationController
 
 	active_scaffold :character do |config|
     config.actions.exclude :show, :create, :update
-    config.list.columns = [:name, :level, :adventure]
+    config.list.columns = [:name, :race, :level, :adventure]
     config.search.columns = [:name]
 
     config.columns[:adventure].clear_link
+    config.columns[:race].clear_link
 
     config.action_links.add :new, :label => I18n.t('active_scaffold.create_new'), :page => true, :type => :collection,
                             :html_options => CharactersHelper::lightview_options
@@ -47,17 +59,5 @@ class CharactersController < ApplicationController
 
   def conditions_for_collection
     ['characters.user_id = ?', current_user.id]
-  end
-
-  private
-
-  def create_if_new
-    if params[:character][:id].empty?
-      @character = Character.new
-      @character.user_id = current_user.id
-      @character.save!
-    else
-      @character = Character.find(params[:character][:id])
-    end
   end
 end

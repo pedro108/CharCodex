@@ -1,3 +1,5 @@
+$sheet_font_color: #570710;
+
 /* Lightview overrides */
 .lv_skin > canvas {
   display:none;
@@ -5,6 +7,82 @@
 
 .lv_window_mac .lv_button_top_close {
   top: 9px;
+}
+
+#race-select-container {
+  width: 800px;
+  height: 590px;
+
+  * {
+    color: #111;
+  }
+
+  .race-select-header {
+    width:100%;
+    height:49px;
+    overflow:hidden;
+    border-bottom: 1px solid $sheet_font_color;
+
+    h2 {
+      font-size:24px;
+      float:left;
+      font-weight:normal;
+      color: $sheet_font_color;
+    }
+
+    form {
+      float:right;
+      margin-top: 20px;
+    }
+  }
+
+  .race-select-body {
+    padding:10px 0px;
+    height:480px;
+    overflow:hidden;
+
+    .race-photo {
+      float:left;
+      width:285px;
+      border-right: 1px solid $sheet_font_color;
+      text-align:center;
+    }
+
+    .race-description {
+      float:left;
+      margin-left:15px;
+      width: 480px;
+      height:100%;
+      padding-right: 15px;
+      overflow:auto;
+
+      h3 {
+        margin-top: 0px;
+        line-height: 24px;
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        margin-top:20px;
+      }
+    }
+  }
+
+  .race-select-footer {
+    border-top:1px solid $sheet_font_color;
+    height:20px;
+    margin-top:4px;
+
+    .submit {
+      color: white;
+    }
+
+    button {
+      float:right;
+      margin-top:10px;
+      margin-left:10px;
+    }
+  }
 }
 
 #character-sheet-inner {
@@ -64,6 +142,12 @@
     .character-basic-info {
       form {
         margin:0px;
+      }
+
+      .basic-info-input-container {
+        clear:both;
+        overflow:hidden;
+        margin-bottom:5px;
       }
 
       .basic-info-input {

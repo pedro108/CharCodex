@@ -1,0 +1,13 @@
+<div class="race-photo">
+  <%= image_tag selected_race.photo.url(:medium) %>
+</div>
+
+<div class="race-description">
+  <h3><%= selected_race.name %></h3>
+
+  <%= selected_race.description.html_safe %>
+
+  <h4><%= t('activerecord.attributes.race.race_traits') %></h4>
+
+  <%= render :partial => 'races/race_traits', locals: { race: selected_race } %>
+</div>

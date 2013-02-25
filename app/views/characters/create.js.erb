@@ -1,0 +1,10 @@
+<% if params[:success] %>
+  // Load the character class selection box
+  Lightview.show({
+    url: '<%= edit_character_path(@character.id) %>',
+    type: 'ajax',
+    options: {<%=raw YAML::load_file("#{Rails.root}/config/lightview.yml").to_json.gsub(/^{|}$/, "").gsub(/\\|"/, "") %>}
+  });
+<% else %>
+  alert('Ocorreu um erro ao tentar salvar a ficha do seu personagem. Por favor, tente novamente mais tarde.');
+<% end %>

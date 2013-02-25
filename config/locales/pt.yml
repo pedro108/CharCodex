@@ -297,6 +297,8 @@ pt:
         miniature: "Miniatura do grid"
         adventure: "Aventura"
         player_name: "Nome do jogador"
+        race: "Raça"
+
       adventure:
         name: "Nome"
         characters: "Personagens"
@@ -500,7 +502,7 @@ pt:
     forms:
       basic_info: "Informações básicas"
       race_select:
-        title: "Selecione uma raça"
+        title: "Selecione a raça de seu personagem"
     saving: "Salvando..."
 
   spellcaster_type:

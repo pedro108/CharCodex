@@ -11,7 +11,7 @@ body {
 	margin:0px;
 }
 
-p {
+p, strong {
 	font-size:12px;
 }
 
