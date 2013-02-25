@@ -264,11 +264,9 @@ en:
         prerequisites: "Prerequisites (ruby)"
         benefits: "Benefits"
 
-      race_traits:
+      race_trait:
         name: "Name"
-        description: "Description"
         bonus: "Bonus (ruby)"
-        prerequisites: "Prerequisites (ruby)"
         benefits: "Benefits"
 
       race:

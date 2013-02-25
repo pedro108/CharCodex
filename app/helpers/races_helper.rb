@@ -9,9 +9,9 @@ module RacesHelper
   end
 
   def arbitrary_attributes_show_column(record)
-    if record.arbitrary_attributes > 0
+    if !record.arbitrary_attributes.nil? and record.arbitrary_attributes > 0
       t(:arbitrary_attributes_show_description,
-        :name => pluralize(2, record.name),
+        :name => record.name.pluralize,
         :number => record.arbitrary_attributes)
     else
       t(:none)

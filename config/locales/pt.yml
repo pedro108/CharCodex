@@ -409,11 +409,9 @@ pt:
         prerequisites: "Pré-requisitos (ruby)"
         benefits: "Benefícios"
 
-      race_traits:
+      race_trait:
         name: "Nome"
-        description: "Descrição"
         bonus: "Bônus (ruby)"
-        prerequisites: "Pré-requisitos (ruby)"
         benefits: "Benefícios"
 
       race:
