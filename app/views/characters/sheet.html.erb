@@ -14,7 +14,7 @@
         <%= link_to t('character_sheet.tabs.gear'), '#gear', data: { toggle: 'tab' } %>
       </li>
       <li>
-        <%= link_to t('character_sheet.tabs.feats_and_skills'), '#feats_skills', data: { toggle: 'tab' } %>
+        <%= link_to t('character_sheet.tabs.feats_and_skills'), '#feats_and_skills', data: { toggle: 'tab' } %>
       </li>
       <li class="active">
         <%= link_to t('character_sheet.tabs.basic_info'), '#basic-info', data: { toggle: 'tab' } %>
@@ -22,19 +22,21 @@
     </ul>
   </div>
 
-  <div class="sheet-body tab-content">
-    <div class="tab-pane active" id="basic-info">
-      <%= render :partial => 'basic_info' %>
+  <%= form_for @character, :url => update_characters_path, :method => :put, :remote => true do |f| %>
+    <div class="sheet-body tab-content">
+        <div class="tab-pane active" id="basic-info">
+          <%= render :partial => 'basic_info', :locals => { f: f } %>
+        </div>
+        <div class="tab-pane" id="feats_and_skills">
+          feats and skills
+        </div>
+        <div class="tab-pane" id="gear">
+          gear
+        </div>
+        <div class="tab-pane" id="spells">
+    spells
+        </div>
     </div>
-    <div class="tab-pane" id="feats_and_skills">
-      feats and skills
-    </div>
-    <div class="tab-pane" id="gear">
-      gear
-    </div>
-    <div class="tab-pane" id="spells">
-spells
-    </div>
-  </div>
+  <% end %>
 
 </div>
