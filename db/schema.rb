@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221154910) do
+ActiveRecord::Schema.define(:version => 20130225163456) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -29,8 +29,16 @@ ActiveRecord::Schema.define(:version => 20130221154910) do
   add_index "adventures_monsters", ["monster_id", "adventure_id"], :name => "monsters_index"
 
   create_table "alignments", :force => true do |t|
-    t.string "name", :null => false
+    t.string "name",        :null => false
+    t.text   "description"
   end
+
+  create_table "alignments_character_classes", :id => false, :force => true do |t|
+    t.integer "alignment_id",       :null => false
+    t.integer "character_class_id", :null => false
+  end
+
+  add_index "alignments_character_classes", ["character_class_id"], :name => "index_alignments_character_classes_on_character_class_id"
 
   create_table "armor_types", :force => true do |t|
     t.string   "name"

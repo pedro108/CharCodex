@@ -316,6 +316,7 @@ en:
         reflex: "Reflex bonus type"
         fortitude: "Fortitude bonus type"
         skills: "Class skills"
+        alignments: "Allowed alignments"
         spellcaster_type_id: "Spellcaster type"
         spellcaster_type: "Spellcaster type"
         spontaneous_spellcaster: "Spontaeneous spellcaster?"
@@ -346,6 +347,9 @@ en:
       feats_and_skills: "Feats & Skills"
     saving: "Saving..."
 
+    forms:
+      race_select:
+        title: "Select a race"
   spellcaster_type:
     1: Complete
     2: Hybrid

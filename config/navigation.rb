@@ -75,6 +75,7 @@ SimpleNavigation::Configuration.run do |navigation|
       adm.item :users, t('activerecord.models.user'), users_path
       adm.item :skills, t('activerecord.models.skill'), skills_path
       adm.item :languages, t('activerecord.models.language'), languages_path
+      adm.item :alignments, t('activerecord.models.alignment'), alignments_path
       adm.item :feats, t('activerecord.models.feat'), feats_path
       adm.item :races, t('activerecord.models.race'), races_path
       adm.item :character_class, t('activerecord.models.character_class'), character_classes_path

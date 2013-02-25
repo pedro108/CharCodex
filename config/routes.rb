@@ -1,5 +1,5 @@
 CharCodex::Application.routes.draw do
-	resources :comments, :adventures, :users, :backgrounds,
+	resources :comments, :adventures, :users, :backgrounds, :alignments,
 						:encounters, :monsters, :terrains, :skills, :armors, :deities,
             :domains, :domain_powers, :spells, :feats, :gears, :weapons,
             :languages, :feats, :races, :spell_schools, :character_classes,

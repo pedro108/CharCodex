@@ -461,6 +461,7 @@ pt:
         reflex: "Tipo de bônus de reflexo"
         fortitude: "Tipo de bônus de fortitude"
         skills: "Perícias de classe"
+        alignments: Tendências permitidas
         spellcaster_type_id: "Tipo de conjurador"
         spellcaster_type: "Tipo de conjurador"
         spontaneous_spellcaster: "Conjurador espontâneo?"
@@ -498,6 +499,8 @@ pt:
       feats_and_skills: "Talentos e perícias"
     forms:
       basic_info: "Informações básicas"
+      race_select:
+        title: "Selecione uma raça"
     saving: "Salvando..."
 
   spellcaster_type:

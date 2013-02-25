@@ -4,7 +4,7 @@ class CharacterClassesController < ApplicationController
   end
 
   active_scaffold :character_class do |config|
-    config.columns = [:name, :photo, :description, :hit_dice, :base_multiplier, :fortitude, :reflex, :will,
+    config.columns = [:name, :photo, :description, :hit_dice, :base_multiplier, :fortitude, :reflex, :will, :alignments,
                       :skills, :skill_ranks, :spellcaster_type_id, :spontaneous_spellcaster, :spells_per_day]
 
     config.list.columns = [:photo, :name, :hit_dice, :base_multiplier]
@@ -12,6 +12,7 @@ class CharacterClassesController < ApplicationController
                            :skills, :skill_ranks, :character_class_features, :spellcaster_type, :spontaneous_spellcaster]
 
     config.columns[:skills].form_ui = :select
+    config.columns[:alignments].form_ui = :select
     config.columns[:description].form_ui = :text_editor
     config.columns[:hit_dice].form_ui = :select
     config.columns[:spells_per_day].form_ui = :select
