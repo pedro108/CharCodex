@@ -1,0 +1,48 @@
+<table class="class-advancement-table table table-striped table-bordered" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>
+        <%= t('character_sheet.character_class.advancement_table.level') %>
+      </th>
+      <th>
+        <%= t('character_sheet.character_class.advancement_table.bab') %>
+      </th>
+      <th>
+        <%= t('character_sheet.character_class.advancement_table.fort_save') %>
+      </th>
+      <th>
+        <%= t('character_sheet.character_class.advancement_table.ref_save') %>
+      </th>
+      <th>
+        <%= t('character_sheet.character_class.advancement_table.will_save') %>
+      </th>
+      <th>
+        <%= t('character_sheet.character_class.advancement_table.special') %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Level.order(:level).each do |l| %>
+      <tr>
+        <td>
+          <%= l.level %>
+        </td>
+        <td>
+          <%= base_attack_bonus(character_class, l.level) %>
+        </td>
+        <td>
+          <%= saving_throw_bonus(character_class, 'fortitude', l) %>
+        </td>
+        <td>
+          <%= saving_throw_bonus(character_class, 'reflex', l) %>
+        </td>
+        <td>
+          <%= saving_throw_bonus(character_class, 'will', l) %>
+        </td>
+        <td>
+          <%= level_class_features(character_class, l.level) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

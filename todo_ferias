@@ -14,10 +14,11 @@ Models:
    * SorcererBloodline - SorcererBloodlinePower (feiticeiro)
    * FavoredEnemyType (Ranger)
    * FavoredTerrain (Ranger)
+   * ArcaneSchool (Wizard) *relacao com spell_schools
+   * SpellSchoolPowers (Wizard)
 
-
+ > Adicionar ouro inicial a classe
  > Adicionar campos de movimento para o modelo de personagem
- > Associar alignment com classe
 
  Prioridade baixa
  > Adicionar logica de vezes por dia para class_features, poderes de classe (rogue_talents) e poderes de dominio

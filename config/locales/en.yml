@@ -327,7 +327,8 @@ en:
         name: "Name"
         description: "Description"
         bonus: "Bonus (ruby)"
-        required_level: "Level"
+        levels: "Level(s)"
+        priority: Priority
 
       character_class_spell:
         character_class: "Character class"
@@ -345,11 +346,23 @@ en:
     tabs:
       basic_info: "Basic information"
       feats_and_skills: "Feats & Skills"
-    saving: "Saving..."
-
     forms:
       race_select:
-        title: "Select a race"
+        title: "Select your character's race"
+      class_select:
+        title: "Select your character's class"
+    saving: "Saving..."
+    character_class:
+      skills: "The %{class_name}'s class skills are: %{skill_list}"
+      skill_ranks: "<strong>Skill Ranks per level:</strong> %{skill_ranks} + INT modifier."
+      advancement_table:
+        title: Level advancement table
+        level: "Level"
+        bab: "Base attack bonus"
+        fort_save: "Fort. save"
+        ref_save: "Ref. save"
+        will_save: "Will save"
+        special: "Features"
   spellcaster_type:
     1: Complete
     2: Hybrid

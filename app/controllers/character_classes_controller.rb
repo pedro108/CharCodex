@@ -24,7 +24,13 @@ class CharacterClassesController < ApplicationController
     config.nested.add_link :character_class_features, :label => config.columns[:character_class_features].label
   end
 
+  def sheet_details
+    @character_class = CharacterClass.find(params[:id])
 
+    respond_to do |format|
+      format.html { render :layout => 'blank' }
+    end
+  end
 
   def after_create_save(record)
     # Create the spell list table, if the class is a spellcaster

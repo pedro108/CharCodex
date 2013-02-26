@@ -22,7 +22,7 @@
     </ul>
   </div>
 
-  <%= form_for @character, :url => update_characters_path, :method => :put, :remote => true do |f| %>
+  <%= form_for @character, :remote => true do |f| %>
     <div class="sheet-body tab-content">
         <div class="tab-pane active" id="basic-info">
           <%= render :partial => 'basic_info', :locals => { f: f } %>

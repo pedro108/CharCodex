@@ -16,4 +16,8 @@ module CharactersHelper
     options_for_select Race.all.map{ |r| [r.name, r.id] }
   end
 
+  def character_class_options
+    options_for_select CharacterClass.all.map{ |r| [r.name, r.id] }
+  end
+
 end

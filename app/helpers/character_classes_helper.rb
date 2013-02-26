@@ -54,7 +54,7 @@ module CharacterClassesHelper
 
   def character_class_skills_column(record)
     skills = record.skills.map do |skill|
-      "#{skill.name} <b>(#{skill.attribute.abbr})</b>"
+      "#{skill.name} (#{skill.attribute.abbr})"
     end
 
     skills.join(", ").html_safe
@@ -67,5 +67,28 @@ module CharacterClassesHelper
 
     options[:include_blank] = ''
     select :record, :spellcaster_type_id, collection, options
+  end
+
+  def base_attack_bonus(selected_class, level)
+    full_bba = (selected_class.base_multiplier * level).floor
+    attacks = full_bba.eql?(0) ? 1 : (full_bba.to_f / 5.0).ceil
+
+    Array.new attacks do |i|
+      "+#{full_bba - i*5}"
+    end.join("/")
+  end
+
+  def saving_throw_bonus(selected_class, save, level_obj)
+    "+#{level_obj.send("#{selected_class.send("#{save}?") ? 'good' : 'bad' }_saving_throw")}"
+  end
+
+  def level_class_features(selected_class, level)
+    features = Array.new
+    selected_class.character_class_features.each do |c_f|
+      feature_levels = c_f.levels.nil? ? [] : c_f.levels.split(',')
+      features << link_to(c_f.name, "##{c_f.name.downcase.gsub(/\s/, '_')}_field")  if feature_levels.include?(level.to_s)
+    end
+
+    features.join(', ').html_safe
   end
 end

@@ -5,14 +5,12 @@ class CharacterClassFeaturesController < ApplicationController
   end
 
   active_scaffold :character_class_feature do |config|
-    config.columns = [:name, :required_level, :description, :bonus]
-    config.list.columns = [:name, :required_level]
-    config.show.columns = [:name, :required_level, :description]
+    config.columns = [:name, :levels, :priority, :description, :bonus]
+    config.list.columns = [:name, :levels, :priority]
+    config.show.columns = [:name, :levels, :priority, :description]
 
-    config.list.sorting = {:required_level => 'ASC'}
-
-    config.columns[:required_level].form_ui = :slider
     config.columns[:description].form_ui = :text_editor
+    config.columns[:priority].form_ui = :slider
   end
 
   def nested_configuration

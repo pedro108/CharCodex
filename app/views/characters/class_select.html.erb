@@ -1,3 +1,18 @@
 <div id='class-select-container'>
 
+  <div class="class-select-header">
+    <h2><%= t('character_sheet.forms.class_select.title') %></h2>
+
+    <%= form_for @character, :remote => true, :method => :post do |f| %>
+      <%= f.fields_for :character_character_class do |c| %>
+        <%= c.hidden_field :level, value: 1 %>
+        <%= c.select :character_class_id, character_class_options %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="class-select-body">
+    <%= render :partial => 'character_classes/details', locals: { selected_class: CharacterClass.first } %>
+  </div>
+
 </div>

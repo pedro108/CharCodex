@@ -1,0 +1,28 @@
+<div class="class-photo">
+  <%= image_tag selected_class.photo.url(:medium) %>
+</div>
+
+<div class="class-description">
+  <h3><%= selected_class.name %></h3>
+
+  <%= selected_class.description.html_safe %>
+
+  <h4><%= t('activerecord.attributes.character_class.skills') %></h4>
+
+  <div class="class-skills">
+    <p>
+      <%= t('character_sheet.character_class.skills', :class_name => selected_class.name.downcase, :skill_list => character_class_skills_column(selected_class)) %>
+    </p>
+    <p>
+      <%= t('character_sheet.character_class.skill_ranks', :skill_ranks => selected_class.skill_ranks).html_safe %>
+    </p>
+  </div>
+
+  <h4><%= t('character_sheet.character_class.advancement_table.title') %></h4>
+
+  <%= render :partial => 'character_classes/advancement_table', locals: { character_class: selected_class } %>
+
+  <h4><%= t('activerecord.attributes.character_class.character_class_features') %></h4>
+
+  <%= render :partial => 'character_classes/class_features', locals: { character_class: selected_class } %>
+</div>

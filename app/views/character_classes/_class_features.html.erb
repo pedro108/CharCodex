@@ -1,0 +1,6 @@
+<% character_class.character_class_features.order(:priority).each do |class_feature| %>
+  <p id="<%= class_feature.name.downcase.gsub(/\s/, '_') %>_field">
+    <strong><%= "#{class_feature.name}: " %></strong>
+    <%= class_feature.description.html_safe %>
+  </p>
+<% end %>

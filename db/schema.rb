@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225163456) do
+ActiveRecord::Schema.define(:version => 20130226160818) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -92,10 +92,11 @@ ActiveRecord::Schema.define(:version => 20130225163456) do
 
   create_table "character_class_features", :force => true do |t|
     t.integer "character_class_id"
-    t.integer "required_level"
     t.string  "name"
     t.text    "description"
     t.text    "bonus"
+    t.string  "levels"
+    t.integer "priority"
   end
 
   create_table "character_class_spells", :force => true do |t|
@@ -331,6 +332,14 @@ ActiveRecord::Schema.define(:version => 20130225163456) do
     t.string "name", :null => false
   end
 
+  create_table "favored_classes", :force => true do |t|
+    t.integer "character_id"
+    t.integer "character_class_id"
+  end
+
+  add_index "favored_classes", ["character_class_id"], :name => "index_favored_classes_on_character_class_id"
+  add_index "favored_classes", ["character_id"], :name => "index_favored_classes_on_character_id"
+
   create_table "feat_types", :force => true do |t|
     t.string "name"
   end
@@ -370,12 +379,12 @@ ActiveRecord::Schema.define(:version => 20130225163456) do
   end
 
   create_table "levels", :force => true do |t|
-    t.integer "level",           :null => false
-    t.integer "fastXP",          :null => false
-    t.integer "mediumXP",        :null => false
-    t.integer "slowXP",          :null => false
-    t.integer "badSavingThrow",  :null => false
-    t.integer "goodSavingThrow", :null => false
+    t.integer "level",             :null => false
+    t.integer "fast_xp",           :null => false
+    t.integer "medium_xp",         :null => false
+    t.integer "slow_xp",           :null => false
+    t.integer "bad_saving_throw",  :null => false
+    t.integer "good_saving_throw", :null => false
   end
 
   create_table "magic_armor_magic_properties", :force => true do |t|

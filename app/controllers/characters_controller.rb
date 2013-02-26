@@ -13,7 +13,7 @@ class CharactersController < ApplicationController
 
   def edit
     @character = Character.find(params[:id])
-    view = @character.character_character_classes.empty? ? 'sheet' : 'class_select'
+    view = @character.character_character_classes.empty? ? 'class_select' : 'sheet'
 
     respond_to do |format|
       format.html { render view, :layout => 'blank' }
@@ -32,7 +32,7 @@ class CharactersController < ApplicationController
   end
 
   def update
-    @character = Character.find(params[:character][:id])
+    @character = Character.find(params[:id])
     params[:success] = @character.update_attributes(params[:character])
 
     respond_to do |format|

@@ -21,6 +21,8 @@ class Character < ActiveRecord::Base
   has_many :character_magic_weapons
   has_many :character_magic_items
 
+  has_many :favored_classes
+
   has_and_belongs_to_many :feats
   has_and_belongs_to_many :languages
   has_and_belongs_to_many :gears

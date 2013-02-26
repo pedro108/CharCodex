@@ -474,7 +474,8 @@ pt:
         name: "Nome"
         description: "Descrição"
         bonus: "Bônus (ruby)"
-        required_level: "Nível"
+        levels: "Nível(is)"
+        priority: Prioridade
 
       character_class_spell:
         character_class: "Classe de personagem"
@@ -503,8 +504,20 @@ pt:
       basic_info: "Informações básicas"
       race_select:
         title: "Selecione a raça de seu personagem"
+      class_select:
+        title: "Selecione a classe de seu personagem"
     saving: "Salvando..."
-
+    character_class:
+      skills: "As perícias de classe do %{class_name} são: %{skill_list}"
+      skill_ranks: "<strong>Ranks de perícia por nível:</strong> %{skill_ranks} + modificador de INT."
+      advancement_table:
+        title: Tabela de avanço de nível
+        level: "Nível"
+        bab: "Bônus base de ataque"
+        fort_save: "Save de fort."
+        ref_save: "Save de ref."
+        will_save: "Save de vont."
+        special: "Habilidades"
   spellcaster_type:
     1: Completo
     2: Híbrido
