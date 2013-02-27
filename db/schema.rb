@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226160818) do
+ActiveRecord::Schema.define(:version => 20130227223529) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20130226160818) do
   create_table "armors", :force => true do |t|
     t.string  "name",              :null => false
     t.text    "description"
-    t.float   "price",             :null => false
+    t.integer "price",             :null => false
     t.integer "armor_bonus",       :null => false
     t.integer "max_dex_bonus",     :null => false
     t.integer "check_penalty",     :null => false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130226160818) do
     t.integer "armor_type_id"
     t.integer "equipment_slot_id"
     t.integer "price_type_id"
+    t.integer "equipment_type_id"
   end
 
   create_table "attributes", :force => true do |t|
@@ -84,10 +85,13 @@ ActiveRecord::Schema.define(:version => 20130226160818) do
   end
 
   create_table "character_character_classes", :force => true do |t|
-    t.integer "character_id",       :null => false
-    t.integer "character_class_id", :null => false
-    t.integer "level",              :null => false
-    t.integer "hp_gained",          :null => false
+    t.integer "character_id",                              :null => false
+    t.integer "character_class_id",                        :null => false
+    t.integer "level",                                     :null => false
+    t.integer "hp_gained",                                 :null => false
+    t.integer "favored_class_bonus_id"
+    t.boolean "favored_class"
+    t.boolean "familiar",               :default => false
   end
 
   create_table "character_class_features", :force => true do |t|
@@ -125,12 +129,22 @@ ActiveRecord::Schema.define(:version => 20130226160818) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "spellcaster_type_id"
+    t.string   "initial_gold"
+    t.text     "extra_features"
   end
 
   create_table "character_classes_skills", :id => false, :force => true do |t|
     t.integer "character_class_id", :null => false
     t.integer "skill_id",           :null => false
   end
+
+  create_table "character_gears", :force => true do |t|
+    t.integer "character_id"
+    t.integer "gear_id"
+    t.integer "quantity"
+  end
+
+  add_index "character_gears", ["character_id"], :name => "index_character_gears_on_character_id"
 
   create_table "character_magic_armors", :force => true do |t|
     t.integer "character_id"
@@ -193,31 +207,32 @@ ActiveRecord::Schema.define(:version => 20130226160818) do
     t.integer  "alignment_id"
     t.integer  "experience_points",      :default => 0,   :null => false
     t.integer  "progression_type"
-    t.integer  "hit_points"
-    t.integer  "fortitude"
-    t.integer  "reflex"
-    t.integer  "will"
     t.integer  "armor_class_armor",      :default => 0,   :null => false
     t.integer  "armor_class_shield",     :default => 0,   :null => false
     t.integer  "armor_class_dex",        :default => 0,   :null => false
-    t.integer  "armor_class_size",       :default => 0,   :null => false
     t.integer  "armor_class_natural",    :default => 0,   :null => false
     t.integer  "armor_class_deflection", :default => 0,   :null => false
     t.integer  "armor_class_misc",       :default => 0,   :null => false
     t.integer  "base_attack_bonus",      :default => 0,   :null => false
-    t.integer  "initiative",             :default => 0,   :null => false
-    t.integer  "cmb",                    :default => 0,   :null => false
-    t.integer  "cmd",                    :default => 0,   :null => false
     t.integer  "damage_reduction"
     t.integer  "spell_resistance"
     t.string   "gender"
     t.string   "height"
     t.string   "weight"
-    t.string   "eyes"
+    t.string   "eyes_color"
     t.integer  "age"
     t.float    "money",                  :default => 0.0, :null => false
-    t.float    "weight_capacity",        :default => 0.0, :null => false
+    t.float    "weight_carried",         :default => 0.0, :null => false
     t.integer  "armor_class_dodge",      :default => 0
+    t.integer  "strength"
+    t.integer  "dexterity"
+    t.integer  "constitution"
+    t.integer  "intelligence"
+    t.integer  "wisdom"
+    t.integer  "charisma"
+    t.text     "description"
+    t.text     "historic_background"
+    t.string   "hair_color"
   end
 
   create_table "characters_domains", :id => false, :force => true do |t|
@@ -332,13 +347,14 @@ ActiveRecord::Schema.define(:version => 20130226160818) do
     t.string "name", :null => false
   end
 
-  create_table "favored_classes", :force => true do |t|
-    t.integer "character_id"
-    t.integer "character_class_id"
+  create_table "equipment_types", :force => true do |t|
+    t.string "name"
   end
 
-  add_index "favored_classes", ["character_class_id"], :name => "index_favored_classes_on_character_class_id"
-  add_index "favored_classes", ["character_id"], :name => "index_favored_classes_on_character_id"
+  create_table "favored_class_bonuses", :force => true do |t|
+    t.string "benefit"
+    t.text   "bonus"
+  end
 
   create_table "feat_types", :force => true do |t|
     t.string "name"
@@ -409,10 +425,11 @@ ActiveRecord::Schema.define(:version => 20130226160818) do
     t.text    "description"
     t.integer "equipment_slot_id"
     t.text    "construction",        :null => false
-    t.float   "price",               :null => false
+    t.integer "price",               :null => false
     t.text    "bonus"
     t.float   "weight",              :null => false
     t.integer "magic_item_group_id", :null => false
+    t.integer "charges"
   end
 
   create_table "magic_properties", :force => true do |t|
@@ -420,7 +437,7 @@ ActiveRecord::Schema.define(:version => 20130226160818) do
     t.text    "description"
     t.text    "bonus"
     t.integer "level_cost"
-    t.float   "price"
+    t.integer "price"
     t.integer "equipment_type_id"
   end
 
@@ -499,8 +516,12 @@ ActiveRecord::Schema.define(:version => 20130226160818) do
   end
 
   create_table "sizes", :force => true do |t|
-    t.string  "name",                 :null => false
+    t.string  "name",                     :null => false
     t.integer "armor_class_modifier"
+    t.integer "movement"
+    t.integer "combat_maneuver_modifier"
+    t.integer "stealth_modifier"
+    t.integer "attack_modifier"
   end
 
   create_table "skills", :force => true do |t|
@@ -640,10 +661,10 @@ ActiveRecord::Schema.define(:version => 20130226160818) do
     t.integer "critical_power"
     t.integer "range"
     t.float   "weight",                      :null => false
-    t.float   "price",                       :null => false
-    t.text    "obs",                         :null => false
-    t.integer "equipment_slot_id"
+    t.integer "price",                       :null => false
     t.integer "price_type_id"
+    t.integer "equipment_type_id"
+    t.boolean "two_handed"
   end
 
 end

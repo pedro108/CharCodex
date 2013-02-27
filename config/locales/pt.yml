@@ -345,6 +345,7 @@ pt:
         weight: "Peso (libras)"
         description: "Descrição"
         equipment_slot: "Slot de equipamento"
+        equipment_type: "Tipo de equipamento (propriedade mágica)"
 
       weapon:
         name: Nome
@@ -363,6 +364,8 @@ pt:
         range: Alcance
         weapon_types: Tipos da arma
         weapon_features: Características da arma
+        equipment_type: "Tipo de equipamento (propriedade mágica)"
+        two_handed: Arma de duas mãos
 
       deity:
         name: "Nome"
@@ -469,7 +472,10 @@ pt:
         spontaneous_spellcaster: "Conjurador espontâneo?"
         skill_ranks: "Ranks de perícia por nível"
         character_class_features: "Habilidades de classe"
+        initial_gold: Ouro inicial
+        extra_features: Habilidades extra
 
+        spells_per_day: "Magias por dia"
       character_class_feature:
         name: "Nome"
         description: "Descrição"

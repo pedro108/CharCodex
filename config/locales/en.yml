@@ -226,6 +226,27 @@ en:
         weight: "Weight"
         description: "Description"
         equipment_slot: "Equipment slot"
+        equipment_type: "Equipment type (magic property)"
+
+      weapon:
+        name: Name
+        description: Description
+        equipment_slot: Equipment slot
+        equipment_slot_id: Equipment slot
+        weapon_proficiency_level: Proficiency level
+        weapon_proficiency_level_id: Proficiency level
+        weapon_group: Group
+        weapon_group_id: Group
+        damage: Damage
+        price: Price
+        weight: Weight (pounds)
+        critical_threat: Critical threat
+        critical_power: Critical damage multiplier
+        range: Range
+        weapon_types: Weapon types
+        weapon_features: Weapon Features
+        equipment_type: "Equipment type (magic property)"
+        two_handed: Two-handed weapon
 
       deity:
         name: "Name"
@@ -322,7 +343,10 @@ en:
         spontaneous_spellcaster: "Spontaeneous spellcaster?"
         skill_ranks: "Skill ranks per level"
         character_class_features: "Class features"
+        initital_gold: Initial gold
+        extra_features: Extra features
 
+        spells_per_day: "Spells per day"
       character_class_feature:
         name: "Name"
         description: "Description"

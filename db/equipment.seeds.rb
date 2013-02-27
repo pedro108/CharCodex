@@ -107,6 +107,22 @@ EquipmentSlot.create!([{
                            :name => "Wrists"
                        }])
 
+#equipment_types table
+EquipmentType.delete_all
+
+EquipmentType.create!([{
+                           :name => "Armor"
+                       }])
+EquipmentType.create!([{
+                           :name => "Shield"
+                       }])
+EquipmentType.create!([{
+                           :name => "Melee Weapon"
+                       }])
+EquipmentType.create!([{
+                           :name => "Ranged Weapon"
+                       }])
+
 #gear_categories table
 GearCategory.delete_all
 

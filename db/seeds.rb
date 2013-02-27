@@ -6,7 +6,7 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-=begin
+
 puts "Populando a tabela -dice-"
 load File.expand_path('../dice.seeds.rb', __FILE__)
 
@@ -38,11 +38,11 @@ load File.expand_path('../language.seeds.rb', __FILE__)
 
 puts "Populando a tabela -Feat types-"
 load File.expand_path('../feat_type.seeds.rb', __FILE__)
-=end
 
 puts "Populando a tabela -Price type-"
 puts "Populando a tabela -Armor type-"
 puts "Populando a tabela -Equipment slot-"
+puts "Populando a tabela -Equipment type-"
 puts "Populando a tabela -Gear category-"
 load File.expand_path('../equipment.seeds.rb', __FILE__)
 
