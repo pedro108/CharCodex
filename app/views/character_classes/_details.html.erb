@@ -22,7 +22,14 @@
 
   <%= render :partial => 'character_classes/advancement_table', locals: { character_class: selected_class } %>
 
+  <% unless selected_class.spellcaster_type_id.nil? %>
+    <h4><%= t('activerecord.attributes.character_class.spells_per_day') %></h4>
+
+    <%= render :partial => 'character_classes/spells_per_day_table', locals: { character_class: selected_class } %>
+  <% end %>
+
   <h4><%= t('activerecord.attributes.character_class.character_class_features') %></h4>
 
   <%= render :partial => 'character_classes/class_features', locals: { character_class: selected_class } %>
+
 </div>

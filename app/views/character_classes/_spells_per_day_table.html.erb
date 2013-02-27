@@ -1,0 +1,28 @@
+<table class="spells-per-day-table table table-striped table-bordered" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th>
+        <%= t('spell_level.abbr.level')  %>
+      </th>
+      <% 10.times do |spell_level| %>
+        <th>
+          <%= t('spell_level.abbr')[spell_level] %>
+        </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% character_class.spells_per_day.order(:class_level).each do |s| %>
+      <tr>
+        <td>
+          <%= s.class_level %>
+        </td>
+        <% [:zero, :first, :second, :third, :fourth, :fifth, :sixth, :seventh, :eighth, :ninth].each do |level| %>
+          <td>
+            <%= s.send("#{level}_spell_level") %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
