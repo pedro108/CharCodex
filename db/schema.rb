@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227223529) do
+ActiveRecord::Schema.define(:version => 20130227232813) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -130,7 +130,6 @@ ActiveRecord::Schema.define(:version => 20130227223529) do
     t.datetime "photo_updated_at"
     t.integer  "spellcaster_type_id"
     t.string   "initial_gold"
-    t.text     "extra_features"
   end
 
   create_table "character_classes_skills", :id => false, :force => true do |t|
@@ -278,12 +277,6 @@ ActiveRecord::Schema.define(:version => 20130227223529) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-  end
-
-  create_table "daily_spells", :force => true do |t|
-    t.integer "spell_level",        :null => false
-    t.integer "character_class_id", :null => false
-    t.integer "quantity",           :null => false
   end
 
   create_table "deities", :force => true do |t|

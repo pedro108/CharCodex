@@ -431,7 +431,3 @@ BonusSpell.create!([{
                         :bonus => 1,
                         :spell_level => 8
                     }])
-
-DailySpell.delete_all
-
-#TODO: implementar character class controllers, inserir as classes no banco e colocar os daily spells aqui?
