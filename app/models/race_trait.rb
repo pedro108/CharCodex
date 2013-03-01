@@ -4,4 +4,5 @@ class RaceTrait < ActiveRecord::Base
   attr_accessible :name, :benefits, :bonus
 
   validates :name, :benefits, :presence => true
+  validates :priority, :numericality => true
 end

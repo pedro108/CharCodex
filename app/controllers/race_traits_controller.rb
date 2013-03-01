@@ -5,8 +5,8 @@ class RaceTraitsController < ApplicationController
 
   active_scaffold :race_trait do |config|
     config.actions.exclude :search, :show
-    config.columns = [:name, :benefits, :bonus]
-    config.list.columns = [:name, :benefits]
+    config.columns = [:name, :benefits, :priority, :bonus]
+    config.list.columns = [:name, :benefits, :priority]
 
     config.columns[:benefits].form_ui = :textarea
   end

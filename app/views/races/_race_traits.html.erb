@@ -1,4 +1,20 @@
-<% race.race_traits.each do |race_trait| %>
+<div class="race-attributes">
+  <% if !race.arbitrary_attributes.nil? and race.arbitrary_attributes > 0 %>
+    <%= t('character_sheet.race.arbitrary_attribute').html_safe %>:
+  <% else %>
+    <%=
+        race.race_attributes.order("value DESC").map do |ra|
+          "<strong>#{'+' if ra.value > 0}#{ra.value}</strong> #{ra.attribute.name}"
+        end.join(", ").html_safe
+    %>:
+  <% end %>
+
+  <span>
+    <%= race.attribute_description %>
+  </span>
+</div>
+
+<% race.race_traits.order(:priority).each do |race_trait| %>
   <p>
     <strong><%= "#{race_trait.name}: " %></strong>
     <%= race_trait.benefits %>

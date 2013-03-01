@@ -1,4 +1,5 @@
 <div id='race-select-container'>
+  <%= hidden_field_tag :sheet_changed, true %>
 
   <div class="race-select-header">
     <h2><%= t('character_sheet.forms.race_select.title') %></h2>
@@ -16,6 +17,4 @@
     <button class="btn btn-primary submit"><%= t('active_scaffold._select_') %></button>
     <button class="btn close_lightview"><%= t('active_scaffold.cancel') %></button>
   </div>
-
-
 </div>
