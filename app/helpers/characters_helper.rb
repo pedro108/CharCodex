@@ -20,4 +20,14 @@ module CharactersHelper
     options_for_select CharacterClass.all.map{ |r| [r.name, r.id] }
   end
 
+  def favored_class_bonus_options
+    options_for_select FavoredClassBonus.all.map{ |r| [r.benefit, r.id] }
+  end
+
+  def character_character_classes_column(record)
+    record.character_character_classes.select('*, count(*) AS total_level').group(:character_class_id).map do |c|
+      "#{c.character_class.name} #{c.total_level}"
+    end.join(" / ")
+  end
+
 end

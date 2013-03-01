@@ -15,7 +15,7 @@ class Character < ActiveRecord::Base
   has_many :gears, :through => :character_gears
 
   has_many :character_skills
-  has_many :character_character_classes
+  has_many :character_character_classes, :dependent => :destroy
   has_many :character_armors
   has_many :character_magic_armors
   has_many :character_weapons
@@ -32,4 +32,10 @@ class Character < ActiveRecord::Base
 	has_attached_file :miniature, :styles => { :medium => "50x480>", :thumb => "50x50>" }
 
   validates :user_id, :presence => true
+
+  accepts_nested_attributes_for :character_character_classes
+
+  def last_created_class
+    self.character_character_classes.order("created_at DESC").limit(1).first
+  end
 end

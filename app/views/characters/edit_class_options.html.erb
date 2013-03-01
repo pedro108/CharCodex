@@ -1,0 +1,31 @@
+<div id="class-options-container">
+  <%= hidden_field_tag :sheet_changed, true %>
+
+  <div class="class-options-header">
+    <h2>
+      <%= t('character_sheet.forms.class_options.title',
+              :class => @selected_class_relation.character_class.name,
+              :level => @selected_class_relation.level) %>
+    </h2>
+    <h3>
+      <%= t('character_sheet.forms.class_options.description') %>
+    </h3>
+  </div>
+
+  <div class="class-options-body">
+    <%= form_for @selected_class_relation, :url => update_class_options_character_path, :remote => true do |f| %>
+      <% if f.object.favored_class? %>
+        <div class="class-options-form-field">
+          <%= f.label :favored_class_bonus, "#{t('activerecord.attributes.character_character_class.favored_class_bonus')}:" %>
+          <%= f.select :favored_class_bonus, options_for_select(favored_class_bonus_options) %>
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+
+  <div class="class-options-footer">
+    <button class="btn btn-primary submit"><%= t('active_scaffold._select_') %></button>
+    <button class="btn back close_callback" data-characterid="<%= @character.id %>"><%= t('character_sheet.buttons.back_class_select') %></button>
+  </div>
+</div>

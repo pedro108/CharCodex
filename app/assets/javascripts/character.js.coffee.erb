@@ -1,0 +1,56 @@
+@sheet_hide_callback = ->
+  changed = $('#sheet_changed').val()
+  window.location.reload() if changed == 'true'
+
+submit_sheet_subform = ($input) ->
+  $form = $input.closest('form')
+  $(".sheet-saving-indicator").show()
+  $form.submit()
+
+lightview_transition = (url) =>
+  Lightview.show
+    url: url
+    type: 'ajax'
+    options: {<%= YAML::load_file("#{Rails.root}/config/lightview.yml").to_json.gsub(/^{|}$/, "").gsub(/\\|"/, "").html_safe %>}
+
+$ ->
+  $(document).on 'change', '#character_race_id', (event) =>
+    $this = $(event.currentTarget)
+    $.get "/races/#{$this.val()}/sheet_details", (response) =>
+      $("#race-select-container .race-select-body").html(response)
+
+  $(document).on 'click', '#race-select-container button.submit', (event) =>
+    $('#sheet_changed').val(false)
+    $form = $("#race-select-container form")
+    $form.submit()
+
+  $(document).on 'change', '#character_character_character_classes_attributes_0_character_class_id', (event) =>
+    $this = $(event.currentTarget)
+    $.get "/character_classes/#{$this.val()}/sheet_details", (response) =>
+      $("#class-select-container .class-select-body").html(response)
+
+  $(document).on 'click', '#class-select-container button.back', (event) =>
+    $this = $(event.currentTarget)
+    $('#sheet_changed').val(false)
+    $.ajax
+      url: "/characters/#{$this.data("characterid")}"
+      type: "DELETE"
+    lightview_transition('/characters/new')
+
+  $(document).on 'click', '#class-select-container button.submit', (event) =>
+    $('#sheet_changed').val(false)
+    $form = $("#class-select-container form")
+    $form.submit()
+
+  $(document).on 'click', '#class-options-container button.back', (event) =>
+    $this = $(event.currentTarget)
+    $('#sheet_changed').val(false)
+    $.ajax
+      url: "/characters/#{$this.data("characterid")}/destroy_class_selection"
+      type: "POST"
+      success: (response) =>
+        lightview_transition("/characters/#{$this.data("characterid")}/edit")
+
+  $(document).on 'blur', "#character-sheet-inner input[type=text]", (event) =>
+    $this = $(event.currentTarget)
+    submit_sheet_subform($this)

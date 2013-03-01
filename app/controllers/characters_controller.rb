@@ -13,7 +13,15 @@ class CharactersController < ApplicationController
 
   def edit
     @character = Character.find(params[:id])
-    view = @character.character_character_classes.empty? ? 'class_select' : 'sheet'
+    if @character.character_character_classes.empty?
+      view = 'class_select'
+      @character.character_character_classes.build
+    elsif @character.last_created_class.completed_selection
+      view = 'sheet'
+    else
+      view = 'edit_class_options'
+      @selected_class_relation = @character.last_created_class
+    end
 
     respond_to do |format|
       format.html { render view, :layout => 'blank' }
@@ -31,22 +39,41 @@ class CharactersController < ApplicationController
     end
   end
 
-  def update
+  # Selects a class for the created character
+  def class_select
+    update(:class_select)
+  end
+
+  def update(view=:update)
     @character = Character.find(params[:id])
     params[:success] = @character.update_attributes(params[:character])
 
     respond_to do |format|
-      format.js
+      format.js { render view }
     end
+  end
+
+  def destroy_class_selection
+    @character = Character.find(params[:id])
+    @character.last_created_class.destroy
+
+    render :nothing => true
+  end
+
+  def update_class_options
+    @character = Character.find(params[:id])
+
+
   end
 
 	active_scaffold :character do |config|
     config.actions.exclude :show, :create, :update
-    config.list.columns = [:name, :race, :level, :adventure]
+    config.list.columns = [:name, :race, :character_classes, :level, :adventure]
     config.search.columns = [:name]
 
     config.columns[:adventure].clear_link
     config.columns[:race].clear_link
+    config.columns[:character_classes].clear_link
 
     config.action_links.add :new, :label => I18n.t('active_scaffold.create_new'), :page => true, :type => :collection,
                             :html_options => CharactersHelper::lightview_options

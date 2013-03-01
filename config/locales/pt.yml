@@ -298,6 +298,7 @@ pt:
         adventure: "Aventura"
         player_name: "Nome do jogador"
         race: "Raça"
+        character_classes: Classe(s)
 
       adventure:
         name: "Nome"
@@ -418,6 +419,7 @@ pt:
         name: "Nome"
         bonus: "Bônus (ruby)"
         benefits: "Benefícios"
+        priority: "Prioridade"
 
       race:
         photo: Imagem
@@ -428,6 +430,7 @@ pt:
         languages: "Linguagens iniciais"
         race_attributes: "Modificadores de Atributos"
         race_traits: "Traços raciais"
+        attribute_description: "Descrição dos atributos"
 
       race_attribute:
         value: "Bônus (ou decréscimo)"
@@ -474,8 +477,8 @@ pt:
         character_class_features: "Habilidades de classe"
         initial_gold: Ouro inicial
         extra_features: Habilidades extra
-
         spells_per_day: "Magias por dia"
+
       character_class_feature:
         name: "Nome"
         description: "Descrição"
@@ -487,6 +490,10 @@ pt:
         character_class: "Classe de personagem"
         spell_level: "Nível da magia"
 
+      character_character_class:
+        favored_class: Classe favorecida?
+
+        favored_class_bonus: "Bônus de classe favorecida"
       rogue_talent:
         name: Nome
         benefit: Benefício
@@ -512,6 +519,9 @@ pt:
         title: "Selecione a raça de seu personagem"
       class_select:
         title: "Selecione a classe de seu personagem"
+      class_options:
+        title: "Opções para a classe: %{class} (nível %{level})"
+        description: "Selecione aqui os bônus e as habilidades da classe que escolheu."
     saving: "Salvando..."
     character_class:
       skills: "As perícias de classe do %{class_name} são: %{skill_list}"
@@ -524,6 +534,11 @@ pt:
         ref_save: "Save de ref."
         will_save: "Save de vont."
         special: "Habilidades"
+    buttons:
+      back_race_select: "Voltar para a seleção de raça"
+      back_class_select: "Voltar para a seleção de classe"
+    race:
+      arbitrary_attribute: "<strong>+2</strong> para um atributo"
   spellcaster_type:
     1: Completo
     2: Híbrido

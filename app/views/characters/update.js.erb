@@ -2,7 +2,6 @@ $(".sheet-saving-indicator").hide();
 
 <% if params[:success] %>
   $('#sheet_changed').val(true);
-  $("#character_id").val(<%= @character.id %>);
 <% else %>
   alert('Ocorreu um erro ao tentar salvar a ficha do seu personagem. Por favor, tente novamente mais tarde.');
 <% end %>

@@ -56,6 +56,15 @@ $sheet_font_color: #570710;
       padding-right: 15px;
       overflow:auto;
 
+      .race-attributes {
+        font-size:13px;
+        margin-bottom:10px;
+
+        span {
+          font-size:12px;
+        }
+      }
+
       h3 {
         margin-top: 0px;
         line-height: 24px;
@@ -112,13 +121,37 @@ $sheet_font_color: #570710;
 
     form {
       float:right;
-      margin-top: 20px;
+
+
+      .class-select-form-field {
+        margin-bottom:3px;
+
+        select {
+          margin-bottom:0px;
+        }
+
+        label, input[type=checkbox] {
+          float:left
+        }
+
+        label {
+          font-size: 12px;
+          font-weight: bold;
+          display: inline-block;
+          margin-right: 10px;
+        }
+
+        .hint {
+          position: relative;
+          left: 5px;
+        }
+      }
     }
   }
 
   .class-select-body {
     padding:10px 0px;
-    height:500px;
+    height:490px;
     overflow:hidden;
 
     .class-photo {
@@ -152,6 +185,98 @@ $sheet_font_color: #570710;
           max-width:200px;
         }
       }
+    }
+  }
+
+  .class-select-footer {
+    border-top:1px solid $sheet_font_color;
+    height:20px;
+    margin-top:4px;
+
+    .submit {
+      color: white;
+    }
+
+    button {
+      float:right;
+      margin-top:10px;
+      margin-left:10px;
+    }
+  }
+}
+
+#class-options-container {
+  width: 800px;
+  height: 600px;
+
+  * {
+    color: #111;
+  }
+
+  a {
+    color: #0088CC;
+  }
+
+  .class-options-header {
+    width:100%;
+    overflow:hidden;
+    border-bottom: 1px solid $sheet_font_color;
+
+    h2 {
+      margin: 0px;
+      line-height: 24px;
+      font-size:24px;
+      font-weight:normal;
+      color: $sheet_font_color;
+    }
+
+    h3 {
+      font-size:14px;
+      font-weight:normal;
+      margin: 0px;
+      line-height: 24px;
+      margin-top: 10px;
+    }
+
+  }
+
+  .class-options-body {
+    height:500px;
+
+    form {
+      padding-top:20px;
+      padding-left:10px;
+
+      .class-options-form-field {
+        margin-bottom:10px;
+        clear:both;
+
+        label {
+          font-weight:bold;
+          width:200px;
+        }
+
+        select {
+
+        }
+      }
+
+    }
+  }
+
+  .class-options-footer {
+    border-top:1px solid $sheet_font_color;
+    height:20px;
+    margin-top:4px;
+
+    .submit {
+      color: white;
+    }
+
+    button {
+      float:right;
+      margin-top:10px;
+      margin-left:10px;
     }
   }
 }

@@ -29,7 +29,13 @@ CharCodex::Application.routes.draw do
     end
   end
 
-  resources :characters, :except => [:show]
+  resources :characters, :except => [:show] do
+    member do
+      post '/class_select' => :class_select
+      post '/update_class_options' => :update_class_options
+      post '/destroy_class_selection' => :destroy_class_selection
+    end
+  end
 
   match "logout" => "user_sessions#destroy"
 	match "signup" => "users#signup"

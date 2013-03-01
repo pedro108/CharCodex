@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227232813) do
+ActiveRecord::Schema.define(:version => 20130301001431) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -85,13 +85,15 @@ ActiveRecord::Schema.define(:version => 20130227232813) do
   end
 
   create_table "character_character_classes", :force => true do |t|
-    t.integer "character_id",                              :null => false
-    t.integer "character_class_id",                        :null => false
-    t.integer "level",                                     :null => false
-    t.integer "hp_gained",                                 :null => false
-    t.integer "favored_class_bonus_id"
-    t.boolean "favored_class"
-    t.boolean "familiar",               :default => false
+    t.integer  "character_id",                              :null => false
+    t.integer  "character_class_id",                        :null => false
+    t.integer  "level"
+    t.integer  "hp_gained"
+    t.integer  "favored_class_bonus_id"
+    t.boolean  "favored_class"
+    t.boolean  "familiar",               :default => false
+    t.datetime "created_at"
+    t.boolean  "completed_selection",    :default => false
   end
 
   create_table "character_class_features", :force => true do |t|
@@ -486,12 +488,13 @@ ActiveRecord::Schema.define(:version => 20130227232813) do
     t.string  "name"
     t.string  "benefits"
     t.text    "bonus"
+    t.integer "priority"
   end
 
   add_index "race_traits", ["race_id"], :name => "index_race_traits_on_race_id"
 
   create_table "races", :force => true do |t|
-    t.string   "name",                 :null => false
+    t.string   "name",                  :null => false
     t.text     "description"
     t.integer  "size_id"
     t.integer  "arbitrary_attributes"
@@ -499,6 +502,7 @@ ActiveRecord::Schema.define(:version => 20130227232813) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "attribute_description"
   end
 
   create_table "rogue_talents", :force => true do |t|

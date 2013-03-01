@@ -181,6 +181,8 @@ en:
         photo: "Photo"
         miniature: "Grid miniature"
         player_name: "Player's name"
+        character_classes: Class(es)
+
       adventure:
         name: "Name"
 
@@ -289,6 +291,7 @@ en:
         name: "Name"
         bonus: "Bonus (ruby)"
         benefits: "Benefits"
+        priority: "Priority"
 
       race:
         photo: Image
@@ -299,6 +302,7 @@ en:
         languages: "Initial languages"
         race_attributes: "Attribute modifiers"
         race_traits: "Racial traits"
+        attribute_description: "Attributes description"
 
       race_attribute:
         value: "Increase (or decrease)"
@@ -345,8 +349,8 @@ en:
         character_class_features: "Class features"
         initital_gold: Initial gold
         extra_features: Extra features
-
         spells_per_day: "Spells per day"
+
       character_class_feature:
         name: "Name"
         description: "Description"
@@ -358,6 +362,10 @@ en:
         character_class: "Character class"
         spell_level: "Spell level"
 
+      character_character_class:
+        favored_class: Favored class?
+
+        favored_class_bonus: "Favored class bonus"
   percentage_validation: "is a percentage value, so it can't be greater than 100"
 
   arbitrary_attributes_show_description: "%{name} gain a +2 racial bonus to %{number} attributes(s) of your choice."
@@ -375,6 +383,9 @@ en:
         title: "Select your character's race"
       class_select:
         title: "Select your character's class"
+      class_options:
+        title: "Options for class: %{class} (level %{level})"
+        description: "Select here the bonus and features for the class you have chosen."
     saving: "Saving..."
     character_class:
       skills: "The %{class_name}'s class skills are: %{skill_list}"
@@ -387,6 +398,11 @@ en:
         ref_save: "Ref. save"
         will_save: "Will save"
         special: "Features"
+    buttons:
+      back_race_select: "Back to race selection"
+      back_class_select: "Back to class selection"
+    race:
+      arbitrary_attribute: "<strong>+2</strong> to one ability score"
   spellcaster_type:
     1: Complete
     2: Hybrid

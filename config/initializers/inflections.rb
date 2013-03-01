@@ -12,5 +12,6 @@
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'spell_per_day', 'spells_per_day'
   inflect.irregular 'spellperday', 'spellsperday'
+  inflect.irregular 'bonus', 'bonuses'
 end
 
