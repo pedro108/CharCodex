@@ -66,4 +66,7 @@ module ApplicationHelper
     html.join "\n"
   end
 
+  def show_errors(object)
+
+  end
 end

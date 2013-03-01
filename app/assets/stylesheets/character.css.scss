@@ -210,11 +210,19 @@ $sheet_font_color: #570710;
   height: 600px;
 
   * {
-    color: #111;
+    color: #570710;
   }
 
   a {
     color: #0088CC;
+  }
+
+  .btn {
+    color: #111;
+  }
+
+  .btn.btn-primary {
+    color:white;
   }
 
   .class-options-header {
@@ -227,7 +235,6 @@ $sheet_font_color: #570710;
       line-height: 24px;
       font-size:24px;
       font-weight:normal;
-      color: $sheet_font_color;
     }
 
     h3 {
@@ -236,6 +243,7 @@ $sheet_font_color: #570710;
       margin: 0px;
       line-height: 24px;
       margin-top: 10px;
+      color: #111;
     }
 
   }
@@ -243,24 +251,49 @@ $sheet_font_color: #570710;
   .class-options-body {
     height:500px;
 
-    form {
-      padding-top:20px;
-      padding-left:10px;
+    .class-options-form {
+      float:left;
+      margin-top:10px;
+      padding-right:15px;
+      border-right:1px solid $sheet_font_color;
+      height:480px;
+      width:480px;
 
-      .class-options-form-field {
-        margin-bottom:10px;
-        clear:both;
+      form {
+        padding-left:10px;
 
-        label {
-          font-weight:bold;
-          width:200px;
-        }
+        .class-options-form-field {
+          margin-bottom:10px;
+          clear:both;
 
-        select {
+          label {
+            font-weight:bold;
+            width:200px;
+          }
 
+          span.hint {
+            font-size:12px;
+            font-style: italic;
+            clear:right;
+          }
         }
       }
+    }
 
+    .class-features-description {
+      float:left;
+      margin-left:15px;
+
+      ul {
+        margin-top:15px;
+        li {
+          font-size:14px;
+          font-weight:bold;
+          list-style-type: disc;
+          margin-top:10px;
+          margin-left:25px;
+        }
+      }
     }
   }
 

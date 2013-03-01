@@ -366,6 +366,7 @@ en:
         favored_class: Favored class?
 
         favored_class_bonus: "Favored class bonus"
+        hp_gained: "Gained hit points"
   percentage_validation: "is a percentage value, so it can't be greater than 100"
 
   arbitrary_attributes_show_description: "%{name} gain a +2 racial bonus to %{number} attributes(s) of your choice."
@@ -386,6 +387,7 @@ en:
       class_options:
         title: "Options for class: %{class} (level %{level})"
         description: "Select here the bonus and features for the class you have chosen."
+      error: "Ocurred errors when trying to save the character sheet:"
     saving: "Saving..."
     character_class:
       skills: "The %{class_name}'s class skills are: %{skill_list}"
@@ -398,11 +400,18 @@ en:
         ref_save: "Ref. save"
         will_save: "Will save"
         special: "Features"
+      hit_dice: "Hit dice: <strong>%{value}</strong>"
+      gained_features: "Features for this level"
     buttons:
       back_race_select: "Back to race selection"
       back_class_select: "Back to class selection"
     race:
       arbitrary_attribute: "<strong>+2</strong> to one ability score"
+    dice:
+      use_average: "Use the average +1"
+      use_random: "Roll the dice"
+    warnings:
+      hp_gained: "Are you sure? This value cannot be changed after the roll is made"
   spellcaster_type:
     1: Complete
     2: Hybrid

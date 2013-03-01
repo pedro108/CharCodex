@@ -51,6 +51,23 @@ $ ->
       success: (response) =>
         lightview_transition("/characters/#{$this.data("characterid")}/edit")
 
+  $(document).on 'click', '#class-options-container button.submit', (event) =>
+    $('#sheet_changed').val(false)
+    $form = $("#class-options-container form")
+    $form.submit()
+
+  $(document).on 'click', '#hp_gained-field .average-roll', (event) =>
+    event.preventDefault()
+    $this = $(event.currentTarget)
+    $("#character_character_class_hp_gained").val($this.data('value'))
+
+  $(document).on 'click', '#hp_gained-field .random-roll', (event) =>
+    event.preventDefault()
+    $this = $(event.currentTarget)
+    value = (Math.floor(Math.random()*1000) % parseInt($this.data('dice'))) + 1
+    $("#character_character_class_hp_gained").val(value)
+
+
   $(document).on 'blur', "#character-sheet-inner input[type=text]", (event) =>
     $this = $(event.currentTarget)
     submit_sheet_subform($this)

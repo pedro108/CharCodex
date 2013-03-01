@@ -13,15 +13,39 @@
   </div>
 
   <div class="class-options-body">
-    <%= form_for @selected_class_relation, :url => update_class_options_character_path, :remote => true do |f| %>
-      <% if f.object.favored_class? %>
-        <div class="class-options-form-field">
-          <%= f.label :favored_class_bonus, "#{t('activerecord.attributes.character_character_class.favored_class_bonus')}:" %>
-          <%= f.select :favored_class_bonus, options_for_select(favored_class_bonus_options) %>
+
+    <div class="class-options-form">
+      <%= form_for @selected_class_relation, :url => update_class_options_character_path, :remote => true do |f| %>
+        <%= f.hidden_field :completed_selection, :value => true %>
+        <% hit_dice = f.object.character_class.hit_dice %>
+        <% if f.object.favored_class? %>
+          <div class="class-options-form-field">
+            <%= f.label :favored_class_bonus_id, "#{t('activerecord.attributes.character_character_class.favored_class_bonus')}:" %>
+            <%= f.select :favored_class_bonus_id, options_for_select(favored_class_bonus_options) %>
+          </div>
+        <% end %>
+        <div class="class-options-form-field" id="hp_gained-field">
+          <%= f.label :hp_gained, "#{t('activerecord.attributes.character_character_class.hp_gained')}:" %>
+          <%= f.text_field :hp_gained %>
+          <span class="hint"><%= t('character_sheet.character_class.hit_dice', :value => hit_dice.name).html_safe %></span>
+          <div class="buttons">
+            <button class='average-roll btn btn-small btn-primary' data-value='<%= (hit_dice.value/2).floor + 1 %>'><%= t('character_sheet.dice.use_average', :value => (hit_dice.value/2).floor + 1) %></button>
+            <button class='random-roll btn btn-small btn-success' data-dice='<%= hit_dice.value %>'><%= t('character_sheet.dice.use_random') %></button>
+          </div>
         </div>
       <% end %>
+    </div>
 
-    <% end %>
+    <div class="class-features-description">
+      <h4><%= t('character_sheet.character_class.gained_features') %>:</h4>
+      <ul>
+        <% @selected_class_relation.gained_features.each do |feature| %>
+          <li>
+            <%= feature.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
   <div class="class-options-footer">

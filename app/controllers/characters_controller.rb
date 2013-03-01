@@ -35,13 +35,13 @@ class CharactersController < ApplicationController
     params[:success] = @character.save
 
     respond_to do |format|
-      format.js
+      format.js { render :next_step }
     end
   end
 
   # Selects a class for the created character
   def class_select
-    update(:class_select)
+    update(:next_step)
   end
 
   def update(view=:update)
@@ -62,8 +62,11 @@ class CharactersController < ApplicationController
 
   def update_class_options
     @character = Character.find(params[:id])
+    params[:success] = @character.last_created_class.update_attributes(params[:character_character_class])
 
-
+    respond_to do |format|
+      format.js { render :next_step }
+    end
   end
 
 	active_scaffold :character do |config|
