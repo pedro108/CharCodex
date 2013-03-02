@@ -1,13 +1,15 @@
+<% selected_class = params[:selected_class].nil? ? CharacterClass.first : CharacterClass.find(params[:selected_class]) %>
 <div id='class-select-container'>
   <%= hidden_field_tag :sheet_changed, true %>
 
   <div class="class-select-header">
     <h2><%= t('character_sheet.forms.class_select.title') %></h2>
 
-    <%= form_for @character, :url => class_select_character_path, :remote => true, :method => :post do |f| %>
+    <%= form_for @character, :remote => true do |f| %>
+      <%= hidden_field_tag :view, 'next_step'  %>
       <%= f.fields_for :character_character_classes do |c| %>
         <div class="class-select-form-field">
-          <%= c.select :character_class_id, character_class_options %>
+          <%= c.select :character_class_id, character_class_options(selected_class.id) %>
         </div>
         <div class="class-select-form-field">
           <%= c.label :favored_class, t('activerecord.attributes.character_character_class.favored_class') %>
@@ -19,12 +21,12 @@
   </div>
 
   <div class="class-select-body">
-    <%= render :partial => 'character_classes/details', locals: { selected_class: CharacterClass.first } %>
+    <%= render :partial => 'character_classes/details', locals: { selected_class: selected_class } %>
   </div>
 
   <div class="class-select-footer">
     <button class="btn btn-primary submit"><%= t('active_scaffold._select_') %></button>
-    <button class="btn back" data-characterid="<%= @character.id %>"><%= t('character_sheet.buttons.back_race_select') %></button>
+    <button class="btn back" data-raceid="<%= @character.race_id %>" data-characterid="<%= @character.id %>"><%= t('character_sheet.buttons.back_race_select') %></button>
   </div>
 
 </div>

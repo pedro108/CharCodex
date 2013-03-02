@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301001431) do
+ActiveRecord::Schema.define(:version => 20130301163548) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -190,9 +190,9 @@ ActiveRecord::Schema.define(:version => 20130301001431) do
 
   create_table "characters", :force => true do |t|
     t.string   "name"
-    t.integer  "user_id",                                 :null => false
+    t.integer  "user_id",                                   :null => false
     t.integer  "adventure_id"
-    t.integer  "level",                  :default => 1,   :null => false
+    t.integer  "level",                  :default => 1,     :null => false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -206,15 +206,15 @@ ActiveRecord::Schema.define(:version => 20130301001431) do
     t.integer  "deity_id"
     t.integer  "race_id"
     t.integer  "alignment_id"
-    t.integer  "experience_points",      :default => 0,   :null => false
+    t.integer  "experience_points",      :default => 0,     :null => false
     t.integer  "progression_type"
-    t.integer  "armor_class_armor",      :default => 0,   :null => false
-    t.integer  "armor_class_shield",     :default => 0,   :null => false
-    t.integer  "armor_class_dex",        :default => 0,   :null => false
-    t.integer  "armor_class_natural",    :default => 0,   :null => false
-    t.integer  "armor_class_deflection", :default => 0,   :null => false
-    t.integer  "armor_class_misc",       :default => 0,   :null => false
-    t.integer  "base_attack_bonus",      :default => 0,   :null => false
+    t.integer  "armor_class_armor",      :default => 0,     :null => false
+    t.integer  "armor_class_shield",     :default => 0,     :null => false
+    t.integer  "armor_class_dex",        :default => 0,     :null => false
+    t.integer  "armor_class_natural",    :default => 0,     :null => false
+    t.integer  "armor_class_deflection", :default => 0,     :null => false
+    t.integer  "armor_class_misc",       :default => 0,     :null => false
+    t.integer  "base_attack_bonus",      :default => 0,     :null => false
     t.integer  "damage_reduction"
     t.integer  "spell_resistance"
     t.string   "gender"
@@ -222,8 +222,8 @@ ActiveRecord::Schema.define(:version => 20130301001431) do
     t.string   "weight"
     t.string   "eyes_color"
     t.integer  "age"
-    t.float    "money",                  :default => 0.0, :null => false
-    t.float    "weight_carried",         :default => 0.0, :null => false
+    t.float    "money",                  :default => 0.0,   :null => false
+    t.float    "weight_carried",         :default => 0.0,   :null => false
     t.integer  "armor_class_dodge",      :default => 0
     t.integer  "strength"
     t.integer  "dexterity"
@@ -234,6 +234,7 @@ ActiveRecord::Schema.define(:version => 20130301001431) do
     t.text     "description"
     t.text     "historic_background"
     t.string   "hair_color"
+    t.boolean  "attributes_selected",    :default => false
   end
 
   create_table "characters_domains", :id => false, :force => true do |t|

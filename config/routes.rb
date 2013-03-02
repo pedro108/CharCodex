@@ -33,7 +33,9 @@ CharCodex::Application.routes.draw do
     member do
       post '/class_select' => :class_select
       put '/update_class_options' => :update_class_options
+      post '/update_attributes_selection' => :update_attributes_selection
       post '/destroy_class_selection' => :destroy_class_selection
+      post '/destroy_attributes_selection' => :destroy_attributes_selection
     end
   end
 

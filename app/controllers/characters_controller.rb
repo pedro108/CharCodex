@@ -18,9 +18,11 @@ class CharactersController < ApplicationController
       @character.character_character_classes.build
     elsif @character.last_created_class.completed_selection
       view = 'sheet'
-    else
+    elsif @character.attributes_selected?
       view = 'edit_class_options'
       @selected_class_relation = @character.last_created_class
+    else
+      view = 'attribute_select'
     end
 
     respond_to do |format|
@@ -39,17 +41,41 @@ class CharactersController < ApplicationController
     end
   end
 
-  # Selects a class for the created character
-  def class_select
-    update(:next_step)
+  def update
+    @character = Character.find(params[:id])
+    params[:success] = @character.update_attributes(params[:character])
+    params[:view] ||= :update
+
+    respond_to do |format|
+      format.js { render params[:view] }
+    end
   end
 
-  def update(view=:update)
+  def destroy_attributes_selection
     @character = Character.find(params[:id])
+    @character.attributes_selected = false
+    params[:success] = @character.save
+
+    respond_to do |format|
+      format.js { render :next_step }
+    end
+  end
+
+  def update_attributes_selection
+    @character = Character.find(params[:id])
+    unless params[:arbitrary_attribute].nil?
+      params[:character][params[:arbitrary_attribute].to_sym] = (params[:character][params[:arbitrary_attribute].to_sym].to_i + 2).to_s
+    end
+
+    @character.race.race_attributes.each do |r_a|
+      attr = r_a.attribute.name.downcase.to_sym
+      params[:character][attr] = (params[:character][attr].to_i + r_a.value).to_s
+    end
+
     params[:success] = @character.update_attributes(params[:character])
 
     respond_to do |format|
-      format.js { render view }
+      format.js { render :next_step }
     end
   end
 

@@ -12,16 +12,32 @@ module CharactersHelper
     @character.adventure.nil? ? '-' : @character.adventure.name
   end
 
-  def character_race_options
-    options_for_select Race.all.map{ |r| [r.name, r.id] }
+  def character_race_options(selected)
+    options_for_select Race.all.map{ |r| [r.name, r.id] }, selected
   end
 
-  def character_class_options
-    options_for_select CharacterClass.all.map{ |r| [r.name, r.id] }
+  def character_class_options(selected)
+    options_for_select CharacterClass.all.map{ |r| [r.name, r.id] }, selected
   end
 
   def favored_class_bonus_options
     options_for_select FavoredClassBonus.all.map{ |r| [r.benefit, r.id] }
+  end
+
+  def fantasy_type_options
+    options_for_select [['Low Fantasy (10)', 10], ['Standard Fantasy (15)', 15],
+                        ['High Fantasy (20)', 20], ['Epic Fantasy (25)', 25], [t(:random), -1]], 15
+  end
+
+  def attributes_array
+    [:strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma]
+  end
+
+  def attribute_options
+    options_for_select(Array.new(6) do |i|
+      attr = attributes_array[i]
+      [t("activerecord.attributes.character.#{attr}"), attr.to_s]
+    end)
   end
 
   def character_character_classes_column(record)

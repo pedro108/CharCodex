@@ -2,6 +2,9 @@
   changed = $('#sheet_changed').val()
   window.location.reload() if changed == 'true'
 
+@roll_dice = (dice, precision=1000) ->
+  (Math.floor(Math.random()*precision) % dice) + 1
+
 submit_sheet_subform = ($input) ->
   $form = $input.closest('form')
   $(".sheet-saving-indicator").show()
@@ -35,23 +38,43 @@ $ ->
     $.ajax
       url: "/characters/#{$this.data("characterid")}"
       type: "DELETE"
-    lightview_transition('/characters/new')
+    lightview_transition("/characters/new?selected_race=#{$this.data('raceid')}")
 
   $(document).on 'click', '#class-select-container button.submit', (event) =>
     $('#sheet_changed').val(false)
     $form = $("#class-select-container form")
     $form.submit()
 
-  $(document).on 'click', '#class-options-container button.back', (event) =>
+  $(document).on 'click', '#attribute-select-container button.back', (event) =>
     $this = $(event.currentTarget)
     $('#sheet_changed').val(false)
     $.ajax
       url: "/characters/#{$this.data("characterid")}/destroy_class_selection"
       type: "POST"
       success: (response) =>
+        lightview_transition("/characters/#{$this.data("characterid")}/edit?selected_class=#{$this.data('characterclassid')}")
+
+  $(document).on 'click', '#attribute-select-container button.submit', (event) =>
+    $('#sheet_changed').val(false)
+    $form = $("#attribute-select-container form")
+    attributes_set = $("#attributes_set").val()
+    if attributes_set == 'true'
+      $(".attribute-form-field input[type=text]").removeAttr('disabled')
+      $form.submit()
+    else
+      alert('<%= I18n.t('character_sheet.attributes.not_set') %>')
+
+  $(document).on 'click', '#class-options-container button.back', (event) =>
+    $this = $(event.currentTarget)
+    $('#sheet_changed').val(false)
+    $.ajax
+      url: "/characters/#{$this.data("characterid")}/destroy_attributes_selection"
+      type: "POST"
+      success: (response) =>
         lightview_transition("/characters/#{$this.data("characterid")}/edit")
 
   $(document).on 'click', '#class-options-container button.submit', (event) =>
+    return unless confirm('<%= I18n.t('character_sheet.warnings.confirm_selections') %>')
     $('#sheet_changed').val(false)
     $form = $("#class-options-container form")
     $form.submit()
@@ -64,9 +87,8 @@ $ ->
   $(document).on 'click', '#hp_gained-field .random-roll', (event) =>
     event.preventDefault()
     $this = $(event.currentTarget)
-    value = (Math.floor(Math.random()*1000) % parseInt($this.data('dice'))) + 1
+    value = roll_dice(parseInt($this.data('dice')))
     $("#character_character_class_hp_gained").val(value)
-
 
   $(document).on 'blur', "#character-sheet-inner input[type=text]", (event) =>
     $this = $(event.currentTarget)

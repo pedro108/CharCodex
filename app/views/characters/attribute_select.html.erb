@@ -1,0 +1,46 @@
+<% have_arbitrary_attributes = (!@character.race.arbitrary_attributes.nil? and @character.race.arbitrary_attributes > 0) %>
+<div id='attribute-select-container'>
+  <%= hidden_field_tag :sheet_changed, true %>
+
+  <div class="attribute-select-header">
+    <h2><%= t('character_sheet.forms.attribute_select.title') %></h2>
+    <h3><%= t('character_sheet.forms.attribute_select.description') %></h3>
+
+    <div class="attribute-point-select">
+      <%= label_tag :fantasy_type, t('character_sheet.attributes.fantasy_type') %>
+      <%= select_tag :fantasy_type, fantasy_type_options, :disabled => ('disabled' if have_arbitrary_attributes) %>
+    </div>
+  </div>
+
+  <div class="attribute-select-body">
+    <% race_attributes = Hash[*@character.race.race_attributes.map { |r| [r.attribute.name.downcase.to_sym, r.value] }.flatten]  %>
+    <%= form_for @character, :url => update_attributes_selection_character_path , :method => :post, :remote => true, :html => { :class => "#{'disabled' if have_arbitrary_attributes}" } do |f| %>
+      <%= hidden_field_tag :attributes_set, false %>
+      <% if have_arbitrary_attributes %>
+        <div class="disable"></div>
+        <%= hidden_field_tag :arbitrary_attribute %>
+      <% end %>
+      <%= hidden_field_tag :view, 'next_step'  %>
+      <%= f.hidden_field :attributes_selected, :value => true %>
+
+      <% attributes_array.each do |attr| %>
+        <%= render :partial => 'attribute_select_field', :locals => { :f => f, :attr => attr, :race_attributes => race_attributes } %>
+      <% end %>
+    <% end %>
+
+    <div id="attribute-points"><%= t('character_sheet.attributes.remaining_points') %>: <strong>15</strong></div>
+
+    <% if have_arbitrary_attributes %>
+      <div id="arbitrary-attribute-select-container">
+        <%= label_tag :arbitrary_attribute_select, t('character_sheet.attributes.arbitrary_select') %>
+        <%= select_tag :arbitrary_attribute_select, attribute_options %>
+        <button class="btn btn-success btn-small">OK</button>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="attribute-select-footer">
+    <button class="btn btn-primary submit"><%= t('active_scaffold._select_') %></button>
+    <button class="btn back close_callback" data-characterclassid="<%= @character.last_created_class.character_class_id %>" data-characterid="<%= @character.id %>"><%= t('character_sheet.buttons.back_class_select') %></button>
+  </div>
+</div>

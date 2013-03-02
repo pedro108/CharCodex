@@ -299,6 +299,12 @@ pt:
         player_name: "Nome do jogador"
         race: "Raça"
         character_classes: Classe(s)
+        strength: Força (STR)
+        dexterity: Destreza (DEX)
+        constitution: Constituição (CON)
+        intelligence: Inteligência (INT)
+        wisdom: Sabedoria (WIS)
+        charisma: Carisma (CHA)
 
       adventure:
         name: "Nome"
@@ -492,7 +498,6 @@ pt:
 
       character_character_class:
         favored_class: Classe favorecida?
-
         favored_class_bonus: "Bônus de classe favorecida"
         hp_gained: "Pontos de vida ganhos"
       rogue_talent:
@@ -524,6 +529,9 @@ pt:
         title: "Opções para a classe: %{class} (nível %{level})"
         description: "Selecione aqui os bônus e as habilidades da classe que escolheu."
       error: "Ocorreram os seguintes erros ao tentar salvar a ficha"
+      attribute_select:
+        title: "Selecione os atributos de seu personagem"
+        description: "Você tem a opção de distribuir pontos de acordo com a quantidade definida ao lado, ou decidi-los de forma aleatória (4d6 menos o menor valor para cada atributo)."
     saving: "Salvando..."
     character_class:
       skills: "As perícias de classe do %{class_name} são: %{skill_list}"
@@ -541,11 +549,22 @@ pt:
     buttons:
       back_race_select: "Voltar para a seleção de raça"
       back_class_select: "Voltar para a seleção de classe"
+      back_attributes_select: "Voltar para a seleção de atributos"
     race:
       arbitrary_attribute: "<strong>+2</strong> para um atributo"
     dice:
       use_average: "Usar a média +1 (%{value})"
       use_random: "Rolar o dado"
+    attributes:
+      fantasy_type: "Tipo de distribuição"
+      remaining_points: "Pontos restantes"
+      arbitrary_select: "Antes de distribuir ou rolar os pontos dos atributos, selecione qual atributo receberá o bônus de +2 da raça."
+      random_roll: "Rolar atributos"
+      above_18: "Não é permitido colocar valores acima de 18."
+      below_7: "Não é permitido colocar valores abaixo de 7."
+      not_set: "Os atributos ainda não foram completamente definidos."
+    warnings:
+      confirm_selections: "As seleções feitas não poderão mais ser alteradas para este personagem. Deseja continuar?"
   spellcaster_type:
     1: Completo
     2: Híbrido
@@ -563,3 +582,4 @@ pt:
       8: "8º"
       9: "9º"
     error: "Magias por dia do nível %{class_level} está com registro inválido\n"
+  random: "Aleatório"

@@ -205,6 +205,184 @@ $sheet_font_color: #570710;
   }
 }
 
+#attribute-select-container {
+  width: 800px;
+  height: 480px;
+
+
+  .disabled {
+    opacity: 0.6;
+    -moz-opacity: 0.6;
+    -webkit-opacity: 0.6;
+    filter: alpha(opacity=60);
+  }
+
+  * {
+    color: #570710;
+  }
+
+  a {
+    color: #0088CC;
+  }
+
+  .btn, input, select {
+    color: #111;
+  }
+
+  .btn.btn-primary, .btn.btn-success {
+    color:white;
+  }
+
+  .attribute-select-header {
+    width:100%;
+    overflow:hidden;
+    position: relative;
+    border-bottom: 1px solid $sheet_font_color;
+    height: 75px;
+
+    h2 {
+      margin: 0px;
+      line-height: 22px;
+      font-size:22px;
+      font-weight:normal;
+    }
+
+    h3 {
+      font-size:13px;
+      font-weight:normal;
+      margin: 0px;
+      line-height: 16px;
+      margin-top: 10px;
+      color: #111;
+      max-width:500px;
+    }
+
+    .attribute-point-select {
+      position:absolute;
+      top:0px;
+      right:0px;
+
+      label {
+        font-weight:bold;
+      }
+    }
+  }
+
+  .attribute-select-body {
+    padding-top:10px;
+    position:relative;
+
+    form {
+      position:relative;
+      width:350px;
+
+      .disable {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 350px;
+        height: 400px;
+        z-index: 1000;
+        opacity: 0.0;
+        -moz-opacity: 0.0;
+        -webkit-opacity: 0.0;
+        filter: alpha(opacity=0);
+      }
+
+      .attribute-form-field {
+        padding-top:5px;
+        clear:both;
+        overflow:hidden;
+
+        label {
+          width:160px;
+          font-weight:bold;
+          font-size:16px;
+          float:left;
+          position:relative;
+          top: 12px;
+        }
+
+        input {
+          float:left;
+          text-align:center;
+          font-size:18px;
+          width:40px;
+          height:40px;
+          border-radius:40px;
+          -moz-border-radius:40px;
+          -webkit-border-radius:40px;
+          padding:0px;
+          margin-right:10px;
+        }
+
+        .buttons {
+          position:relative;
+          top:8px;
+          float:left;
+          margin-right:10px;
+
+          button {
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 21px;
+            padding-top: 0px;
+            padding-left: 8px;
+            padding-right: 8px;
+          }
+        }
+
+        .race-attribute {
+          font-size: 22px;
+          font-weight: bold;
+          color: #111;
+          position: relative;
+          top: 12px;
+          text-align: right;
+          width: 25px;
+          display: inline-block;
+        }
+      }
+    }
+
+    #attribute-points {
+      font-size:18px;
+      height:20px;
+
+      strong {
+        font-size:inherit;
+      }
+    }
+
+    #arbitrary-attribute-select-container, #random-button-container {
+      position: absolute;
+      width: 360px;
+      top: 30px;
+      right: 20px;
+
+      button {
+        color:white;
+        margin-left:6px;
+        position:relative;
+        bottom:5px;
+      }
+    }
+  }
+
+  .attribute-select-footer {
+    border-top:1px solid $sheet_font_color;
+    height:20px;
+    margin-top:4px;
+
+    button {
+      float:right;
+      margin-top:10px;
+      margin-left:10px;
+    }
+  }
+}
+
 #class-options-container {
   width: 800px;
   height: 600px;

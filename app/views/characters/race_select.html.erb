@@ -1,3 +1,4 @@
+<% selected_race = params[:selected_race].nil? ? Race.first : Race.find(params[:selected_race]) %>
 <div id='race-select-container'>
   <%= hidden_field_tag :sheet_changed, true %>
 
@@ -5,12 +6,12 @@
     <h2><%= t('character_sheet.forms.race_select.title') %></h2>
 
     <%= form_for @character, :remote => true, :method => :post do |f| %>
-      <%= f.select :race_id, character_race_options %>
+      <%= f.select :race_id, character_race_options(selected_race.id) %>
     <% end %>
   </div>
 
   <div class="race-select-body">
-    <%= render :partial => 'races/details', locals: { selected_race: Race.first } %>
+    <%= render :partial => 'races/details', locals: { selected_race: selected_race } %>
   </div>
 
   <div class="race-select-footer">

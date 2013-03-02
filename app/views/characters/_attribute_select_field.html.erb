@@ -1,0 +1,12 @@
+<div class="attribute-form-field" data-attr="<%= attr.to_s %>" id="<%= attr.to_s %>_field">
+  <div class="buttons">
+    <button class="btn btn-success increase_attribute">+</button>
+    <button class="btn btn-danger decrease_attribute">-</button>
+  </div>
+  <%= f.text_field attr, :disabled => true, :value => 10 %>
+  <%= f.label attr %>
+
+  <span class="race-attribute">
+    <%= "#{'+' if race_attributes[attr] > 0}#{race_attributes[attr]}" unless race_attributes[attr].nil? %>
+  </span>
+</div>

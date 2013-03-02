@@ -1,0 +1,89 @@
+attribute_points = 15
+
+cost_table =
+  7: -4
+  8: -2
+  9: -1
+  10: 0
+  11: 1
+  12: 2
+  13: 3
+  14: 5
+  15: 7
+  16: 10
+  17: 13
+  18: 17
+
+points_spent =
+  strength: 0
+  dexterity: 0
+  constitution: 0
+  intelligence: 0
+  wisdom: 0
+  charisma: 0
+
+$ ->
+  $(document).on 'click', '#attribute-select-container button', (event) =>
+    event.preventDefault()
+
+  $(document).on 'click', '#arbitrary-attribute-select-container button', (event) =>
+    attr = $("#arbitrary_attribute_select").val()
+    $("#arbitrary_attribute").val(attr)
+    $("##{attr}_field .race-attribute").text('+2')
+    $("#attribute-select-container form").removeClass('disabled').find('.disable').remove()
+    $("#fantasy_type").removeAttr('disabled')
+    $("#arbitrary-attribute-select-container").remove()
+
+  $(document).on 'change', '#fantasy_type', (event) =>
+    $this = $(event.currentTarget)
+    attribute_points = parseInt($this.val())
+    $("#attributes_set").val(false)
+    if attribute_points > 0
+      $("#attribute-select-container form .attribute-form-field input[type=text]").val(10)
+      $("#attribute-points").html("<%= I18n.t('character_sheet.attributes.remaining_points') %>: <strong>#{attribute_points}</strong>")
+      $("#random-button-container").remove()
+      $(".attribute-form-field .buttons").removeClass('disabled')
+      $("#attribute-select-container form .disable").remove()
+    else
+      $("#attribute-select-container form .attribute-form-field input[type=text]").val("")
+      $(".attribute-select-body").append("<div id='random-button-container'><button class='btn btn-large btn-success random-roll'><%= I18n.t('character_sheet.attributes.random_roll') %></button></div>")
+      $("#attribute-points").html("")
+      $(".attribute-form-field .buttons").addClass('disabled')
+      $("#attribute-select-container form").prepend("<div class='disable'></div>")
+
+  $(document).on 'click', "#random-button-container button", (event) =>
+    $("#attribute-select-container form input[type=text]").each ->
+      random_values = []
+      for i in [0..3] by 1
+        random_values.push roll_dice(6)
+      $(this).val(random_values.sort()[1..].reduce (t, s) -> t + s)
+      $("#attributes_set").val(true)
+
+  $(document).on 'click', '.attribute-form-field .buttons button', (event) =>
+    $this = $(event.currentTarget)
+    attr = $this.closest('.attribute-form-field').data('attr')
+    $input = $("##{attr}_field input[type=text]")
+
+    increment = if $this.hasClass('increase_attribute') then 1 else -1
+    value = parseInt($input.val()) + increment
+
+    if value > 18
+      alert('<%= I18n.t('character_sheet.attributes.above_18') %>')
+      return
+    else if value < 7
+      alert('<%= I18n.t('character_sheet.attributes.below_7') %>')
+      return
+
+    old_points_spent = points_spent[attr]
+    points_spent[attr] = cost_table[value]
+    total_spent = 0
+    for k, v of points_spent
+      total_spent += v
+
+    if total_spent <= attribute_points
+      $input.val(value)
+      $("#attribute-points").html("<%= I18n.t('character_sheet.attributes.remaining_points') %>: <strong>#{attribute_points - total_spent}</strong>")
+      $("#attributes_set").val(total_spent == attribute_points)
+    else
+      alert('Não há pontos suficientes para incrementar este atributo')
+      points_spent[attr] = old_points_spent
