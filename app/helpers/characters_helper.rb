@@ -13,6 +13,13 @@ module CharactersHelper
     "#{'+' if modifier >= 0}#{modifier}"
   end
 
+  def character_movement(options={})
+    options[:encumbered] ||= false
+    value = @character.send("#{'encumbered_' if options[:encumbered]}movement")
+
+    "#{value} #{t(:feet)} (#{value/5} #{t(:squares)})"
+  end
+
   def adventure_field
     @character.adventure.nil? ? '-' : @character.adventure.name
   end

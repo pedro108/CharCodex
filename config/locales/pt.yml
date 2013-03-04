@@ -583,6 +583,8 @@ pt:
       character_classes: "Classes"
       initiative: "Iniciativa"
       defenses: "Defesas"
+      saves: "Saves"
+      movements: "Movimento"
     header:
       score: "Pontos"
       modifier: "Mod."
@@ -598,6 +600,10 @@ pt:
       bab: "Bônus Base de Ataque"
       cmb: "C.M.B."
       cmd: "C.M.D."
+      normal_movement: "Normal"
+      encumbered_movement: "Sobrecarregado"
+      spell_resistance: "Resistência a Magia"
+      damage_reduction: "Redução de Dano"
     abbr:
       bab: "B.B.A."
   spellcaster_type:
@@ -620,3 +626,5 @@ pt:
   random: "Aleatório"
   male: "Masculino"
   female: "Feminino"
+  feet: "pés"
+  squares: "quadrados"

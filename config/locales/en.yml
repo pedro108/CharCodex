@@ -447,6 +447,8 @@ en:
       character_classes: "Classes"
       initiative: "Inititative"
       defenses: "Defenses"
+      saves: "Saving Throws"
+      movements: "Movement"
     header:
       score: "Score"
       modifier: "Mod."
@@ -462,6 +464,10 @@ en:
       bab: "Base Attack Bonus"
       cmb: "C.M.B."
       cmd: "C.M.D."
+      normal_movement: "Normal"
+      encumbered_movement: "Encumbered"
+      spell_resistance: "Spell Resistance"
+      damage_reduction: "Damage Reduction"
     abbr:
       bab: "B.A.B."
   spellcaster_type:
@@ -484,3 +490,5 @@ en:
   random: "Random"
   male: "Male"
   female: "Female"
+  feet: "feet"
+  squares: "squares"

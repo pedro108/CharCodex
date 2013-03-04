@@ -902,16 +902,64 @@ $sheet_font_color: #570710;
 
         .other_armor_class-fields {
           margin-top:5px;
-          margin-bottom:14px;
 
           .sheet-box-field-container {
             margin-right:30px;
           }
         }
 
+      }
+
+      &.saving-throws-box {
+        margin-top:35px;
+        padding:10px;
+        padding-bottom:0px;
+
         .saving-throw-field {
           label {
             width:80px;
+          }
+        }
+      }
+
+      &.movements-box {
+        margin-top:35px;
+        padding:8px 10px 2px 10px;
+        width:310px;
+
+        .sheet-field {
+          margin-top:5px;
+
+          label {
+            width:125px;
+            margin-right:10px;
+            margin-top:2px;
+          }
+
+          .value {
+            font-size:14px;
+            font-weight:bold;
+          }
+        }
+      }
+
+      &.resistances-box {
+        margin-top:10px;
+        padding:3px 10px 2px 10px;
+        width:310px;
+
+        .sheet-field {
+          margin-top:5px;
+
+          label {
+            margin-right:10px;
+            width:160px;
+            margin-top:2px;
+          }
+
+          .value {
+            font-size:16px;
+            font-weight:bold;
           }
         }
       }

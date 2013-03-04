@@ -373,7 +373,6 @@
           <span class="sheet-box-field">
             <%= @character.touch_armor_class %>
           </span>
-          <span class="sheet-box-field-label">&nbsp;</span>
         </div>
         <%= label_tag :ff_armor_class, "#{t('character_sheet.field.ff_armor_class')}" %>
         <span class="equal">=</span>
@@ -381,12 +380,53 @@
           <span class="sheet-box-field">
             <%= @character.flat_footed_armor_class %>
           </span>
-          <span class="sheet-box-field-label">&nbsp;</span>
         </div>
       </div>
-      <%= render :partial => 'saving_throw_field', :locals => { save: :fortitude, attr: :constitution } %>
-      <%= render :partial => 'saving_throw_field', :locals => { save: :reflex, attr: :dexterity } %>
-      <%= render :partial => 'saving_throw_field', :locals => { save: :will, attr: :wisdom } %>
+    </div>
+
+    <div class="character-basic-info-col">
+      <div class="saving-throws-box sheet-box">
+        <h4><%= t('character_sheet.box.saves') %></h4>
+        <%= render :partial => 'saving_throw_field', :locals => { save: :fortitude, attr: :constitution } %>
+        <%= render :partial => 'saving_throw_field', :locals => { save: :reflex, attr: :dexterity } %>
+        <%= render :partial => 'saving_throw_field', :locals => { save: :will, attr: :wisdom } %>
+      </div>
+
+    </div>
+    <div class="character-basic-info-col last">
+      <div class="movements-box sheet-box">
+        <h4><%= t('character_sheet.box.movements') %></h4>
+
+        <div class="sheet-field">
+          <%= label_tag :movement, "#{t('character_sheet.field.normal_movement')}:" %>
+          <span class="value">
+            <%= character_movement %>
+          </span>
+        </div>
+
+        <div class="sheet-field">
+          <%= label_tag :encumbered_movement, "#{t('character_sheet.field.encumbered_movement')}:" %>
+          <span class="value">
+            <%= character_movement(encumbered: true) %>
+          </span>
+        </div>
+      </div>
+
+      <div class="resistances-box sheet-box">
+        <div class="sheet-field">
+          <%= label_tag :spell_resistance, "#{t('character_sheet.field.spell_resistance')}:" %>
+          <span class="value">
+            <%= @character.spell_resistance %>
+          </span>
+        </div>
+
+        <div class="sheet-field">
+          <%= label_tag :damage_reduction, "#{t('character_sheet.field.damage_reduction')}:" %>
+          <span class="value">
+            <%= @character.damage_reduction %>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 

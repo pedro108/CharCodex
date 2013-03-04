@@ -40,7 +40,8 @@ class Character < ActiveRecord::Base
   before_save :update_level
 
   attr_accessor :extra_initiative, :extra_hit_points, :extra_feats, :extra_skill_ranks, :movement,
-                :armor_class, :extra_reflex, :extra_fortitude, :extra_will, :extra_cmb, :extra_cmd
+                :armor_class, :extra_reflex, :extra_fortitude, :extra_will, :extra_cmb, :extra_cmd,
+                :spell_resistance, :damage_reduction
 
   def init_derived_data
     @extra_initiative = 0
@@ -53,6 +54,8 @@ class Character < ActiveRecord::Base
     @extra_will = 0
     @extra_cmb = 0
     @extra_cmd = 0
+    @spell_resistance = 0
+    @damage_reduction = 0
     @armor_class = {
         armor: 0,
         shield: 0,
@@ -143,6 +146,14 @@ class Character < ActiveRecord::Base
 
   def total_cmd
     10 + base_attack_bonus + strength_modifier + dexterity_modifier + race.size.combat_maneuver_modifier + extra_cmd
+  end
+
+  def encumbered_movement
+    if movement.eql?(20) and race.size.name.eql?('Small')
+      15
+    else
+      20
+    end
   end
 
   def character_class_levels
