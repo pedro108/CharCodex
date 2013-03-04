@@ -1,0 +1,33 @@
+<div class="sheet-field saving-throw-field">
+  <%= label_tag save, t("character_sheet.field.#{save}") %>
+  <span class="equal">=</span>
+  <div class="sheet-box-field-container">
+    <span class="sheet-box-field">
+      <%= @character.send("base_#{save}") %>
+    </span>
+    <span class="sheet-box-field-label">Base</span>
+  </div>
+  <span class="plus">+</span>
+  <div class="sheet-box-field-container">
+    <span class="sheet-box-field">
+      <%= @character.send("#{attr}_modifier") %>
+    </span>
+    <span class="sheet-box-field-label">
+      <%= "#{t("activerecord.attributes.character.#{attr}").to_s.capitalize.slice(0..2)}." %>
+    </span>
+  </div>
+  <span class="plus">+</span>
+  <div class="sheet-box-field-container">
+    <span class="sheet-box-field">
+      <%= @character.send("extra_#{save}") %>
+    </span>
+    <span class="sheet-box-field-label">Misc.</span>
+  </div>
+  <span class="equal">=</span>
+  <div class="sheet-box-field-container result">
+    <span class="sheet-box-field">
+      <%= @character.send("total_#{save}") %>
+    </span>
+    <span class="sheet-box-field-label">&nbsp;</span>
+  </div>
+</div>

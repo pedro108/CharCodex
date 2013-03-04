@@ -19,11 +19,3 @@ FeatType.create!([{
 FeatType.create!([{
                       :name => "Item creation"
                   }])
-
-FeatType.create!([{
-                      :name => "Class feature"
-                  }])
-
-FeatType.create!([{
-                      :name => "Racial trait"
-                  }])

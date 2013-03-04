@@ -16,6 +16,22 @@
       </span>
       <%= label :character, '', t('activerecord.attributes.character.adventure') %>
     </div>
+    <div class="basic-info-input other">
+      <%= f.select :gender, gender_options %>
+      <span class="readonly-field value-holder">
+        <%= @character.gender.nil? ? '-' : @character.gender  %>
+      </span>
+      <i class="icon-pencil"></i>
+      <%= f.label :gender %>
+    </div>
+    <div class="basic-info-input other">
+      <%= f.text_field :hair_color %>
+      <%= f.label :hair_color %>
+    </div>
+    <div class="basic-info-input other last">
+      <%= f.text_field :weight %>
+      <%= f.label :weight %>
+    </div>
   </div>
   <div class="basic-info-input-container">
     <div class="basic-info-input">
@@ -24,8 +40,354 @@
       </span>
       <%= label :character, '', t('activerecord.attributes.character.race') %>
     </div>
-    <!-- Adicionar tendencia e divindade -->
+    <div class="basic-info-input">
+      <%= f.select :alignment_id, alignment_options %>
+      <span class="readonly-field value-holder">
+        <%= @character.alignment.nil? ? '-' : @character.alignment.name  %>
+      </span>
+      <i class="icon-pencil"></i>
+      <%= f.label :alignment_id %>
+    </div>
+    <div class="basic-info-input">
+      <%= f.select :deity_id, deity_options %>
+      <span class="readonly-field value-holder">
+        <%= @character.deity.nil? ? '-' : @character.deity.name  %>
+      </span>
+      <i class="icon-pencil"></i>
+      <%= f.label :deity_id %>
+    </div>
+    <div class="basic-info-input other">
+      <%= f.text_field :age %>
+      <%= f.label :age %>
+    </div>
+    <div class="basic-info-input other">
+      <%= f.text_field :eyes_color %>
+      <%= f.label :eyes_color %>
+    </div>
+    <div class="basic-info-input other last">
+      <%= f.text_field :height %>
+      <%= f.label :height %>
+    </div>
   </div>
 
+  <div class="character-basic-info-col">
+    <div class="character-classes-box sheet-box">
+      <h4><%= t('character_sheet.box.character_classes') %></h4>
+
+      <table cellpadding="0" cellspacing="0">
+        <thead>
+        <tr>
+          <th class="character-class-name">
+            <%= t('character_sheet.character_class.name') %>
+          </th>
+          <th class="character-class-levels">
+            <%= t('character_sheet.character_class.levels') %>
+          </th>
+          <th class="character-class-favored">
+            <%= t('character_sheet.character_class.favored_class') %>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @character.character_class_levels.each do |c| %>
+          <tr>
+            <td class="character-class-name">
+              <%= c.character_class.name %>
+            </td>
+            <td class="character-class-levels">
+              <%= c.total_levels %>
+            </td>
+            <td class="character-class-favored">
+              <%= t("active_scaffold.#{c.favored_class?}") %>
+            </td>
+          </tr>
+        <% end %>
+        <tr>
+          <td class="character-class-name"></td>
+          <td class="character-class-levels"></td>
+          <td class="character-class-favored"></td>
+        </tr>
+        <tr>
+          <td class="character-class-name"></td>
+          <td class="character-class-levels"></td>
+          <td class="character-class-favored"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ability-score-box sheet-box">
+      <h4><%= t('character_sheet.box.ability_scores') %></h4>
+
+      <span class="header ability-score-header" ><%= t('character_sheet.header.score') %></span>
+      <span class="header ability-modifier-header" ><%= t('character_sheet.header.modifier') %></span>
+      <ul class="unstyled">
+        <% attributes_array.each do |attr| %>
+          <li>
+          <span class="ability-score-label">
+            <%= f.label attr %>
+          </span>
+          <span class="ability-score">
+            <%= @character.send(attr) %>
+          </span>
+          <span class="ability-modifier">
+            <%= attribute_modifier(attr) %>
+          </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="character-basic-info-col last">
+    <div class="character-basic-info-col">
+      <div class="hit_points-box sheet-box">
+        <div class="sheet-field">
+          <%= label_tag :hit_points, "#{t('character_sheet.field.hit_points')}:" %>
+          <span>
+            <%= @character.hit_points %>
+          </span>
+        </div>
+      </div>
+
+      <div class="initiative-box sheet-box">
+        <h4><%= t('character_sheet.box.initiative') %></h4>
+
+        <div class="initiative-sum">
+          <div class="sheet-box-field-container">
+          <span class="sheet-box-field">
+            <%= @character.dexterity_modifier %>
+          </span>
+          <span class="sheet-box-field-label">
+            <%= "#{t("activerecord.attributes.character.dexterity").to_s.capitalize.slice(0..2)}." %>
+          </span>
+          </div>
+          <span class="plus">+</span>
+          <div class="sheet-box-field-container">
+          <span class="sheet-box-field">
+            <%= @character.extra_initiative %>
+          </span>
+            <span class="sheet-box-field-label">Misc.</span>
+          </div>
+          <span class="equal">=</span>
+          <div class="sheet-box-field-container result">
+          <span class="sheet-box-field">
+            <%= @character.total_initiative %>
+          </span>
+            <span class="sheet-box-field-label">&nbsp;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="character-basic-info-col last">
+      <div class="attacks-box sheet-box">
+        <div class="bba-field sheet-field">
+          <%= label_tag :bab, "#{t('character_sheet.field.bab')}:" %>
+          <span>
+            <%= @character.base_attack_bonus %>
+          </span>
+        </div>
+
+        <div class="sheet-field">
+          <%= label_tag :cmb, "#{t('character_sheet.field.cmb')}" %>
+          <span class="equal">=</span>
+          <div class="sheet-box-field-container result">
+            <span class="sheet-box-field">
+              <%= @character.total_cmb %>
+            </span>
+            <span class="sheet-box-field-label">&nbsp;</span>
+          </div>
+          <span class="equal">=</span>
+          <div class="sheet-box-field-container">
+            <span class="sheet-box-field">
+              <%= @character.base_attack_bonus %>
+            </span>
+            <span class="sheet-box-field-label">
+              <%= t('character_sheet.abbr.bab') %>
+            </span>
+          </div>
+          <span class="plus">+</span>
+          <div class="sheet-box-field-container">
+            <span class="sheet-box-field">
+              <%= @character.strength_modifier %>
+            </span>
+            <span class="sheet-box-field-label">
+              <%= "#{t("activerecord.attributes.character.strength").to_s.capitalize.slice(0..2)}." %>
+            </span>
+          </div>
+          <span class="plus">+</span>
+          <div class="sheet-box-field-container">
+            <span class="sheet-box-field">
+              <%= @character.race.size.combat_maneuver_modifier %>
+            </span>
+            <span class="sheet-box-field-label">
+              <%= "#{t("activerecord.models.size").to_s.capitalize.slice(0..2)}." %>
+            </span>
+          </div>
+          <span class="plus">+</span>
+          <div class="sheet-box-field-container">
+            <span class="sheet-box-field">
+              <%= @character.extra_cmb %>
+            </span>
+            <span class="sheet-box-field-label">Misc.</span>
+          </div>
+        </div>
+
+        <div class="sheet-field">
+          <%= label_tag :cmd, "#{t('character_sheet.field.cmd')}" %>
+          <span class="equal">=</span>
+          <div class="sheet-box-field-container result">
+            <span class="sheet-box-field">
+              <%= @character.total_cmd %>
+            </span>
+            <span class="sheet-box-field-label">&nbsp;</span>
+          </div>
+          <span class="equal">=</span>
+          <span class="initial-value">10</span>
+          <span class="plus">+</span>
+          <div class="sheet-box-field-container">
+            <span class="sheet-box-field">
+              <%= @character.base_attack_bonus %>
+            </span>
+            <span class="sheet-box-field-label">
+              <%= t('character_sheet.abbr.bab') %>
+            </span>
+          </div>
+          <span class="plus">+</span>
+          <div class="sheet-box-field-container">
+            <span class="sheet-box-field">
+              <%= @character.strength_modifier %>
+            </span>
+            <span class="sheet-box-field-label">
+              <%= "#{t("activerecord.attributes.character.strength").to_s.capitalize.slice(0..2)}." %>
+            </span>
+          </div>
+          <span class="plus">+</span>
+          <div class="sheet-box-field-container">
+            <span class="sheet-box-field">
+              <%= @character.dexterity_modifier %>
+            </span>
+            <span class="sheet-box-field-label">
+              <%= "#{t("activerecord.attributes.character.dexterity").to_s.capitalize.slice(0..2)}." %>
+            </span>
+          </div>
+          <span class="plus">+</span>
+          <div class="sheet-box-field-container">
+            <span class="sheet-box-field">
+              <%= @character.race.size.combat_maneuver_modifier %>
+            </span>
+            <span class="sheet-box-field-label">
+              <%= "#{t("activerecord.models.size").to_s.capitalize.slice(0..2)}." %>
+            </span>
+          </div>
+          <span class="plus">+</span>
+          <div class="sheet-box-field-container">
+            <span class="sheet-box-field">
+              <%= @character.extra_cmd %>
+            </span>
+            <span class="sheet-box-field-label">Misc.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="defenses-box sheet-box">
+      <h4><%= t('character_sheet.box.defenses') %></h4>
+
+      <div class="sheet-field">
+        <%= label_tag :armor_class, "#{t('character_sheet.field.armor_class')}" %>
+        <span class="equal">=</span>
+        <div class="sheet-box-field-container result">
+          <span class="sheet-box-field">
+            <%= @character.total_armor_class %>
+          </span>
+          <span class="sheet-box-field-label">&nbsp;</span>
+        </div>
+        <span class="equal">=</span>
+        <span class="initial-value">10</span>
+        <span class="plus">+</span>
+        <div class="sheet-box-field-container">
+          <span class="sheet-box-field">
+            <%= @character.armor_class[:armor] %>
+          </span>
+          <span class="sheet-box-field-label">Arm.</span>
+        </div>
+        <span class="plus">+</span>
+        <div class="sheet-box-field-container">
+          <span class="sheet-box-field">
+            <%= @character.armor_class[:shield] %>
+          </span>
+          <span class="sheet-box-field-label">
+            <%= t('character_sheet.field.armor_class_shield') %>
+          </span>
+        </div>
+        <span class="plus">+</span>
+        <div class="sheet-box-field-container">
+          <span class="sheet-box-field">
+            <%= @character.armor_class_dexterity %>
+          </span>
+          <span class="sheet-box-field-label">
+            <%= "#{t("activerecord.attributes.character.dexterity").to_s.capitalize.slice(0..2)}." %>
+          </span>
+        </div>
+        <span class="plus">+</span>
+        <div class="sheet-box-field-container">
+          <span class="sheet-box-field">
+            <%= @character.armor_class[:dodge] %>
+          </span>
+          <span class="sheet-box-field-label">Dod.</span>
+        </div>
+        <span class="plus">+</span>
+        <div class="sheet-box-field-container">
+          <span class="sheet-box-field">
+            <%= @character.race.size.armor_class_modifier %>
+          </span>
+          <span class="sheet-box-field-label">Siz.</span>
+        </div>
+        <span class="plus">+</span>
+        <div class="sheet-box-field-container">
+          <span class="sheet-box-field">
+            <%= @character.armor_class[:natural] %>
+          </span>
+          <span class="sheet-box-field-label">Nat.</span>
+        </div>
+        <span class="plus">+</span>
+        <div class="sheet-box-field-container">
+          <span class="sheet-box-field">
+            <%= @character.armor_class[:deflection] %>
+          </span>
+          <span class="sheet-box-field-label">Def.</span>
+        </div>
+        <span class="plus">+</span>
+        <div class="sheet-box-field-container">
+          <span class="sheet-box-field">
+            <%= @character.armor_class[:misc] %>
+          </span>
+          <span class="sheet-box-field-label">Misc.</span>
+        </div>
+      </div>
+
+      <div class="sheet-field other_armor_class-fields">
+        <%= label_tag :touch_armor_class, "#{t('character_sheet.field.touch_armor_class')}" %>
+        <span class="equal">=</span>
+        <div class="sheet-box-field-container result">
+          <span class="sheet-box-field">
+            <%= @character.touch_armor_class %>
+          </span>
+          <span class="sheet-box-field-label">&nbsp;</span>
+        </div>
+        <%= label_tag :ff_armor_class, "#{t('character_sheet.field.ff_armor_class')}" %>
+        <span class="equal">=</span>
+        <div class="sheet-box-field-container result">
+          <span class="sheet-box-field">
+            <%= @character.flat_footed_armor_class %>
+          </span>
+          <span class="sheet-box-field-label">&nbsp;</span>
+        </div>
+      </div>
+      <%= render :partial => 'saving_throw_field', :locals => { save: :fortitude, attr: :constitution } %>
+      <%= render :partial => 'saving_throw_field', :locals => { save: :reflex, attr: :dexterity } %>
+      <%= render :partial => 'saving_throw_field', :locals => { save: :will, attr: :wisdom } %>
+    </div>
+  </div>
 
 </div>

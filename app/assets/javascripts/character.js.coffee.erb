@@ -93,3 +93,8 @@ $ ->
   $(document).on 'blur', "#character-sheet-inner input[type=text]", (event) =>
     $this = $(event.currentTarget)
     submit_sheet_subform($this)
+
+  $(document).on 'change', "#character-sheet-inner select", (event) =>
+    $this = $(event.currentTarget)
+    submit_sheet_subform($this)
+    $this.parent().find('.value-holder').text($this.find('option:selected').text())

@@ -4,7 +4,7 @@
     <button class="btn btn-danger decrease_attribute">-</button>
   </div>
   <%= f.text_field attr, :disabled => true, :value => 10 %>
-  <%= f.label attr %>
+  <%= f.label attr, "#{t("activerecord.attributes.character.#{attr}")} (#{attr.slice(0..2).upcase})" %>
 
   <span class="race-attribute">
     <%= "#{'+' if race_attributes[attr] > 0}#{race_attributes[attr]}" unless race_attributes[attr].nil? %>

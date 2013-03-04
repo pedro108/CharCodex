@@ -29,7 +29,7 @@
         <%= f.select :user_type, [[t(:player), '3'], [t(:master), '2']], {:include_blank => t(:_select_)} -%>
       </li>
       <li>
-        <%= submit_tag t(:to_signup) -%>
+        <%= submit_tag t(:to_signup), :class => 'btn btn-primary' -%>
       </li>
     </ul>
 	<% end -%>

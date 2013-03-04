@@ -19,10 +19,14 @@ class UsersController < ApplicationController
 
   def signup
     if params[:user]
-      @newuser = User.new(params[:user])
-      @newuser.save!
-      flash[:error] = t(:register_success)
-      redirect_to root_path
+      @user = User.new(params[:user])
+
+      if @user.save
+        flash[:error] = t(:register_success)
+        redirect_to root_path
+      else
+        render :error => t(:register_error)
+      end
     end
   end
 

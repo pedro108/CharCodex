@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301163548) do
+ActiveRecord::Schema.define(:version => 20130303225508) do
 
   create_table "adventures", :force => true do |t|
     t.string   "name",       :null => false
@@ -487,7 +487,7 @@ ActiveRecord::Schema.define(:version => 20130301163548) do
   create_table "race_traits", :force => true do |t|
     t.integer "race_id"
     t.string  "name"
-    t.string  "benefits"
+    t.text    "benefits"
     t.text    "bonus"
     t.integer "priority"
   end

@@ -16,13 +16,13 @@ class CharactersController < ApplicationController
     if @character.character_character_classes.empty?
       view = 'class_select'
       @character.character_character_classes.build
+    elsif !@character.attributes_selected?
+      view = 'attribute_select'
     elsif @character.last_created_class.completed_selection
       view = 'sheet'
-    elsif @character.attributes_selected?
+    else
       view = 'edit_class_options'
       @selected_class_relation = @character.last_created_class
-    else
-      view = 'attribute_select'
     end
 
     respond_to do |format|

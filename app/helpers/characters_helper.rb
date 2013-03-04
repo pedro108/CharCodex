@@ -8,6 +8,11 @@ module CharactersHelper
     }
   end
 
+  def attribute_modifier(attr)
+    modifier = @character.send("#{attr}_modifier")
+    "#{'+' if modifier >= 0}#{modifier}"
+  end
+
   def adventure_field
     @character.adventure.nil? ? '-' : @character.adventure.name
   end
@@ -38,6 +43,18 @@ module CharactersHelper
       attr = attributes_array[i]
       [t("activerecord.attributes.character.#{attr}"), attr.to_s]
     end)
+  end
+
+  def alignment_options
+    options_for_select Alignment.all.map{ |a| [a.name, a.id] }.unshift(['', nil]), @character.alignment_id
+  end
+
+  def deity_options
+    options_for_select Deity.all.map{ |a| [a.name, a.id] }.unshift(['', nil]), @character.deity_id
+  end
+
+  def gender_options
+    options_for_select [[t(:male), t(:male)], [t(:female), t(:female)]]
   end
 
   def character_character_classes_column(record)

@@ -150,6 +150,7 @@ en:
       character_class_feature: "Class features"
       character_class_spell: "Class spells"
       rogue_talent: "Rogue talents"
+      size: "Sizes"
     attributes:
       user:
         login: "Login"
@@ -177,17 +178,23 @@ en:
 
       character:
         name: "Character's name"
+        adventure: "Adventure"
+        race: "Race"
         level: "Level"
         photo: "Photo"
         miniature: "Grid miniature"
         player_name: "Player's name"
         character_classes: Class(es)
-        strength: Força (STR)
-        dexterity: Dexterity (DEX)
-        constitution: Constitution (CON)
-        intelligence: Intelligence (INT)
-        wisdom: Wisdom (WIS)
-        charisma: Charisma (CHA)
+        strength: Strength
+        dexterity: Dexterity
+        constitution: Constitution
+        intelligence: Intelligence
+        wisdom: Wisdom
+        charisma: Charisma
+        alignment_id: Alignment
+        deity_id: Deity
+        gender: Gender
+        age: Age
 
       adventure:
         name: "Name"
@@ -385,6 +392,8 @@ en:
     tabs:
       basic_info: "Basic information"
       feats_and_skills: "Feats & Skills"
+      gear: "Equipment"
+      spells: "Spells"
     forms:
       race_select:
         title: "Select your character's race"
@@ -396,6 +405,7 @@ en:
       error: "Ocurred errors when trying to save the character sheet:"
       attribute_select:
         title: "Select your character's ability scores"
+        description: "You have the option to distribute points according to the quantity defined aside, or decide them in a random way (4d6 minus the lesser value for each ability score)."
     saving: "Saving..."
     character_class:
       skills: "The %{class_name}'s class skills are: %{skill_list}"
@@ -410,6 +420,9 @@ en:
         special: "Features"
       hit_dice: "Hit dice: <strong>%{value}</strong>"
       gained_features: "Features for this level"
+      name: "Name"
+      levels: "Levels"
+      favored_class: "Fav.?"
     buttons:
       back_race_select: "Back to race selection"
       back_class_select: "Back to class selection"
@@ -429,6 +442,28 @@ en:
       above_18: "It's not allowed to set scores greater than 18."
       below_7: "It's not allowed to set scores lesser than 7."
       not_set: "The ability scores are not completely set."
+    box:
+      ability_scores: "Ability Scores"
+      character_classes: "Classes"
+      initiative: "Inititative"
+      defenses: "Defenses"
+    header:
+      score: "Score"
+      modifier: "Mod."
+    field:
+      hit_points: "Hit Points"
+      armor_class: "A.C."
+      armor_class_shield: "Shi."
+      touch_armor_class: "Touch"
+      ff_armor_class: "Flat-Footed"
+      fortitude: Fortitude
+      reflex: Reflex
+      will: Will
+      bab: "Base Attack Bonus"
+      cmb: "C.M.B."
+      cmd: "C.M.D."
+    abbr:
+      bab: "B.A.B."
   spellcaster_type:
     1: Complete
     2: Hybrid
@@ -447,3 +482,5 @@ en:
       9: "9th"
     error: "Spell per day for level %{class_level} is invalid.\n"
   random: "Random"
+  male: "Male"
+  female: "Female"

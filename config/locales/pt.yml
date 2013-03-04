@@ -1,4 +1,5 @@
 pt:
+  register_success: "Sua conta foi cadastrada com sucesso!"
   header_text: "Gerenciador de personagens para o sistema Pathfinder RPG da Paizo"
   login: "Login"
   invalid_login: "Login inválido."
@@ -265,6 +266,7 @@ pt:
       character_class_feature: "Hablidades de classe"
       character_class_spell: "Magias de classe"
       rogue_talent: "Proezas ladinas"
+      size: "Tamanhos"
     attributes:
       user:
         login: "Login"
@@ -299,12 +301,20 @@ pt:
         player_name: "Nome do jogador"
         race: "Raça"
         character_classes: Classe(s)
-        strength: Força (STR)
-        dexterity: Destreza (DEX)
-        constitution: Constituição (CON)
-        intelligence: Inteligência (INT)
-        wisdom: Sabedoria (WIS)
-        charisma: Carisma (CHA)
+        strength: Força
+        dexterity: Destreza
+        constitution: Constituição
+        intelligence: Inteligência
+        wisdom: Sabedoria
+        charisma: Carisma
+        alignment_id: Tendência
+        deity_id: Divindade
+        gender: Sexo
+        age: Idade
+        hair_color: Cabelo
+        eyes_color: Olhos
+        weight: Peso
+        height: Altura
 
       adventure:
         name: "Nome"
@@ -546,6 +556,9 @@ pt:
         special: "Habilidades"
       hit_dice: "Dado de vida: <strong>%{value}</strong>"
       gained_features: "Habilidades deste nível"
+      name: "Nome"
+      levels: "Níveis"
+      favored_class: "Fav.?"
     buttons:
       back_race_select: "Voltar para a seleção de raça"
       back_class_select: "Voltar para a seleção de classe"
@@ -565,6 +578,28 @@ pt:
       not_set: "Os atributos ainda não foram completamente definidos."
     warnings:
       confirm_selections: "As seleções feitas não poderão mais ser alteradas para este personagem. Deseja continuar?"
+    box:
+      ability_scores: "Atributos"
+      character_classes: "Classes"
+      initiative: "Iniciativa"
+      defenses: "Defesas"
+    header:
+      score: "Pontos"
+      modifier: "Mod."
+    field:
+      hit_points: "Pontos de Vida"
+      armor_class: "C.A."
+      armor_class_shield: "Esc."
+      touch_armor_class: "Toque"
+      ff_armor_class: "Surpresa"
+      fortitude: Fortitude
+      reflex: Reflexo
+      will: Vontade
+      bab: "Bônus Base de Ataque"
+      cmb: "C.M.B."
+      cmd: "C.M.D."
+    abbr:
+      bab: "B.B.A."
   spellcaster_type:
     1: Completo
     2: Híbrido
@@ -583,3 +618,5 @@ pt:
       9: "9º"
     error: "Magias por dia do nível %{class_level} está com registro inválido\n"
   random: "Aleatório"
+  male: "Masculino"
+  female: "Feminino"

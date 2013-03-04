@@ -1,6 +1,6 @@
 <div id="header">
   <div id="logo">
-    <%= link_to "AdventureCodex", root_path(:locale => params[:locale]) -%>
+    <%= link_to "AdventureCodex", root_path(:locale => params[:locale]) %>
   </div>
   <div id="login">
     <%= render :partial => "user_sessions/#{current_user ? 'signout' : 'signin'}" %>
@@ -9,11 +9,11 @@
     <span><%= t(:header_text) -%></span>
   </div>
   <div id="locale">
-    <% link_to root_path(:locale => :pt) do -%>
-      <%= image_tag 'br-flag.gif', :border => 0 -%>
-    <% end -%>
-    <% link_to root_path(:locale => :en) do -%>
-      <%= image_tag 'en-flag.gif', :border => 0 -%>
-    <% end -%>
+    <%= link_to root_path(:locale => :pt) do %>
+      <%= image_tag 'br-flag.gif', :border => 0 %>
+    <% end %>
+    <%= link_to root_path(:locale => :en) do -%>
+      <%= image_tag 'en-flag.gif', :border => 0 %>
+    <% end %>
   </div>
 </div>

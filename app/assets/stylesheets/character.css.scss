@@ -1,5 +1,12 @@
 $sheet_font_color: #570710;
 
+@mixin opacity($val) {
+  opacity: $val;
+  -moz-opacity: $val;
+  -webkit-opacity: $val;
+  filter: alpha(opacity=$val*100)
+}
+
 /* Lightview overrides */
 .lv_skin > canvas {
   display:none;
@@ -211,10 +218,7 @@ $sheet_font_color: #570710;
 
 
   .disabled {
-    opacity: 0.6;
-    -moz-opacity: 0.6;
-    -webkit-opacity: 0.6;
-    filter: alpha(opacity=60);
+    @include opacity(0.6);
   }
 
   * {
@@ -283,10 +287,7 @@ $sheet_font_color: #570710;
         width: 350px;
         height: 400px;
         z-index: 1000;
-        opacity: 0.0;
-        -moz-opacity: 0.0;
-        -webkit-opacity: 0.0;
-        filter: alpha(opacity=0);
+        @include opacity(0);
       }
 
       .attribute-form-field {
@@ -560,29 +561,362 @@ $sheet_font_color: #570710;
       .basic-info-input {
         float:left;
         margin-right:20px;
+        position:relative;
+
+        &.last {
+          margin-right:0px;
+        }
+
+        input[type=text], span {
+          border-width:0px;
+          border-bottom:1px solid black;
+          width:187px;
+          display:block;
+          font-size:14px;
+          font-family: Helvetica, Arial;
+          font-weight:normal;
+          padding:3px;
+          margin-bottom:0px;
+        }
+
+        &.other {
+          input[type=text], span {
+            width:100px;
+          }
+
+          select {
+            width:110px;
+          }
+        }
+
+        select {
+          width:190px;
+          position:absolute;
+          top:0px;
+          left:0px;
+          @include opacity(0);
+          z-index:1000;
+        }
+
+        i {
+          position:absolute;
+          top: 5px;
+          right: 0px;
+          font-size: 14px;
+          padding: 2px;
+          border-radius: 4px;
+        }
+
+        &:hover i {
+          background-color: $sheet_font_color;
+          color:white;
+        }
+
+        label {
+          line-height: 12px;
+          font-size: 12px;
+          font-style: italic;
+          margin-top: 3px;
+          color:black;
+          cursor: default;
+        }
       }
 
-      input[type=text], span {
-        border-width:0px;
-        border-bottom:1px solid black;
-        width:180px;
-        display:block;
-        font-size:14px;
-        font-family: Helvetica, Arial;
-        font-weight:normal;
-        padding:3px;
-        margin-bottom:0px;
+      .character-basic-info-col {
+        float:left;
+        margin-right:20px;
+
+        &.last {
+          margin-right:0px;
+        }
       }
 
-      label {
-        line-height: 12px;
-        font-size: 12px;
-        font-style: italic;
-        margin-top: 3px;
-        color:black;
-      }
     }
 
+    .sheet-box {
+      position:relative;
+      border:2px solid $sheet_font_color;
+      border-radius:4px;
+      -moz-border-radius:4px;
+      -webkit-border-radius:4px;
+
+      h4 {
+        font-size:16px;
+        background-color:white;
+        color:#111;
+        position:absolute;
+        top: -20px;
+        left: 13px;
+        padding: 0px 3px;
+        display: inline-block;
+      }
+
+      .plus, .equal, .initial-value {
+        display: inline-block;
+        color:#111;
+        font-weight: bold;
+        font-size:18px;
+        margin:0px 6px;
+        vertical-align: top;
+        margin-top: 3px;
+      }
+
+      .sheet-box-field-container {
+        min-width:30px;
+        display:inline-block;
+
+        .sheet-box-field {
+          display:block;
+          text-align:center;
+          font-size:14px;
+          line-height:14px;
+          font-weight:bold;
+          padding:4px;
+          border: 1px solid #111;
+        }
+
+        &.result .sheet-box-field {
+          border-color: $sheet_font_color;
+        }
+
+        .sheet-box-field-label {
+          display:block;
+          font-size:11px;
+          line-height:15px;
+          color:#111;
+          text-align:center;
+        }
+      }
+
+      .sheet-field {
+
+        label {
+          display:inline-block;
+          margin-bottom:0px;
+          color:#111;
+          font-size:16px;
+          line-height:16px;
+          font-weight:bold;
+          vertical-align:top;
+          margin-top:4px;
+        }
+      }
+
+      &.character-classes-box {
+        margin-top:5px;
+        width:280px;
+
+        table {
+          width:100%;
+          margin-top:10px;
+
+          th {
+            font-size:11px;
+            font-weight:normal;
+            padding-left:5px;
+            color:#111;
+          }
+
+          td {
+            font-size:14px;
+            line-height:14px;
+            height:14px;
+            padding:4px;
+            border-right:2px solid $sheet_font_color;
+            border-top:2px solid $sheet_font_color;
+
+            &.character-class-name {
+              width:210px;
+            }
+
+            &.character-class-levels {
+              text-align: center;
+            }
+
+            &.character-class-favored {
+              border-right-width:0px;
+              text-align: center;
+            }
+          }
+        }
+      }
+
+      &.ability-score-box {
+        margin-top:15px;
+        width:280px;
+
+        .header {
+          font-size:10px;
+          position:absolute;
+          top:8px;
+          color:#111;
+
+          &.ability-score-header{
+            left:170px;
+          }
+
+          &.ability-modifier-header{
+            left:217px;
+          }
+        }
+
+        ul {
+          margin-top: 30px;
+          padding-left:10px;
+
+          li {
+            margin-bottom: 6px;
+
+            .ability-score-label{
+              display:inline-block;
+              width:150px;
+              height:12px;
+              border-radius:4px;
+              -moz-border-radius:4px;
+              -webkit-border-radius:4px;
+              background-color:#CCC;
+              position:relative;
+
+              label {
+                position:absolute;
+                top:-12px;
+                left:0px;
+                border-radius:4px;
+                -moz-border-radius:4px;
+                -webkit-border-radius:4px;
+                font-size:16px;
+                line-height:16px;
+                text-transform: uppercase;
+                font-weight:bold;
+                padding:4px;
+                background-color:#CCC;
+                color:#111;;
+              }
+            }
+
+            .ability-score {
+              font-size: 18px;
+              line-height: 18px;
+              padding:6px;
+              padding-right:8px;
+              padding-bottom:4px;
+              font-weight: bold;
+              border: 2px solid $sheet_font_color;
+              width: 20px;
+              height: 20px;
+              border-radius: 20px;
+              -moz-border-radius: 20px;
+              -webkit-border-radius: 20px;
+              text-align:center;
+              display: inline-block;
+              background-color:#EEE;
+              margin-left:6px;
+              position:relative;
+              bottom:5px;
+            }
+
+            .ability-modifier {
+              display: inline-block;
+              width: 20px;
+              text-align: right;
+              font-size: 18px;
+              font-weight: bold;
+              color: #111;
+              border: 2px solid $sheet_font_color;
+              padding: 4px 16px;
+              position: relative;
+              bottom: 5px;
+              left: -14px;
+              z-index: -10;
+            }
+          }
+        }
+      }
+
+      &.hit_points-box {
+        margin-top:5px;
+        padding:8px;
+        width:154px;
+
+        .sheet-field {
+          height:16px;
+
+          label {
+            margin-top:2px;
+            margin-right:10px;
+          }
+
+          span {
+            font-size:16px;
+            font-weight:bold;
+          }
+        }
+      }
+
+      &.initiative-box {
+        margin-top:25px;
+        width:170px;
+
+        .initiative-sum {
+          margin:15px 10px 5px 10px;
+        }
+      }
+
+      &.attacks-box {
+        margin-top:5px;
+        padding:8px;
+        padding-bottom:0px;
+        width: 480px;
+
+        .bba-field {
+          height:16px;
+          margin-bottom:17px;
+
+          span {
+            font-size:16px;
+            font-weight:bold;
+          }
+
+          label {
+            margin-top:2px;
+            margin-right:10px;
+          }
+        }
+      }
+
+      &.defenses-box {
+        position:relative;
+        top:20px;
+        padding:15px;
+        padding-bottom:5px;
+        clear:both;
+        width:660px;
+
+        .initial-value {
+          margin-top:3px;
+        }
+
+        label {
+          font-size:18px;
+        }
+
+        .other_armor_class-fields {
+          margin-top:5px;
+          margin-bottom:14px;
+
+          .sheet-box-field-container {
+            margin-right:30px;
+          }
+        }
+
+        .saving-throw-field {
+          label {
+            width:80px;
+          }
+        }
+      }
+
+    }
   }
 
 }
